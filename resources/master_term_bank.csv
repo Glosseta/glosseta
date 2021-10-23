@@ -1,7 +1,7 @@
 Content-Type,term,description,locale,source
 application/json,blockchain,"A publicly-accessible digital ledger used to store and transfer information without the need for a central authority. Blockchains are the core technology on which cryptocurrency protocols like Bitcoin and Ethereum are built.",en,glosseta
-application/json,HODL,"An acronym for hold on for dear life",en,glosseta
-application/json,FUD,"An acronym for fear, uncertainty, doom",en,glosseta
-application/json,FOMO,"An acronym for fear of missing out",en,glosseta
-application/json,Fiat,"A term used to refer to a government issued currency like the US Dollar",en,glosseta
-application/json,Whale,"A term for an individual holding a large amount of cryptocurrency",en,glosseta
+application/json,hodl,"An acronym for hold on for dear life",en,glosseta
+application/json,fud,"An acronym for fear, uncertainty, doom",en,glosseta
+application/json,fomo,"An acronym for fear of missing out",en,glosseta
+application/json,fiat,"A term used to refer to a government issued currency like the US Dollar",en,glosseta
+application/json,whale,"A term for an individual holding a large amount of cryptocurrency",en,glosseta
