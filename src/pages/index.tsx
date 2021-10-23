@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../../styles/Home.module.css";
-import { getWalletBalance } from "./api/arweave/arweave-client";
 import { Button, ButtonGroup } from "@chakra-ui/button";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
@@ -12,30 +12,20 @@ import {
   Heading,
   InputGroup,
   InputLeftElement,
+  Text,
   Skeleton,
   SkeletonCircle,
   SkeletonText,
   Box,
 } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
-import { fetchTransactionsForWallet } from "./api/arweave/arweave-client";
+import { useState, useEffect, SetStateAction } from "react";
 
 const Home: NextPage = () => {
-  const [balance, setBalance] = useState(0 as number);
-  const [showBalance, setShowSetBalance] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {
-    if (balance > 0) {
-      setShowSetBalance(true);
-    }
-  }, [balance]);
-
-  const fetchArBalance = async () => {
-    let res = await fetchTransactionsForWallet(
-      "FWh7-V_t6BHFNwoTLpQOj3w62TxXE7teHW9opgrCMqE"
-    );
-    console.log(res);
-  };
+  const handleSearchTermChange = (event: {
+    target: { value: SetStateAction<string> };
+  }) => setSearchTerm(event.target.value);
 
   return (
     <div className={styles.container}>
@@ -63,9 +53,17 @@ const Home: NextPage = () => {
                 placeholder="Search the metaverse"
                 backgroundColor="white"
                 rounded="lg"
+                onChange={handleSearchTermChange}
               />
             </InputGroup>
-            <Button onClick={fetchArBalance}>Search</Button>
+            <Link
+              href={{
+                pathname: "/search",
+                query: { term: searchTerm.toLowerCase() },
+              }}
+            >
+              <Button>Search</Button>
+            </Link>
           </HStack>
         </VStack>
       </main>
