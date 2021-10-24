@@ -1,36 +1,51 @@
 import react, { useState, useEffect, SetStateAction } from "react";
-import {
-  fetchTransactionsForWallet,
-  fetchTransactionIdsByTag,
-} from "../api/arweave/arweave-client";
+import { fetchTransactionIdsByTag } from "../api/arweave/arweave-client";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import {
   TERM_TAG,
   DESCRIPTION_TAG,
   LOCALE_TAG,
-  SOURCE_TAG,
+  CATEGORY_TAG,
 } from "../../utils/glosseta-constants";
-import {
-    Container,
-    VStack
-  } from "@chakra-ui/react";
+import { Heading, SimpleGrid, Box, Text } from "@chakra-ui/react";
 import { tag } from "../../types/arweave";
 import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
-import styles from "../../../styles/Home.module.css";
+import styles from "./search.module.css";
+import { Result } from "./result";
+import { UnavailableResult } from "./unavailable-result";
 
-const SearchResults = ({ term, definition, locale }: any): JSX.Element => {
+const SearchResults = ({
+  term,
+  definition,
+  locale,
+  isAvailable,
+  category,
+  transactionId,
+}: any): JSX.Element => {
+  const [isSearchResultAvailable, setIsSearchResultAvailable] =
+    useState(isAvailable);
 
-
-    //TODO: add the proper styling, layout and add the layout for when a term is not found
+  //TODO: add the proper styling, layout and add the layout for when a term is not found
   return (
     <>
       <div className={styles.container}>
-        <p>Term: {term}</p>
-        <br />
-        <p>Definition: {definition}</p>
-        <br />
-        <p>locale: {locale}</p>
+        <SimpleGrid columns={1} spacing="80px">
+          <Box>
+            <Heading as="h1" padding={1}>
+              Term
+            </Heading>
+            <Text padding={2}>{term.toUpperCase()}</Text>
+          </Box>
+          {isSearchResultAvailable && (
+            <Result
+              transactionId={transactionId}
+              definition={definition}
+              category={category}
+            />
+          )}
+          {!isSearchResultAvailable && <UnavailableResult term={term} />}
+        </SimpleGrid>
       </div>
     </>
   );
@@ -42,6 +57,9 @@ export const createSearchResult = (tags: tag[]) => {
     definition: "",
     locale: "",
     source: "",
+    isAvailable: true,
+    category: "",
+    transactionId: "",
   } as glossetaSearchResult;
 
   tags.forEach((tag) => {
@@ -51,6 +69,8 @@ export const createSearchResult = (tags: tag[]) => {
       searchResult.definition = tag.value;
     } else if (LOCALE_TAG === tag.name.toLocaleLowerCase()) {
       searchResult.locale = tag.value;
+    } else if (CATEGORY_TAG === tag.name.toLocaleLowerCase()) {
+      searchResult.category = tag.value;
     }
   });
 
@@ -63,16 +83,33 @@ export const getServerSideProps: GetServerSideProps = async ({
   const data = (await fetchTransactionIdsByTag(
     query.term.toLowerCase()
   )) as any;
+
   const { edges } = data.props;
 
-  //TODO: handle the case when the search term isn't found.  Edges will be empty
-  const result = createSearchResult(edges[0].node.tags) as glossetaSearchResult;
+  let result = {} as glossetaSearchResult;
+
+  if (edges.length === 0) {
+    result = {
+      term: query.term.toLowerCase(),
+      definition: "This term is currently unavailable",
+      locale: "",
+      isAvailable: false,
+      category: "unavailable",
+      transactionId: "",
+    };
+  } else {
+    result = createSearchResult(edges[0].node.tags) as glossetaSearchResult;
+    result.transactionId = edges[0].node.id;
+  }
 
   return {
     props: {
       term: result.term,
       definition: result.definition,
       locale: result.locale,
+      isAvailable: result.isAvailable,
+      category: result.category,
+      transactionId: result.transactionId,
     },
   };
 };

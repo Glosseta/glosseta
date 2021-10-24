@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../../styles/Home.module.css";
-import { Button, ButtonGroup } from "@chakra-ui/button";
+import { Button } from "@chakra-ui/button";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   HStack,
@@ -12,13 +12,8 @@ import {
   Heading,
   InputGroup,
   InputLeftElement,
-  Text,
-  Skeleton,
-  SkeletonCircle,
-  SkeletonText,
-  Box,
 } from "@chakra-ui/react";
-import { useState, useEffect, SetStateAction } from "react";
+import { useState, SetStateAction } from "react";
 
 const Home: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
