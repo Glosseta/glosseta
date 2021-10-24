@@ -8,7 +8,7 @@ import {
   LOCALE_TAG,
   CATEGORY_TAG,
 } from "../../utils/glosseta-constants";
-import { Heading, SimpleGrid, Box, Text } from "@chakra-ui/react";
+import { Heading, SimpleGrid, Box } from "@chakra-ui/react";
 import { tag } from "../../types/arweave";
 import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
 import styles from "./search.module.css";
@@ -30,22 +30,32 @@ const SearchResults = ({
   return (
     <>
       <div className={styles.container}>
-        <SimpleGrid columns={1} spacing="80px">
-          <Box>
-            <Heading as="h1" padding={1}>
-              Term
-            </Heading>
-            <Text padding={2}>{term.toUpperCase()}</Text>
-          </Box>
-          {isSearchResultAvailable && (
-            <Result
-              transactionId={transactionId}
-              definition={definition}
-              category={category}
-            />
-          )}
-          {!isSearchResultAvailable && <UnavailableResult term={term} />}
-        </SimpleGrid>
+        <main className={styles.main}>
+          <SimpleGrid
+            columns={1}
+            spacing="80px"
+            flex={1}
+            justifyContent="center"
+            flexDirection="column"
+            display="flex"
+            alignItems="center"
+          >
+            <Box>
+              <Heading as="h1" padding={1}>
+                {term.toUpperCase()}
+              </Heading>
+            </Box>
+            {isSearchResultAvailable && (
+              <Result
+                transactionId={transactionId}
+                definition={definition}
+                category={category}
+                term={term}
+              />
+            )}
+            {!isSearchResultAvailable && <UnavailableResult term={term} />}
+          </SimpleGrid>
+        </main>
       </div>
     </>
   );
