@@ -26,7 +26,6 @@ const SearchResults = ({
   const [isSearchResultAvailable, setIsSearchResultAvailable] =
     useState(isAvailable);
 
-  //TODO: add the proper styling, layout and add the layout for when a term is not found
   return (
     <>
       <div className={styles.container}>
