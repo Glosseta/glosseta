@@ -13,13 +13,13 @@ export const Result = ({
   return (
     <>
       <Box>
-        <Text padding={2}>{definition}</Text>
+        <Text padding={2} fontSize="xl">{definition}</Text>
       </Box>
       <Box>
         <Heading as="h1" textAlign="center" padding={1}>
           Content Source
         </Heading>
-        <Text padding={2}>
+        <Text padding={2} fontSize="xl">
           The definition you see above for {term} is stored on Arweave network
           which is a protocol for storing data permanently in a decentralized
           manner among network users who have storage to spare. This means that

@@ -7,7 +7,7 @@ export const UnavailableResult = ({ term }: any): JSX.Element => {
   return (
     <>
       <Box>
-        <Text padding={2}>
+        <Text padding={2} fontSize="xl">
           The term {term} isn't in our knowledge base at the moment. If you
           think this is something we should have, please reach out to us on{" "}
           <Link color="aquamarine" href={twitter_href} isExternal>
