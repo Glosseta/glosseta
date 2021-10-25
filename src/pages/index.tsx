@@ -52,7 +52,7 @@ const Home: NextPage = () => {
                 onKeyPress={(e) => {
                   if (e.key === "Enter" && searchTerm !== "") {
                     location.assign(`/search?term=${searchTerm}`);
-                  } 
+                  }
                 }}
               />
             </InputGroup>
