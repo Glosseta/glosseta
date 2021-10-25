@@ -1,7 +1,7 @@
 import Arweave from 'arweave';
 import { fetch } from '../axios/axios-client';
 import { tags } from '../../../types/arweave';
-import { ARWEAVE_ENDPOINT } from '../../../utils/web3GlossaryConstants';
+import { ARWEAVE_ENDPOINT } from '../../../utils/glosseta-constants';
 import { gql } from "@apollo/client";
 import { apolloClient } from './apollo-client';
 
@@ -15,57 +15,6 @@ const arweave = Arweave.init({
 
 const ARWEAVE_ADDRESS = process.env.NEXT_PUBLIC_ARWEAVE_ADDRESS;
 
-export const createTransaction = async (_data: string, _tags: tags) => {
-    let transaction = await arweave.createTransaction({
-        data: _data
-    });
-
-    _tags.tags.forEach(tag => {
-        transaction.addTag(tag.key, tag.value)
-    });
-
-    console.log("-------Transaction-------");
-
-    console.log(transaction);
-
-    await arweave.transactions.sign(transaction);
-
-    let uploader = await arweave.transactions.getUploader(transaction);
-
-    console.log("-------Beginning to upload data -------");
-
-    while (!uploader.isComplete) {
-        try {
-            await uploader.uploadChunk();
-            console.log(`${uploader.pctComplete}% complete, ${uploader.uploadedChunks}/${uploader.totalChunks}`);
-        } catch (e) {
-            console.log(`[Error occurred uploading data], error=${e}`);
-        }
-    }
-
-    // Read the transaction status
-    arweave.transactions.getStatus(transaction.id).then(status => {
-        console.log("-------transaction status-------")
-        console.log(status);
-    })
-
-    // Read data from Arweave
-    arweave.transactions.getData(transaction.id, {
-        decode: true, string: true
-    }).then(response => {
-        console.log('data: ', response)
-    })
-}
-
-export const getWalletBalance = async () => {
-    arweave.wallets.getBalance(ARWEAVE_ADDRESS as string).then((balance) => {
-        let winston = balance;
-        let ar = arweave.ar.winstonToAr(balance);
-
-        return ar;
-    });
-}
-
 export const fetchDataFromOneTransaction = async (transactionId: string) => {
     const request = `${ARWEAVE_ENDPOINT}${transactionId}`;
     let response = await fetch(request);
@@ -73,7 +22,37 @@ export const fetchDataFromOneTransaction = async (transactionId: string) => {
 }
 
 export const fetchTransactionIdsByTag = async (tag: string) => {
-    return;
+    let tags = [{"name": "source", "values": ["GLOSSETA"]}] as any;
+    tags.push({"name": "term", "values": [tag]});
+
+    const FIND_BY_TAG_QUERY = gql`
+        query getDataByTags($tags: [TagFilter!]) {
+        transactions(tags: $tags) {
+            edges {
+                node {
+                    id
+                    tags {
+                        name
+                        value
+                    }
+                }
+            }
+        }
+    }
+    `;
+
+    const { data } = await apolloClient.query({
+        query: FIND_BY_TAG_QUERY,
+        variables: {
+            "tags": tags
+        }
+    });
+
+    return {
+        props: {
+            edges: data.transactions.edges
+        }
+    };
 }
 
 export const fetchTransactionsForWallet = async (walletId: string) => {

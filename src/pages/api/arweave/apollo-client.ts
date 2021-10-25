@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client"
-import { ARWEAVE_GRAPHQL } from '../../../utils/web3GlossaryConstants'
+import { ARWEAVE_GRAPHQL } from '../../../utils/glosseta-constants'
 
 
 export const apolloClient = new ApolloClient({

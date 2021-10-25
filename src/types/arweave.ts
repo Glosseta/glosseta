@@ -1,5 +1,6 @@
 export type tag = {
-    key: string,
+    __typename: string,
+    name: string,
     value: string
 }
 
