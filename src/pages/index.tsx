@@ -7,12 +7,11 @@ import {
   HStack,
   VStack,
   Input,
-  Heading,
   InputGroup,
   InputLeftElement,
   Image,
-  Box,
   Link,
+  Text,
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
@@ -35,12 +34,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/glosseta_icon.png" />
       </Head>
 
-      <Image src="/glosseta.png" alt="Glosseta logo" width={300} height={300} />
-      <Box>
-        <Heading color="white">Your glossary into the metaverse</Heading>
-      </Box>
       <main className={styles.main}>
         <VStack>
+          <Image
+            src="/glosseta.png"
+            alt="Glosseta logo"
+            width={300}
+            height={300}
+          />
           <HStack spacing={3}>
             <InputGroup>
               <InputLeftElement
@@ -53,12 +54,12 @@ const Home: NextPage = () => {
               />
               <Input
                 autoComplete={"off"}
-                size="lg"
                 variant="outline"
-                placeholder="Search Glosseta"
+                placeholder="Search Glosseta (i.e. gm)"
                 backgroundColor="white"
                 rounded="lg"
                 onChange={handleSearchTermChange}
+                width="400px"
                 onKeyPress={(event) => {
                   if (event.key === "Enter" && searchTerm !== "") {
                     event.preventDefault();
@@ -67,22 +68,22 @@ const Home: NextPage = () => {
                 }}
               />
             </InputGroup>
-            <Link href={`/search?term=${searchTerm.toLowerCase()}`}>
-              <Button>Search</Button>
-            </Link>
           </HStack>
+          <Text color="white" padding={2}>
+            The Metaverse's glossary
+          </Text>
         </VStack>
       </main>
 
       <footer className={styles.footer}>
         <HStack>
           <Link href={"https://twitter.com/Glossetadotcom"} isExternal>
-            <Button size="lg" colorScheme="clear">
+            <Button aria-label="Twitter link for Glosseta" size="lg" colorScheme="clear">
               <FaTwitter />
             </Button>
           </Link>
           <Link href={"https://github.com/narbs91/glosseta"} isExternal>
-            <Button size="lg" colorScheme="clear">
+            <Button aria-label="GitHub link for Glosseta" size="lg" colorScheme="clear">
               <FaGithub />
             </Button>
           </Link>
