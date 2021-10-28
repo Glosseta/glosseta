@@ -2,6 +2,7 @@ import react, { useState, useEffect, SetStateAction } from "react";
 import { fetchTransactionIdsByTag } from "../api/arweave/arweave-client";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import {
   TERM_TAG,
   DESCRIPTION_TAG,
@@ -28,6 +29,14 @@ const SearchResults = ({
 
   return (
     <>
+      <Head>
+        <title>Glosseta</title>
+        <meta
+          name="description"
+          content="The metaverse's glossary into web3 terms and lingo"
+        />
+        <link rel="icon" href="/glosseta_icon.png" />
+      </Head>
       <div className={styles.container}>
         <main className={styles.main}>
           <SimpleGrid
