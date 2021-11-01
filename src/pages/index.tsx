@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
-import { Button } from "@chakra-ui/button";
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   HStack,
@@ -9,12 +8,10 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
-  Image,
-  Link,
-  Text,
+  Image
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
-import { FaGithub, FaTwitter } from "react-icons/fa";
+import Footer from "./components/footer/footer";
 
 const Home: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -43,19 +40,19 @@ const Home: NextPage = () => {
             height={300}
           />
           <HStack spacing={3}>
-            <InputGroup>
+            <InputGroup aria-label="Search Bar">
               <InputLeftElement
                 className="InputLeft"
                 pointerEvents="none"
                 children={
-                  <SearchIcon className="SearchIcon" color="gray.300" />
+                  <SearchIcon aria-label="Magnifying glass image" className="SearchIcon" color="gray.300" />
                 }
                 size="xs"
               />
               <Input
                 autoComplete={"off"}
                 variant="outline"
-                placeholder="Search Glosseta (i.e. gm)"
+                placeholder="Search Glosseta for web 3.0 terms (i.e. gm)"
                 backgroundColor="white"
                 rounded="lg"
                 onChange={handleSearchTermChange}
@@ -69,26 +66,9 @@ const Home: NextPage = () => {
               />
             </InputGroup>
           </HStack>
-          <Text color="white" padding={2}>
-            The Metaverse's glossary
-          </Text>
         </VStack>
       </main>
-
-      <footer className={styles.footer}>
-        <HStack>
-          <Link href={"https://twitter.com/Glossetadotcom"} isExternal>
-            <Button aria-label="Twitter link for Glosseta" size="lg" colorScheme="clear">
-              <FaTwitter />
-            </Button>
-          </Link>
-          <Link href={"https://github.com/narbs91/glosseta"} isExternal>
-            <Button aria-label="GitHub link for Glosseta" size="lg" colorScheme="clear">
-              <FaGithub />
-            </Button>
-          </Link>
-        </HStack>
-      </footer>
+      <Footer />
     </div>
   );
 };
