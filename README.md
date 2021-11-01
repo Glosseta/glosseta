@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Welcome to the Glosseta website repo!  What is Glosseta you ask?  Great question, Glosseta is new internet's (i.e. web3) glossary for definition for common crypto lingo, terms and slang you may see floating out on various social media platforms and elsewhere on the web.  What sets Glosseta apart from the rest is that the definitions you see on the site are stored themselves on the [Arweave storage protocol](https://www.arweave.org) meaning they will live forever on the decentralized web.  It's our secret sauce for what puts the meta in Glosseta and for what makes us a great companion in your explorations in web3.
 
 ## Getting Started
 
-First, run the development server:
+After pulling the code, run the following commands to get the app up and running:
 
 ```bash
-npm run dev
-# or
-yarn dev
+yarn && yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to get Glosseta up and running.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Tech stack
+- [Next.js](https://nextjs.org/docs)
+- [Chakra-UI](https://chakra-ui.com/docs/getting-started)
+- [Arweave-js](https://github.com/ArweaveTeam/arweave-js)
+- [Apollo-client](https://www.apollographql.com/docs/react/)
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+If you're looking to learn more about web3 in general the following set of [resources](https://github.com/Developer-DAO/resources) put together by the [Developer-Dao](https://www.developerdao.com/) is a great starting point.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How to Contribute
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+TBA
 
-## Deploy on Vercel
+## Reporting Bugs/Feature requests
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+TBA
