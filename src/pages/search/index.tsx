@@ -15,6 +15,7 @@ import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
 import styles from "./search.module.css";
 import { Result } from "./result";
 import { UnavailableResult } from "./unavailable-result";
+import Footer from "../components/footer/footer";
 
 const SearchResults = ({
   term,
@@ -64,6 +65,7 @@ const SearchResults = ({
             {!isSearchResultAvailable && <UnavailableResult term={term} />}
           </SimpleGrid>
         </main>
+        <Footer />
       </div>
     </>
   );

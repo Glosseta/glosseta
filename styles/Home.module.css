@@ -9,6 +9,17 @@
   background-color: #7a08fc;
 }
 
+.visuallyhidden {
+  clip: rect(0,0,0,0);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute!important;
+  white-space: nowrap;
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;
@@ -27,6 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .footer a {
