@@ -35,7 +35,6 @@ const Footer = (): JSX.Element => {
               borderRadius="full"
               boxSize="18px"
               src="./arweave_logo.png"
-              alt="Arweave logo"
             />
             <span className={styles.visuallyhidden}>
               Opens Arweave.org in a new window

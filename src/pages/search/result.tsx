@@ -31,8 +31,7 @@ export const Result = ({
             Click here to view the Arweave transaction for this definition
             <ExternalLinkIcon mx="2px" />
             <span className={styles.visuallyhidden}>
-              Opens a new window to the viewblock explorer to view the arweave
-              transaction
+              Opens a new window
             </span>
           </Link>
         </Text>

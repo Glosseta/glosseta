@@ -14,8 +14,7 @@ export const UnavailableResult = ({ term }: any): JSX.Element => {
           <Link color="aquamarine" href={twitter_href} isExternal>
             Twitter <ExternalLinkIcon mx="2px" />
             <span className={styles.visuallyhidden}>
-              Opens the Glosseta Twitter for requesting the definition in a new
-              window
+              Opens in a new window
             </span>
           </Link>
         </Text>
