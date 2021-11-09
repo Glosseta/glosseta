@@ -6,7 +6,6 @@ const PageLayout = ({ children }: { children?: object }): JSX.Element => {
   return (
     <Stack
       spacing={10}
-      background="#7a08fc"
       padding={1}
       display="flex"
       justifyContent="center"

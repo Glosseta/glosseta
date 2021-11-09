@@ -1,8 +1,7 @@
-import react, { useState, useEffect, SetStateAction } from "react";
+import react, { useState } from "react";
 import { fetchTransactionIdsByTag } from "../api/arweave/arweave-client";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import {
   TERM_TAG,
   DESCRIPTION_TAG,
@@ -12,10 +11,8 @@ import {
 import { Heading, SimpleGrid, Box, chakra } from "@chakra-ui/react";
 import { tag } from "../../types/arweave";
 import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
-import styles from "./search.module.css";
 import { Result } from "./result";
 import { UnavailableResult } from "./unavailable-result";
-import Footer from "../components/footer/footer";
 import PageLayout from "../components/layout/page";
 
 const SearchResults = ({
@@ -32,14 +29,7 @@ const SearchResults = ({
   return (
     <>
       <PageLayout>
-        <chakra.main
-          display="flex"
-          justifyContent="center"
-          flex={1}
-          backgroundColor="#7a08fc"
-          flexDirection="column"
-          color="white"
-        >
+        <chakra.main>
           <SimpleGrid
             columns={1}
             spacing="80px"

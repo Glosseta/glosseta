@@ -44,7 +44,6 @@ const Home: NextPage = () => {
                 autoComplete={"off"}
                 variant="outline"
                 placeholder="Search web3 terms here"
-                backgroundColor="white"
                 rounded="lg"
                 onChange={handleSearchTermChange}
                 width="250px"
