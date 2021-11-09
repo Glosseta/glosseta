@@ -14,6 +14,7 @@ const PageLayout = ({ children }: { children?: object }): JSX.Element => {
       alignItems="center"
       minHeight="100vh"
       overflowX="hidden"
+      width="100%"
     >
       {children}
       <Footer />
