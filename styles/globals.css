@@ -4,10 +4,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
   height: 100%;
   width: 100%;
-  background-color: #7a08fc;
+  background: #7a08fc;
 }
 
 a {
