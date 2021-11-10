@@ -1,21 +1,19 @@
-import react, { useState, useEffect, SetStateAction } from "react";
+import react, { useState } from "react";
 import { fetchTransactionIdsByTag } from "../api/arweave/arweave-client";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import {
   TERM_TAG,
   DESCRIPTION_TAG,
   LOCALE_TAG,
   CATEGORY_TAG,
 } from "../../utils/glosseta-constants";
-import { Heading, SimpleGrid, Box } from "@chakra-ui/react";
+import { Heading, SimpleGrid, Box, chakra } from "@chakra-ui/react";
 import { tag } from "../../types/arweave";
 import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
-import styles from "./search.module.css";
 import { Result } from "./result";
 import { UnavailableResult } from "./unavailable-result";
-import Footer from "../components/footer/footer";
+import PageLayout from "../components/layout/page";
 
 const SearchResults = ({
   term,
@@ -30,16 +28,8 @@ const SearchResults = ({
 
   return (
     <>
-      <Head>
-        <title>Glosseta</title>
-        <meta
-          name="description"
-          content="The metaverse's glossary into web3 terms and lingo"
-        />
-        <link rel="icon" href="/glosseta_icon.png" />
-      </Head>
-      <div className={styles.container}>
-        <main className={styles.main}>
+      <PageLayout>
+        <chakra.main>
           <SimpleGrid
             columns={1}
             spacing="80px"
@@ -64,9 +54,8 @@ const SearchResults = ({
             )}
             {!isSearchResultAvailable && <UnavailableResult term={term} />}
           </SimpleGrid>
-        </main>
-        <Footer />
-      </div>
+        </chakra.main>
+      </PageLayout>
     </>
   );
 };

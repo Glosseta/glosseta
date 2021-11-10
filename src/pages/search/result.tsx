@@ -14,15 +14,15 @@ export const Result = ({
   return (
     <>
       <Box>
-        <Text padding={2} fontSize="xl">
+        <Text padding={2} fontSize={{ base: 'xs', sm: 'md' }}>
           {definition}
         </Text>
       </Box>
       <Box>
-        <Heading as="h1" textAlign="center" padding={1}>
+        <Heading as="h2"  padding={2}>
           Content Source
         </Heading>
-        <Text padding={2} fontSize="xl">
+        <Text padding={2} fontSize={{ base: 'xs', sm: 'md' }}>
           The definition you see above for {term} is stored on Arweave network
           which is a protocol for storing data permanently in a decentralized
           manner among network users who have storage to spare. This means that
@@ -35,7 +35,6 @@ export const Result = ({
             </span>
           </Link>
         </Text>
-        <Box textAlign="center"></Box>
       </Box>
     </>
   );
