@@ -22,10 +22,10 @@ const Home: NextPage = () => {
 
   return (
     <PageLayout>
-      <Heading color="white">Web3 Glossary</Heading>
       <chakra.main>
         <VStack>
           <Image src="/glosseta.png" alt="Glosseta logo" width={300} />
+          <Heading padding={1} color="white">Web3 Glossary</Heading>
           <HStack spacing={3}>
             <InputGroup aria-label="Search Bar">
               <InputLeftElement
@@ -43,7 +43,9 @@ const Home: NextPage = () => {
               <Input
                 autoComplete={"off"}
                 variant="outline"
-                placeholder="Search web3 terms here"
+                aria-label="Search web3 terms here"
+                backgroundColor="white"
+                color="gray.300"
                 rounded="lg"
                 onChange={handleSearchTermChange}
                 width="250px"
