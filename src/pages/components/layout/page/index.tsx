@@ -12,8 +12,6 @@ const PageLayout = ({ children }: { children?: object }): JSX.Element => {
       flexDirection="column"
       alignItems="center"
       minHeight="100vh"
-      minWidth="100vw"
-      flex="1"
     >
       {children}
       <Footer />
