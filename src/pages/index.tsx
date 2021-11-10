@@ -45,10 +45,13 @@ const Home: NextPage = () => {
                 variant="outline"
                 aria-label="Search web3 terms here"
                 backgroundColor="white"
-                color="gray.300"
+                color="black"
                 rounded="lg"
                 onChange={handleSearchTermChange}
                 width="250px"
+                onClick={(event) => {
+                  event.currentTarget.scrollIntoView();
+                }}
                 onKeyPress={(event) => {
                   if (event.key === "Enter" && searchTerm !== "") {
                     event.preventDefault();
