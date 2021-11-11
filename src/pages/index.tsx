@@ -53,6 +53,7 @@ const Home: NextPage = () => {
                   onChange={handleSearchTermChange}
                   width="250px"
                   type="search"
+                  name="search"
                   onClick={(event) => {
                     event.currentTarget.scrollIntoView();
                   }}
