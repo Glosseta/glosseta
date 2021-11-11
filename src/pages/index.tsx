@@ -29,44 +29,46 @@ const Home: NextPage = () => {
             Web3 Glossary
           </Heading>
           <HStack spacing={3}>
-            <form>
-              <InputGroup aria-label="Search Bar">
-                <InputLeftElement
-                  className="InputLeft"
-                  pointerEvents="none"
-                  children={
-                    <SearchIcon
-                      aria-label="Magnifying glass image"
-                      className="SearchIcon"
-                      color="gray.300"
-                    />
-                  }
-                  size="xs"
-                />
-                <Input
-                  autoComplete={"off"}
-                  variant="outline"
-                  aria-label="Search web3 terms here"
-                  backgroundColor="white"
-                  color="black"
-                  rounded="lg"
-                  onChange={handleSearchTermChange}
-                  width="250px"
-                  type="search"
-                  name="search"
-                  onClick={(event) => {
-                    event.currentTarget.scrollIntoView();
-                  }}
-                  onKeyPress={(event) => {
-                    if (event.key === "Enter" && searchTerm !== "") {
-                      event.preventDefault();
-                      location.assign(
-                        `/search?term=${searchTerm.toLowerCase()}`
-                      );
+            <form action="#">
+              <fieldset>
+                <InputGroup aria-label="Search Bar">
+                  <InputLeftElement
+                    className="InputLeft"
+                    pointerEvents="none"
+                    children={
+                      <SearchIcon
+                        aria-label="Magnifying glass image"
+                        className="SearchIcon"
+                        color="gray.300"
+                      />
                     }
-                  }}
-                />
-              </InputGroup>
+                    size="xs"
+                  />
+                  <Input
+                    autoComplete={"off"}
+                    variant="outline"
+                    aria-label="Search web3 terms here"
+                    backgroundColor="white"
+                    color="black"
+                    rounded="lg"
+                    onChange={handleSearchTermChange}
+                    width="250px"
+                    type="search"
+                    id="search"
+                    onClick={(event) => {
+                      event.currentTarget.scrollIntoView();
+                    }}
+                    onKeyPress={(event) => {
+                      if (event.key === "Enter" && searchTerm !== "") {
+                        event.preventDefault();
+                        location.assign(
+                          `/search?term=${searchTerm.toLowerCase()}`
+                        );
+                      }
+                    }}
+                  />
+                </InputGroup>
+              </fieldset>
             </form>
           </HStack>
         </VStack>
