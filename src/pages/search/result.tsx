@@ -35,10 +35,10 @@ export const Result = ({
           >
             <VStack padding={3}>
               <Heading as="h1" padding={2} color="white">
-                {term.toUpperCase()}
+                {term}
               </Heading>
               <Tag variant="solid" colorScheme="black">
-                <TagLabel>{category.toUpperCase()}</TagLabel>
+                <TagLabel>{category}</TagLabel>
               </Tag>
               <Stack direction="row" h="120px">
                 <Divider orientation="vertical" background="white" />

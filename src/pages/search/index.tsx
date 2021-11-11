@@ -43,11 +43,11 @@ const SearchResults = ({
               <Result
                 transactionId={transactionId}
                 definition={definition}
-                category={category}
-                term={term}
+                category={category.toUpperCase()}
+                term={term.toUpperCase()}
               />
             )}
-            {!isSearchResultAvailable && <UnavailableResult term={term} />}
+            {!isSearchResultAvailable && <UnavailableResult term={term.toUpperCase()} />}
           </SimpleGrid>
         </chakra.main>
       </PageLayout>

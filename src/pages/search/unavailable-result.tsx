@@ -22,7 +22,7 @@ export const UnavailableResult = ({ term }: any): JSX.Element => {
               color="white"
               isTruncated
             >
-              {term.toUpperCase()}
+              {term}
             </Heading>
             <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
               This term isn't in our knowledge base at the moment. If you think

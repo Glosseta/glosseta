@@ -35,15 +35,14 @@ const Home: NextPage = () => {
                   <InputLeftElement
                     className="InputLeft"
                     pointerEvents="none"
-                    children={
-                      <SearchIcon
-                        aria-label="Magnifying glass image"
-                        className="SearchIcon"
-                        color="gray.300"
-                      />
-                    }
                     size="xs"
-                  />
+                  >
+                    <SearchIcon
+                      aria-label="Magnifying glass image"
+                      className="SearchIcon"
+                      color="gray.300"
+                    />
+                  </InputLeftElement>
                   <Input
                     autoComplete={"off"}
                     variant="outline"
