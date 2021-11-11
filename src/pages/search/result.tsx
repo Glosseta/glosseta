@@ -56,7 +56,7 @@ export const Result = ({
           >
             <VStack padding={5}>
               <Heading as="h2" padding={2}>
-                SOURCE
+                CONTENT SOURCE
               </Heading>
               <Stack direction="row">
                 <Divider orientation="vertical" background="white" />
