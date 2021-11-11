@@ -8,7 +8,7 @@ import {
   LOCALE_TAG,
   CATEGORY_TAG,
 } from "../../utils/glosseta-constants";
-import { Heading, SimpleGrid, Box, chakra } from "@chakra-ui/react";
+import { SimpleGrid, chakra } from "@chakra-ui/react";
 import { tag } from "../../types/arweave";
 import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
 import { Result } from "./result";
@@ -39,11 +39,6 @@ const SearchResults = ({
             display="flex"
             alignItems="center"
           >
-            <Box>
-              <Heading as="h1" padding={1}>
-                {term.toUpperCase()}
-              </Heading>
-            </Box>
             {isSearchResultAvailable && (
               <Result
                 transactionId={transactionId}
