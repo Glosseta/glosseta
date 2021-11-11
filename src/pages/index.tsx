@@ -9,7 +9,6 @@ import {
   Image,
   chakra,
   Heading,
-  FormControl,
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import PageLayout from "./components/layout/page";
@@ -30,7 +29,7 @@ const Home: NextPage = () => {
             Web3 Glossary
           </Heading>
           <HStack spacing={3}>
-            <FormControl>
+            <form>
               <InputGroup aria-label="Search Bar">
                 <InputLeftElement
                   className="InputLeft"
@@ -67,7 +66,7 @@ const Home: NextPage = () => {
                   }}
                 />
               </InputGroup>
-            </FormControl>
+            </form>
           </HStack>
         </VStack>
       </chakra.main>
