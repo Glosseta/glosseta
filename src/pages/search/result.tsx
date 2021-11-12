@@ -58,24 +58,20 @@ export const Result = ({
               <Heading as="h2" padding={2}>
                 CONTENT SOURCE
               </Heading>
-              <Stack direction="row">
-                <Divider orientation="vertical" background="white" />
-                <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
-                  The definition you see above for {term} is stored on the
-                  Arweave network which is a protocol for storing data
-                  permanently in a decentralized manner among network users who
-                  have storage to spare. This means that this definition of{" "}
-                  {term} will live forever on the Arweave network.
-                  <Link href={view_block_url} isExternal padding={2}>
-                    Click here to view the Arweave transaction for this
-                    definition
-                    <ExternalLinkIcon mx="2px" />
-                    <span className={styles.visuallyhidden}>
-                      Opens a new window
-                    </span>
-                  </Link>
-                </Text>
-              </Stack>
+              <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
+                The definition you see above is stored on the Arweave
+                network which is a protocol for storing data permanently in a
+                decentralized manner among network users who have storage to
+                spare. This means that this definition of will live
+                forever on the Arweave network.
+                <Link href={view_block_url} isExternal padding={2}>
+                  Click here to view the Arweave transaction for this definition
+                  <ExternalLinkIcon mx="2px" />
+                  <span className={styles.visuallyhidden}>
+                    Opens a new window
+                  </span>
+                </Link>
+              </Text>
             </VStack>
           </Box>
         </VStack>
