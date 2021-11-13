@@ -20,7 +20,7 @@ export const ApiError = ({ term }: any): JSX.Element => {
             >
               {term}
             </Heading>
-            <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
+            <Text padding={2} fontSize={{ base: "xs", sm: "md" }} color="white">
               Something went wrong while trying to retrieve the definition.
               Please refresh the page or search for another term
             </Text>

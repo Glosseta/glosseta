@@ -24,7 +24,7 @@ export const UnavailableResult = ({ term }: any): JSX.Element => {
             >
               {term}
             </Heading>
-            <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
+            <Text padding={2} fontSize={{ base: "xs", sm: "md" }} color="white">
               This term isn't in our knowledge base at the moment. If you think
               this is something we should have, please reach out to us on{" "}
               <Link color="aquamarine" href={twitter_href} isExternal>

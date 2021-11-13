@@ -35,9 +35,9 @@ export const Result = ({
                 {term}
               </Heading>
               <Tag variant="solid" colorScheme="black">
-                <TagLabel>{category}</TagLabel>
+                <TagLabel color="white">{category}</TagLabel>
               </Tag>
-              <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
+              <Text padding={2} fontSize={{ base: "xs", sm: "md" }} color="white">
                 {definition}
               </Text>
             </VStack>
@@ -49,10 +49,10 @@ export const Result = ({
             borderColor="black"
           >
             <VStack padding={5}>
-              <Heading as="h2" padding={2}>
+              <Heading as="h2" padding={2} color="white">
                 CONTENT SOURCE
               </Heading>
-              <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
+              <Text padding={2} fontSize={{ base: "xs", sm: "md" }} color="white">
                 The definition you see above is stored on the Arweave network
                 which is a protocol for storing data permanently in a
                 decentralized manner among network users who have storage to
