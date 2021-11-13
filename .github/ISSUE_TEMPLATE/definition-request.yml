@@ -1,0 +1,50 @@
+name: 'Definition intake request'
+description: 'File a Definition intake request'
+title: '[Definition Request]: '
+labels: ['definition']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out a definition intake request!
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Please provide some context around your request (i.e. why is this term important to web3, what does it represent, etc..)
+    validations:
+      required: true
+  - type: textarea
+    id: term
+    attributes:
+      label: Term
+      description: What is the term you would like us to add?
+    validations:
+      required: true
+  - type: textarea
+    id: definition
+    attributes:
+      label: Definition
+      description: Please provide the definition for the term you're requesting
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: "List of category options"
+      description: What category does the term fall under?
+      multiple: false
+      options:
+        - "General (i.e. blockchain, fud, fomo, gm, etc...)"
+        - "Protocol (i.e. Bitcoin, Ethereum, Arweave, etc...)"
+        - "DAO (i.e. Developer Dao, Friends with Benefits, etc...)"
+        - "Token (i.e. DEVS, LINK, CryptoPunks, etc...)"
+        - "People (i.e. Satoshi Nakamoto, Vitalik Buterin, etc...)"
+        - "Category is not here :("
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Please provide any additional information around your request here (i.e If the category the term belongs to is missing what should it be?)
