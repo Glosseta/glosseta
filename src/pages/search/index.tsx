@@ -1,4 +1,3 @@
-import react, { useState } from "react";
 import { fetchTransactionIdsByTag } from "../api/arweave/arweave-client";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
@@ -14,6 +13,8 @@ import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
 import { Result } from "./result";
 import { UnavailableResult } from "./unavailable-result";
 import PageLayout from "../components/layout/page";
+import SearchBar from "./search-bar";
+import ApiError from "./api-error";
 
 const SearchResults = ({
   term,
@@ -22,13 +23,12 @@ const SearchResults = ({
   isAvailable,
   category,
   transactionId,
+  isError,
 }: any): JSX.Element => {
-  const [isSearchResultAvailable, setIsSearchResultAvailable] =
-    useState(isAvailable);
-
-  return (
-    <>
+  if (isError) {
+    return (
       <PageLayout>
+        <SearchBar barWidth={"70vw"} />
         <chakra.main>
           <SimpleGrid
             columns={1}
@@ -39,7 +39,28 @@ const SearchResults = ({
             display="flex"
             alignItems="center"
           >
-            {isSearchResultAvailable && (
+            <ApiError />
+          </SimpleGrid>
+        </chakra.main>
+      </PageLayout>
+    );
+  }
+
+  return (
+    <>
+      <PageLayout>
+        <SearchBar barWidth={"70vw"} />
+        <chakra.main>
+          <SimpleGrid
+            columns={1}
+            spacing="80px"
+            flex={1}
+            justifyContent="center"
+            flexDirection="column"
+            display="flex"
+            alignItems="center"
+          >
+            {isAvailable && (
               <Result
                 transactionId={transactionId}
                 definition={definition}
@@ -47,7 +68,7 @@ const SearchResults = ({
                 term={term.toUpperCase()}
               />
             )}
-            {!isSearchResultAvailable && <UnavailableResult term={term.toUpperCase()} />}
+            {!isAvailable && <UnavailableResult term={term.toUpperCase()} />}
           </SimpleGrid>
         </chakra.main>
       </PageLayout>
@@ -64,6 +85,7 @@ export const createSearchResult = (tags: tag[]) => {
     isAvailable: true,
     category: "",
     transactionId: "",
+    isError: false,
   } as glossetaSearchResult;
 
   tags.forEach((tag) => {
@@ -92,14 +114,25 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   let result = {} as glossetaSearchResult;
 
-  if (edges.length === 0) {
+  if (edges === "error") {
     result = {
       term: query.term.toLowerCase(),
-      definition: "This term is currently unavailable",
+      definition: "",
       locale: "",
       isAvailable: false,
       category: "unavailable",
       transactionId: "",
+      isError: true,
+    };
+  } else if (edges.length === 0) {
+    result = {
+      term: query.term.toLowerCase(),
+      definition: "",
+      locale: "",
+      isAvailable: false,
+      category: "unavailable",
+      transactionId: "",
+      isError: false,
     };
   } else {
     result = createSearchResult(edges[0].node.tags) as glossetaSearchResult;
@@ -114,6 +147,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       isAvailable: result.isAvailable,
       category: result.category,
       transactionId: result.transactionId,
+      isError: result.isError,
     },
   };
 };

@@ -7,8 +7,6 @@ import {
   VStack,
   Tag,
   TagLabel,
-  Stack,
-  Divider,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { VIEWBLOCK_URL } from "../../utils/glosseta-constants";
@@ -31,7 +29,6 @@ export const Result = ({
             background="#2C3539"
             borderWidth="1px"
             borderColor="black"
-            padding={3}
           >
             <VStack padding={3}>
               <Heading as="h1" padding={2} color="white">
