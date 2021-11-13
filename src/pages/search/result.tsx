@@ -40,12 +40,9 @@ export const Result = ({
               <Tag variant="solid" colorScheme="black">
                 <TagLabel>{category}</TagLabel>
               </Tag>
-              <Stack direction="row" h="120px">
-                <Divider orientation="vertical" background="white" />
-                <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
-                  {definition}
-                </Text>
-              </Stack>
+              <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
+                {definition}
+              </Text>
             </VStack>
           </Box>
           <Box
@@ -59,11 +56,11 @@ export const Result = ({
                 CONTENT SOURCE
               </Heading>
               <Text padding={2} fontSize={{ base: "xs", sm: "md" }}>
-                The definition you see above is stored on the Arweave
-                network which is a protocol for storing data permanently in a
+                The definition you see above is stored on the Arweave network
+                which is a protocol for storing data permanently in a
                 decentralized manner among network users who have storage to
-                spare. This means that this definition of will live
-                forever on the Arweave network.
+                spare. This means that this definition of will live forever on
+                the Arweave network.
                 <Link href={view_block_url} isExternal padding={2}>
                   Click here to view the Arweave transaction for this definition
                   <ExternalLinkIcon mx="2px" />
