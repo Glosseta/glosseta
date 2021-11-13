@@ -4,5 +4,6 @@ export type glossetaSearchResult = {
     locale: String,
     isAvailable: boolean,
     category: String,
-    transactionId: String 
+    transactionId: String,
+    isError: boolean
 }

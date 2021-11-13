@@ -1,6 +1,5 @@
 import Arweave from 'arweave';
 import { fetch } from '../axios/axios-client';
-import { tags } from '../../../types/arweave';
 import { ARWEAVE_ENDPOINT } from '../../../utils/glosseta-constants';
 import { gql } from "@apollo/client";
 import { apolloClient } from './apollo-client';
@@ -22,8 +21,8 @@ export const fetchDataFromOneTransaction = async (transactionId: string) => {
 }
 
 export const fetchTransactionIdsByTag = async (tag: string) => {
-    let tags = [{"name": "source", "values": ["GLOSSETA"]}] as any;
-    tags.push({"name": "term", "values": [tag]});
+    let tags = [{ "name": "source", "values": ["GLOSSETA"] }] as any;
+    tags.push({ "name": "term", "values": [tag] });
 
     const FIND_BY_TAG_QUERY = gql`
         query getDataByTags($tags: [TagFilter!]) {
@@ -41,18 +40,29 @@ export const fetchTransactionIdsByTag = async (tag: string) => {
     }
     `;
 
-    const { data } = await apolloClient.query({
-        query: FIND_BY_TAG_QUERY,
-        variables: {
-            "tags": tags
-        }
-    });
+    try {
+        const { data } = await apolloClient.query({
+            query: FIND_BY_TAG_QUERY,
+            variables: {
+                "tags": tags
+            }
+        });
 
-    return {
-        props: {
-            edges: data.transactions.edges
+        return {
+            props: {
+                edges: data.transactions.edges
+            }
+        };
+    } catch (error) {
+        console.log(`[Error communicating with arweave graphql api] error=${error}`);
+
+        return {
+            props: {
+                edges: "error"
+            }
         }
-    };
+    }
+
 }
 
 export const fetchTransactionsForWallet = async (walletId: string) => {
@@ -72,16 +82,26 @@ export const fetchTransactionsForWallet = async (walletId: string) => {
     }
     `;
 
-    const { data } = await apolloClient.query({
-        query: TRANSACTIONS_QUERY,
-        variables: {
-            "walletId": [walletId]
-        }
-    });
+    try {
+        const { data } = await apolloClient.query({
+            query: TRANSACTIONS_QUERY,
+            variables: {
+                "walletId": [walletId]
+            }
+        });
 
-    return {
-        props: {
-            transactions: data.transactions.edges
-        },
-    };
+        return {
+            props: {
+                transactions: data.transactions.edges
+            },
+        };
+    } catch (error) {
+        console.log(`[Error communicating with arweave graphql api] error=${error}`);
+
+        return {
+            props: {
+                transactions: "error"
+            }
+        }
+    }
 }
