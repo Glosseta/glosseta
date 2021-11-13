@@ -28,7 +28,7 @@ const SearchResults = ({
   if (isError) {
     return (
       <PageLayout>
-        <SearchBar barWidth={"70vw"} />
+        <SearchBar barWidth={"55vw"} />
         <chakra.main>
           <SimpleGrid
             columns={1}
