@@ -1,3 +1,7 @@
 {
-    "web3GlossaryHeading": "Web3 Glossary"
+    "web3GlossaryHeading": "Web3 Glossary",
+
+    "searchInputGroupAriaLabel" : "Search Bar",
+    "searchIconAriaLabel" : "Magnifying glass image",
+    "searchInputAriaLabel" : "Search web3 terms here"
 }

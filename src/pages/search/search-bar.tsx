@@ -1,15 +1,12 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement, HStack } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
-
-type widthProps = {
-  baseWidth: string;
-  responsiveWidth: string;
-};
+import { useTranslation } from 'next-i18next';
 
 const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
-  
+  const { t } = useTranslation();
+
   const handleSearchTermChange = (event: {
     target: { value: SetStateAction<string> };
   }) => setSearchTerm(event.target.value);
@@ -19,14 +16,14 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
       <HStack padding={2}>
         <form action="#">
           <fieldset>
-            <InputGroup aria-label="Search Bar">
+            <InputGroup aria-label={t('searchInputGroupAriaLabel')}>
               <InputLeftElement
                 className="InputLeft"
                 pointerEvents="none"
                 size="xs"
               >
                 <SearchIcon
-                  aria-label="Magnifying glass image"
+                  aria-label={t('searchIconAriaLabel')}
                   className="SearchIcon"
                   color="gray.300"
                 />
@@ -34,7 +31,7 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
               <Input
                 autoComplete={"off"}
                 variant="outline"
-                aria-label="Search web3 terms here"
+                aria-label={t('searchInputAriaLabel')}
                 backgroundColor="white"
                 color="black"
                 rounded="lg"
