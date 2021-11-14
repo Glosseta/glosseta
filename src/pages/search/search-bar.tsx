@@ -2,9 +2,14 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement, HStack } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 
-const SearchBar = ({ barWidth }: any): JSX.Element => {
-  const [searchTerm, setSearchTerm] = useState("");
+type widthProps = {
+  baseWidth: string;
+  responsiveWidth: string;
+};
 
+const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
+  const [searchTerm, setSearchTerm] = useState("");
+  
   const handleSearchTermChange = (event: {
     target: { value: SetStateAction<string> };
   }) => setSearchTerm(event.target.value);
@@ -34,7 +39,7 @@ const SearchBar = ({ barWidth }: any): JSX.Element => {
                 color="black"
                 rounded="lg"
                 onChange={handleSearchTermChange}
-                width={barWidth}
+                width={{ base: baseWidth, sm: smWidth }}
                 type="search"
                 id="search"
                 onClick={(event) => {
