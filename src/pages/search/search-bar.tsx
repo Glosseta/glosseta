@@ -48,7 +48,7 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
                 onKeyPress={(event) => {
                   if (event.key === "Enter" && searchTerm !== "") {
                     event.preventDefault();
-                    router.push(`/search?term=${searchTerm.toLowerCase()}`, );
+                    router.push(`/search?term=${searchTerm.toLowerCase()}`, `/search?term=${searchTerm.toLowerCase()}`, { locale : "en"});
                   }
                 }}
               />
