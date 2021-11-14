@@ -3,10 +3,12 @@ import { Input, InputGroup, InputLeftElement, HStack } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useRouter } from 'next/router'
 
 const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
   const { t } = useTranslation();
+  const router = useRouter()
 
   const handleSearchTermChange = (event: {
     target: { value: SetStateAction<string> };
@@ -46,7 +48,7 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
                 onKeyPress={(event) => {
                   if (event.key === "Enter" && searchTerm !== "") {
                     event.preventDefault();
-                    location.assign(`/search?term=${searchTerm.toLowerCase()}`);
+                    router.push(`/search?term=${searchTerm.toLowerCase()}`, );
                   }
                 }}
               />
