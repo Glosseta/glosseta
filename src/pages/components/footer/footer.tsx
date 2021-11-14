@@ -2,8 +2,11 @@ import { HStack, Link, Image, chakra, VStack } from "@chakra-ui/react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import styles from "../../../../styles/Home.module.css";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { useTranslation } from 'next-i18next';
 
 const Footer = (): JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <>
       <chakra.footer isTruncated={false} py={10} color="white">
@@ -17,7 +20,7 @@ const Footer = (): JSX.Element => {
             >
               <FaTwitter />
               <span className={styles.visuallyhidden}>
-                Opens the Glosseta Twitter page in a new window
+                {t('footerTwitterA11yText')}
               </span>
               <ExternalLinkIcon mx="2px" />
             </Link>
@@ -29,7 +32,7 @@ const Footer = (): JSX.Element => {
             >
               <FaGithub />
               <span className={styles.visuallyhidden}>
-                Opens the GitHub project repo in a new window
+                {t('footerGitHubA11yText')}
               </span>
               <ExternalLinkIcon mx="2px" />
             </Link>
@@ -43,10 +46,10 @@ const Footer = (): JSX.Element => {
                 borderRadius="full"
                 boxSize="18px"
                 src="./arweave_logo.png"
-                role="none"
+                alt=""
               />
               <span className={styles.visuallyhidden}>
-                Opens Arweave.org in a new window
+                {t('footerArweaveA11yText')}
               </span>
               <ExternalLinkIcon mx="2px" />
             </Link>

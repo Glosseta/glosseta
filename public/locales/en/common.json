@@ -15,5 +15,9 @@
     "gitHubIssueText": "open up a GitHub issue",
 
     "unavailableSearchResultDescription" : "This term isn't in our knowledge base at the moment. If you think this is something we should have, please reach out to us on",
-    "apiFetchErrorText" : "Something went wrong while trying to retrieve the definition.  Please refresh the page or search for another term."
+    "apiFetchErrorText" : "Something went wrong while trying to retrieve the definition.  Please refresh the page or search for another term.",
+
+    "footerTwitterA11yText" : "Opens the Glosseta Twitter page in a new window",
+    "footerGitHubA11yText" : "Opens the GitHub project repo in a new window",
+    "footerArweaveA11yText" : "Opens Arweave.org in a new window"
 }
