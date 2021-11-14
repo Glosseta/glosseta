@@ -14,5 +14,6 @@
     "or" : "or",
     "gitHubIssueText": "open up a GitHub issue",
 
-    "unavailableSearchResultDescription" : "This term isn't in our knowledge base at the moment. If you think this is something we should have, please reach out to us on"
+    "unavailableSearchResultDescription" : "This term isn't in our knowledge base at the moment. If you think this is something we should have, please reach out to us on",
+    "apiFetchErrorText" : "Something went wrong while trying to retrieve the definition.  Please refresh the page or search for another term."
 }
