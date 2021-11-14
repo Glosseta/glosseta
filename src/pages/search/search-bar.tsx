@@ -2,6 +2,7 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement, HStack } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -56,5 +57,11 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
     </>
   );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common'])),
+  },
+});
 
 export default SearchBar;

@@ -11,6 +11,7 @@ import {
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { VIEWBLOCK_URL } from "../../utils/glosseta-constants";
 import styles from "../../../styles/Home.module.css";
+import { useTranslation } from "next-i18next";
 
 export const Result = ({
   transactionId,
@@ -18,6 +19,7 @@ export const Result = ({
   category,
   term,
 }: any): JSX.Element => {
+  const { t } = useTranslation();
   const view_block_url = `${VIEWBLOCK_URL}/${transactionId}` as string;
 
   return (
@@ -37,7 +39,11 @@ export const Result = ({
               <Tag variant="solid" colorScheme="black">
                 <TagLabel color="white">{category}</TagLabel>
               </Tag>
-              <Text padding={2} fontSize={{ base: "xs", sm: "md" }} color="white">
+              <Text
+                padding={2}
+                fontSize={{ base: "xs", sm: "md" }}
+                color="white"
+              >
                 {definition}
               </Text>
             </VStack>
@@ -50,19 +56,19 @@ export const Result = ({
           >
             <VStack padding={5}>
               <Heading as="h2" padding={2} color="white">
-                CONTENT SOURCE
+                {t("searchResultContentSourceHeading")}
               </Heading>
-              <Text padding={2} fontSize={{ base: "xs", sm: "md" }} color="white">
-                The definition you see above is stored on the Arweave network
-                which is a protocol for storing data permanently in a
-                decentralized manner among network users who have storage to
-                spare. This means that this definition of will live forever on
-                the Arweave network.
+              <Text
+                padding={2}
+                fontSize={{ base: "xs", sm: "md" }}
+                color="white"
+              >
+                {t("searchResultContentSourceDescription")}
                 <Link href={view_block_url} isExternal padding={2}>
-                  Click here to view the Arweave transaction for this definition
+                  {t("searchResultContentSourceTransactionLinkText")}
                   <ExternalLinkIcon mx="2px" />
                   <span className={styles.visuallyhidden}>
-                    Opens a new window
+                    {t("opensInANewWindow")}
                   </span>
                 </Link>
               </Text>

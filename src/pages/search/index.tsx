@@ -15,6 +15,7 @@ import { UnavailableResult } from "./unavailable-result";
 import PageLayout from "../components/layout/page";
 import SearchBar from "./search-bar";
 import ApiError from "./api-error";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const SearchResults = ({
   term,
@@ -28,7 +29,7 @@ const SearchResults = ({
   if (isError) {
     return (
       <PageLayout>
-        <SearchBar baseWidth={"80vw"} smWidth={"50vw"}/>
+        <SearchBar baseWidth={"80vw"} smWidth={"50vw"} />
         <chakra.main>
           <SimpleGrid
             columns={1}
@@ -105,6 +106,7 @@ export const createSearchResult = (tags: tag[]) => {
 
 export const getServerSideProps: GetServerSideProps = async ({
   query,
+  locale,
 }: any) => {
   const data = (await fetchTransactionIdsByTag(
     query.term.toLowerCase()
@@ -141,6 +143,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common"])),
       term: result.term,
       definition: result.definition,
       locale: result.locale,
