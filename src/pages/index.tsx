@@ -13,7 +13,7 @@ const Home: NextPage = () => {
             Web3 Glossary
           </Heading>
           <HStack spacing={3}>
-            <SearchBar barWidth={"55vw"}/>
+            <SearchBar baseWidth={"80vw"} smWidth={"30vw"}/>
           </HStack>
         </VStack>
       </chakra.main>
