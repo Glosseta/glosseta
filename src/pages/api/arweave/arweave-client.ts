@@ -20,9 +20,13 @@ export const fetchDataFromOneTransaction = async (transactionId: string) => {
     return response;
 }
 
-export const fetchTransactionIdsByTag = async (tag: string) => {
-    let tags = [{ "name": "source", "values": ["GLOSSETA"] }] as any;
-    tags.push({ "name": "term", "values": [tag] });
+export const fetchTransactionIdsByTag = async (tag: string, locale: string) => {
+    let tags = [
+        { "name": "source", "values": ["GLOSSETA"] }, 
+        { "name": "locale", "values": [locale] }, 
+        { "name": "term", "values": [tag] }
+    ] as any;
+    
 
     const FIND_BY_TAG_QUERY = gql`
         query getDataByTags($tags: [TagFilter!]) {
