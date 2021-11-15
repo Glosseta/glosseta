@@ -1,15 +1,15 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement, HStack } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router'
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
   const { t } = useTranslation();
-  const router = useRouter()
-
+  const router = useRouter();
+  router;
   const handleSearchTermChange = (event: {
     target: { value: SetStateAction<string> };
   }) => setSearchTerm(event.target.value);
@@ -19,14 +19,14 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
       <HStack padding={2}>
         <form action="#">
           <fieldset>
-            <InputGroup aria-label={t('searchInputGroupAriaLabel')}>
+            <InputGroup aria-label={t("searchInputGroupAriaLabel")}>
               <InputLeftElement
                 className="InputLeft"
                 pointerEvents="none"
                 size="xs"
               >
                 <SearchIcon
-                  aria-label={t('searchIconAriaLabel')}
+                  aria-label={t("searchIconAriaLabel")}
                   className="SearchIcon"
                   color="gray.300"
                 />
@@ -34,7 +34,7 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
               <Input
                 autoComplete={"off"}
                 variant="outline"
-                aria-label={t('searchInputAriaLabel')}
+                aria-label={t("searchInputAriaLabel")}
                 backgroundColor="white"
                 color="black"
                 rounded="lg"
@@ -48,7 +48,10 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
                 onKeyPress={(event) => {
                   if (event.key === "Enter" && searchTerm !== "") {
                     event.preventDefault();
-                    router.push(`/search?term=${searchTerm.toLowerCase()}`, `/search?term=${searchTerm.toLowerCase()}`, { locale : "en"});
+                    router.push({
+                      pathname: "/search",
+                      query: { term: searchTerm.toLowerCase() },
+                    });
                   }
                 }}
               />
@@ -62,7 +65,7 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
 
 export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common'])),
+    ...(await serverSideTranslations(locale, ["common"])),
   },
 });
 
