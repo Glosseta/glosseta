@@ -64,7 +64,7 @@ export const Result = ({
                 color="white"
               >
                 {t("searchResultContentSourceDescription")}
-                <Link href={view_block_url} isExternal padding={2}>
+                <Link href={view_block_url} isExternal padding={2} color="aquamarine">
                   {t("searchResultContentSourceTransactionLinkText")}
                   <ExternalLinkIcon mx="2px" />
                   <span className={styles.visuallyhidden}>
