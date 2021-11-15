@@ -1,10 +1,8 @@
 import { fetchTransactionIdsByTag } from "../api/arweave/arweave-client";
 import { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 import {
   TERM_TAG,
   DESCRIPTION_TAG,
-  LOCALE_TAG,
   CATEGORY_TAG,
 } from "../../utils/glosseta-constants";
 import { SimpleGrid, chakra } from "@chakra-ui/react";
@@ -15,11 +13,11 @@ import { UnavailableResult } from "./unavailable-result";
 import PageLayout from "../components/layout/page";
 import SearchBar from "./search-bar";
 import ApiError from "./api-error";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const SearchResults = ({
   term,
   definition,
-  locale,
   isAvailable,
   category,
   transactionId,
@@ -28,7 +26,7 @@ const SearchResults = ({
   if (isError) {
     return (
       <PageLayout>
-        <SearchBar baseWidth={"80vw"} smWidth={"50vw"}/>
+        <SearchBar baseWidth={"80vw"} smWidth={"50vw"} />
         <chakra.main>
           <SimpleGrid
             columns={1}
@@ -80,7 +78,6 @@ export const createSearchResult = (tags: tag[]) => {
   let searchResult = {
     term: "",
     definition: "",
-    locale: "",
     source: "",
     isAvailable: true,
     category: "",
@@ -93,8 +90,6 @@ export const createSearchResult = (tags: tag[]) => {
       searchResult.term = tag.value;
     } else if (DESCRIPTION_TAG === tag.name.toLocaleLowerCase()) {
       searchResult.definition = tag.value;
-    } else if (LOCALE_TAG === tag.name.toLocaleLowerCase()) {
-      searchResult.locale = tag.value;
     } else if (CATEGORY_TAG === tag.name.toLocaleLowerCase()) {
       searchResult.category = tag.value;
     }
@@ -105,9 +100,11 @@ export const createSearchResult = (tags: tag[]) => {
 
 export const getServerSideProps: GetServerSideProps = async ({
   query,
+  locale,
 }: any) => {
   const data = (await fetchTransactionIdsByTag(
-    query.term.toLowerCase()
+    query.term.toLowerCase(),
+    locale
   )) as any;
 
   const { edges } = data.props;
@@ -118,7 +115,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     result = {
       term: query.term.toLowerCase(),
       definition: "",
-      locale: "",
       isAvailable: false,
       category: "unavailable",
       transactionId: "",
@@ -128,7 +124,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     result = {
       term: query.term.toLowerCase(),
       definition: "",
-      locale: "",
       isAvailable: false,
       category: "unavailable",
       transactionId: "",
@@ -141,9 +136,9 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ["common"])),
       term: result.term,
       definition: result.definition,
-      locale: result.locale,
       isAvailable: result.isAvailable,
       category: result.category,
       transactionId: result.transactionId,
