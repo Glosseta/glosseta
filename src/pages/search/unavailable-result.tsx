@@ -6,8 +6,7 @@ import { useTranslation } from 'next-i18next';
 export const UnavailableResult = ({ term }: any): JSX.Element => {
   const { t } = useTranslation();
   const twitter_href = `https://twitter.com/intent/tweet?screen_name=Glossetadotcom&text=Please%20add%20${term}%20to%20the%20knowledge%20base`;
-  // TODO: Change this to the actual issue template when the url is available
-  const github_issue_href = 'https://github.com/narbs91/glosseta/issues';
+  const github_issue_href = 'https://github.com/narbs91/glosseta/issues/new?assignees=&labels=definition&template=definition-request.yml&title=%5BDefinition+Request%5D%3A+';
 
   return (
     <>
