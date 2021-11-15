@@ -5,5 +5,4 @@ module.exports = {
         'en',
       ],
     },
-    react: { useSuspense: false },
   };

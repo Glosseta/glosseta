@@ -2,14 +2,14 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement, HStack } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
 const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
   const { t } = useTranslation();
   const router = useRouter();
-  router;
+  const { asPath } = router;
+  
   const handleSearchTermChange = (event: {
     target: { value: SetStateAction<string> };
   }) => setSearchTerm(event.target.value);
@@ -48,10 +48,14 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
                 onKeyPress={(event) => {
                   if (event.key === "Enter" && searchTerm !== "") {
                     event.preventDefault();
-                    router.push({
-                      pathname: "/search",
-                      query: { term: searchTerm.toLowerCase() },
-                    });
+                    router.push(
+                      {
+                        pathname: "/search",
+                        query: { term: searchTerm.toLowerCase() },
+                      },
+                      asPath,
+                      { locale: "en" }
+                    );
                   }
                 }}
               />
@@ -62,11 +66,5 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
     </>
   );
 };
-
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ["common"])),
-  },
-});
 
 export default SearchBar;
