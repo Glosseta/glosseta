@@ -21,10 +21,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to get Glo
 
 Ah so you want to know the recipe to our secret sauce eh?  Well sure, Glosseta is all about open source and stores all the definitions currently in it's knowledge bank in `resources/master_term_bank_en.csv`.  A companion script called the [arweave-json-uploader](https://github.com/narbs91/arweave-json-uploader) created by yours truly (@narbs91) is used to upload this data to the Arweave network in bulk fashion.  Though uploading data to the network does cost AR token (and I have been using my own funds to upload), the costs so far to upload 20 terms onto the network has cost in the total range of micro-pennies which is a wonderful feature in itself 😎
 
-## Learn More
-
-If you're looking to learn more about web3 in general the following set of [resources](https://github.com/Developer-DAO/resources) put together by the [Developer-Dao](https://www.developerdao.com/) is a great starting point.
-
 ## How to Contribute
 
 Please check out the [Contributing guide](CONTRIBUTING.md) on how to get started.
@@ -32,3 +28,7 @@ Please check out the [Contributing guide](CONTRIBUTING.md) on how to get started
 ## Reporting Bugs/Feature/definition requests
 
 If you find a bug, think of an awesome new feature or have a term in mind tha we may be missing on the site please take the time to fill out an issue by clicking on the issues tab and clicking "New Issue" to fill out one of our issue templates.
+
+## Learn More
+
+If you're looking to learn more about web3 in general the following set of [resources](https://github.com/Developer-DAO/resources) put together by the [Developer-Dao](https://www.developerdao.com/) is a great starting point.
