@@ -8,8 +8,7 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
   const { t } = useTranslation();
   const router = useRouter();
-  const { asPath } = router;
-  
+
   const handleSearchTermChange = (event: {
     target: { value: SetStateAction<string> };
   }) => setSearchTerm(event.target.value);
@@ -53,8 +52,6 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
                         pathname: "/search",
                         query: { term: searchTerm.toLowerCase() },
                       },
-                      asPath,
-                      { locale: "en" }
                     );
                   }
                 }}
