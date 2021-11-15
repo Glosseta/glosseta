@@ -2,12 +2,10 @@ import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement, HStack } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
-import { useRouter } from "next/router";
 
 const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
   const { t } = useTranslation();
-  const router = useRouter();
 
   const handleSearchTermChange = (event: {
     target: { value: SetStateAction<string> };
@@ -47,12 +45,7 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
                 onKeyPress={(event) => {
                   if (event.key === "Enter" && searchTerm !== "") {
                     event.preventDefault();
-                    router.push(
-                      {
-                        pathname: "/search",
-                        query: { term: searchTerm.toLowerCase() },
-                      },
-                    );
+                    location.assign(`/search?term=${searchTerm.toLowerCase()}`);
                   }
                 }}
               />
