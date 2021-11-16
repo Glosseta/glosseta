@@ -13,6 +13,7 @@ function SEO() {
         content="The metaverse's glossary into web3 terms and lingo"
       />
       <link rel="icon" href="/glosseta_icon.png" />
+      <script defer data-domain="glosseta.com" src="https://plausible.io/js/plausible.js"></script>
     </Head>
   );
 }
