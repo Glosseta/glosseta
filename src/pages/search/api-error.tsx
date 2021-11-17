@@ -18,6 +18,7 @@ export const ApiError = ({ term }: any): JSX.Element => {
               padding={2}
               maxWidth="50%"
               color="white"
+              fontSize={{ base: "md", sm: "xl" }}
               isTruncated
             >
               {term}
