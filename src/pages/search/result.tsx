@@ -33,10 +33,15 @@ export const Result = ({
             borderColor="black"
           >
             <VStack padding={3}>
-              <Heading as="h1" padding={2} color="white">
+              <Heading
+                as="h1"
+                padding={2}
+                color="white"
+                fontSize={{ base: "md", sm: "xl" }}
+              >
                 {term}
               </Heading>
-              <Tag variant="solid" colorScheme="black">
+              <Tag variant="solid" colorScheme="black" size={"sm"}>
                 <TagLabel color="white">{category}</TagLabel>
               </Tag>
               <Text
@@ -55,7 +60,12 @@ export const Result = ({
             borderColor="black"
           >
             <VStack padding={5}>
-              <Heading as="h2" padding={2} color="white">
+              <Heading
+                as="h2"
+                padding={2}
+                color="white"
+                fontSize={{ base: "md", sm: "xl" }}
+              >
                 {t("searchResultContentSourceHeading")}
               </Heading>
               <Text
@@ -64,7 +74,12 @@ export const Result = ({
                 color="white"
               >
                 {t("searchResultContentSourceDescription")}
-                <Link href={view_block_url} isExternal padding={2} color="aquamarine">
+                <Link
+                  href={view_block_url}
+                  isExternal
+                  padding={2}
+                  color="aquamarine"
+                >
                   {t("searchResultContentSourceTransactionLinkText")}
                   <ExternalLinkIcon mx="2px" />
                   <span className={styles.visuallyhidden}>

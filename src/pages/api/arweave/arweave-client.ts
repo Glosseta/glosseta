@@ -22,7 +22,7 @@ export const fetchDataFromOneTransaction = async (transactionId: string) => {
 
 export const fetchTransactionIdsByTag = async (tag: string, locale: string) => {
     let tags = [
-        { "name": "source", "values": ["GLOSSETA"] }, 
+        { "name": "source", "values": ["GLOSSETA-PROD"] }, 
         { "name": "locale", "values": [locale] }, 
         { "name": "term", "values": [tag] }
     ] as any;
