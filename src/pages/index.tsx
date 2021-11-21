@@ -26,7 +26,11 @@ const Home: NextPage = () => {
           </Heading>
           <HStack spacing={3}>
             <Box>
-              <Text textAlign="center" fontSize={{ base: "xs", sm: "md" }}>
+              <Text
+                textAlign="center"
+                fontSize={{ base: "xs", sm: "md" }}
+                color="white"
+              >
                 {t("glossetaDescription")}
               </Text>
             </Box>
