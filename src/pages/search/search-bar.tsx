@@ -51,7 +51,7 @@ const SearchBar = ({
                 id="search"
                 placeholder="Search for a word i.e. web3"
                 _placeholder={{
-                  color: "gray.300",
+                  color: "gray.500",
                   fontSize: { base: "sm", sm: "md" },
                 }}
                 onClick={(event) => {
