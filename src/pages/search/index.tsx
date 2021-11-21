@@ -26,7 +26,7 @@ const SearchResults = ({
   if (isError) {
     return (
       <PageLayout>
-        <SearchBar baseWidth={"80vw"} smWidth={"50vw"} />
+        <SearchBar baseWidth={"80vw"} smWidth={"50vw"} mdWidth={"50vw"} lgWidth={"30vw"} />
         <chakra.main>
           <SimpleGrid
             columns={1}
@@ -47,7 +47,7 @@ const SearchResults = ({
   return (
     <>
       <PageLayout>
-        <SearchBar baseWidth={"80vw"} smWidth={"50vw"} />
+        <SearchBar baseWidth={"80vw"} smWidth={"50vw"} mdWidth={"50vw"} lgWidth={"30vw"} />
         <chakra.main>
           <SimpleGrid
             columns={1}

@@ -21,13 +21,14 @@ const Home: NextPage = () => {
       <chakra.main>
         <VStack>
           <Image src="/glosseta.png" alt="Glosseta logo" width={300} />
-          <Heading padding={1} color="white">
+          <Heading as="h1" padding={1} color="white">
             {t("web3GlossaryHeading")}
           </Heading>
           <HStack spacing={3}>
             <Box>
               <Text
-                textAlign="center"
+                width="100%"
+                padding={2}
                 fontSize={{ base: "xs", sm: "md" }}
                 color="white"
               >
@@ -36,7 +37,7 @@ const Home: NextPage = () => {
             </Box>
           </HStack>
           <HStack spacing={3}>
-            <SearchBar baseWidth={"80vw"} smWidth={"30vw"} />
+            <SearchBar baseWidth={"80vw"} smWidth={"50vw"} mdWidth={"50vw"} lgWidth={"30vw"} />
           </HStack>
         </VStack>
       </chakra.main>
