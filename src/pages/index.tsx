@@ -25,11 +25,10 @@ const Home: NextPage = () => {
             {t("web3GlossaryHeading")}
           </Heading>
           <HStack spacing={3}>
-            <Box>
+            <Box width="100%" letterSpacing="wide">
               <Text
-                width="100%"
                 padding={2}
-                fontSize={{ base: "xs", sm: "md" }}
+                fontSize={{ base: "sm", sm: "md" }}
                 color="white"
               >
                 {t("glossetaDescription")}
@@ -37,7 +36,12 @@ const Home: NextPage = () => {
             </Box>
           </HStack>
           <HStack spacing={3}>
-            <SearchBar baseWidth={"80vw"} smWidth={"50vw"} mdWidth={"50vw"} lgWidth={"30vw"} />
+            <SearchBar
+              baseWidth={"80vw"}
+              smWidth={"50vw"}
+              mdWidth={"50vw"}
+              lgWidth={"30vw"}
+            />
           </HStack>
         </VStack>
       </chakra.main>
