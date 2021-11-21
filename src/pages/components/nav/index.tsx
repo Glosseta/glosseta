@@ -73,6 +73,10 @@ export default function Nav() {
                 </span>
               </a>
             </Link>
+
+            <Link href="/all-terms" passHref>
+              <a>{t('allTermsButton')}</a>
+            </Link>
           </HStack>
 
           <Box display={{ base: "inline-flex", md: "none" }}>
@@ -108,6 +112,10 @@ export default function Nav() {
 
               <Link href="/" passHref>
                 <a>{t("homeButtonTitle")}</a>
+              </Link>
+
+              <Link href="/all-terms" passHref>
+                <a>{t('allTermsButton')}</a>
               </Link>
             </VStack>
           </Box>
