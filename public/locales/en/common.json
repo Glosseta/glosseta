@@ -1,5 +1,6 @@
 {
     "web3GlossaryHeading": "Web3 Glossary",
+    "glossetaDescription": "Glosseta is an open-source glossary meant to help people explore and learn the terminology behind web3",
 
     "searchInputGroupAriaLabel" : "Search Bar",
     "searchIconAriaLabel" : "Magnifying glass image",

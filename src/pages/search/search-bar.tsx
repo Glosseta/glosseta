@@ -3,7 +3,12 @@ import { Input, InputGroup, InputLeftElement, HStack } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
 
-const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
+const SearchBar = ({
+  baseWidth,
+  smWidth,
+  mdWidth,
+  lgWidth,
+}: any): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
   const { t } = useTranslation();
 
@@ -36,9 +41,19 @@ const SearchBar = ({ baseWidth, smWidth }: any): JSX.Element => {
                 color="black"
                 rounded="lg"
                 onChange={handleSearchTermChange}
-                width={{ base: baseWidth, sm: smWidth }}
+                width={{
+                  base: baseWidth,
+                  sm: smWidth,
+                  md: mdWidth,
+                  lg: lgWidth,
+                }}
                 type="search"
                 id="search"
+                placeholder="Search for a word i.e. web3"
+                _placeholder={{
+                  color: "gray.500",
+                  fontSize: { base: "sm", sm: "md" },
+                }}
                 onClick={(event) => {
                   event.currentTarget.scrollIntoView();
                 }}
