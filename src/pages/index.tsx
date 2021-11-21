@@ -1,9 +1,17 @@
 import type { NextPage } from "next";
-import { HStack, VStack, Image, chakra, Heading } from "@chakra-ui/react";
+import {
+  HStack,
+  VStack,
+  Image,
+  chakra,
+  Heading,
+  Text,
+  Box,
+} from "@chakra-ui/react";
 import PageLayout from "./components/layout/page";
 import SearchBar from "./search/search-bar";
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
@@ -14,10 +22,17 @@ const Home: NextPage = () => {
         <VStack>
           <Image src="/glosseta.png" alt="Glosseta logo" width={300} />
           <Heading padding={1} color="white">
-            {t('web3GlossaryHeading')}
+            {t("web3GlossaryHeading")}
           </Heading>
           <HStack spacing={3}>
-            <SearchBar baseWidth={"80vw"} smWidth={"30vw"}/>
+            <Box>
+              <Text textAlign="center" fontSize={{ base: "xs", sm: "md" }}>
+                {t("glossetaDescription")}
+              </Text>
+            </Box>
+          </HStack>
+          <HStack spacing={3}>
+            <SearchBar baseWidth={"80vw"} smWidth={"30vw"} />
           </HStack>
         </VStack>
       </chakra.main>
@@ -27,7 +42,7 @@ const Home: NextPage = () => {
 
 export const getStaticProps = async ({ locale }: { locale: string }) => ({
   props: {
-    ...(await serverSideTranslations(locale, ['common'])),
+    ...(await serverSideTranslations(locale, ["common"])),
   },
 });
 
