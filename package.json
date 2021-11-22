@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.3.0",
     "arweave": "^1.10.17",
     "axios": "^0.22.0",
+    "fast-csv": "^4.3.6",
     "framer-motion": "^4.1.17",
     "graphql": "^15.6.1",
     "next": "11.1.2",

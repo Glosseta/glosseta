@@ -1,15 +1,19 @@
-import { fetchTransactionIdsByTag } from "../api/arweave/arweave-client";
-import { GetServerSideProps } from "next";
-import {
-  TERM_TAG,
-  DESCRIPTION_TAG,
-  CATEGORY_TAG,
-} from "../../utils/glosseta-constants";
-import { SimpleGrid, chakra } from "@chakra-ui/react";
 import PageLayout from "../components/layout/page";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import getTermList from "./termListUtil";
+import { SimpleGrid, chakra, ListItem, UnorderedList } from "@chakra-ui/react";
+import Link from "next/link";
+import { GetServerSideProps } from "next";
 
-const SearchResults = (): JSX.Element => {
+const AllTerms = ({ terms }: any): JSX.Element => {
+
+/**
+ * TODO:
+ * 1. Add a return for if the terms map is empty
+ * 2. Add some lipstick to the page
+ * 3. Sort the subarray's
+ * 4. Fix next build error
+ */
 
   return (
     <>
@@ -24,7 +28,35 @@ const SearchResults = (): JSX.Element => {
             display="flex"
             alignItems="center"
           >
-            magic
+            <UnorderedList>
+              {Object.keys(terms).map((category) => {
+                return (
+                  <ListItem key={category} fontSize="4xl">
+                    {category.toUpperCase()}
+                    <UnorderedList>
+                      {terms[category].map((termItem: any) => {
+                        return (
+                          <Link
+                            key={termItem.term}
+                            href={termItem.href}
+                            passHref
+                          >
+                            <a>
+                              <ListItem
+                                fontSize="xl"
+                                _hover={{ color: "black" }}
+                              >
+                                {termItem.term}
+                              </ListItem>
+                            </a>
+                          </Link>
+                        );
+                      })}
+                    </UnorderedList>
+                  </ListItem>
+                );
+              })}
+            </UnorderedList>
           </SimpleGrid>
         </chakra.main>
       </PageLayout>
@@ -32,13 +64,16 @@ const SearchResults = (): JSX.Element => {
   );
 };
 
-export async function getStaticProps({ locale } : any) {
-    return {
-      props: {
-        ...(await serverSideTranslations(locale, ['common'])),
-        // Will be passed to the page component as props
-      },
-    };
-  }
+export const getServerSideProps: GetServerSideProps = async({ locale }: any) => {
+  const terms = await getTermList(locale);
 
-export default SearchResults;
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+      terms: terms,
+      // Will be passed to the page component as props
+    },
+  };
+}
+
+export default AllTerms;
