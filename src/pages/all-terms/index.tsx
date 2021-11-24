@@ -1,15 +1,22 @@
 import PageLayout from "../components/layout/page";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getTermList from "../../utils/termListUtil";
-import { SimpleGrid, chakra, ListItem, UnorderedList } from "@chakra-ui/react";
-import Link from "next/link";
+import {
+  SimpleGrid,
+  chakra,
+  ListItem,
+  UnorderedList,
+  Button,
+} from "@chakra-ui/react";
 
 const AllTerms = ({ terms }: any): JSX.Element => {
   /**
    * TODO:
    * 1. Add a return for if the terms map is empty
    * 2. Add some lipstick to the page
-   * 3. Sort the subarray's
+   * 3. Add the gray search result boxes into the view for each term instead of the list
+   * 4. Add search bar for filtering
+   * 5. Sort the subarray's
    */
 
   return (
@@ -20,7 +27,7 @@ const AllTerms = ({ terms }: any): JSX.Element => {
             columns={1}
             spacing="80px"
             flex={1}
-            justifyContent="center"
+            justifyContent="left"
             flexDirection="column"
             display="flex"
             alignItems="center"
@@ -33,20 +40,16 @@ const AllTerms = ({ terms }: any): JSX.Element => {
                     <UnorderedList>
                       {terms[category].map((termItem: any) => {
                         return (
-                          <Link
+                          <chakra.a
                             key={termItem.term}
-                            href={termItem.href}
-                            passHref
+                            onClick={(event) => {
+                              event.preventDefault();
+                              location.assign(termItem.href);
+                            }}
+                            _hover={{ color: "black" }}
                           >
-                            <a>
-                              <ListItem
-                                fontSize="xl"
-                                _hover={{ color: "black" }}
-                              >
-                                {termItem.term}
-                              </ListItem>
-                            </a>
-                          </Link>
+                            <ListItem fontSize="xl">{termItem.term}</ListItem>
+                          </chakra.a>
                         );
                       })}
                     </UnorderedList>

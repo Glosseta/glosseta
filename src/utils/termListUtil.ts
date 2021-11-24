@@ -39,9 +39,7 @@ const readCSV = (locale: any) => {
                     termMap.set(category, categoryTermArray);
                 }
             })
-            .on("end", (rowCount: number) => {
-                console.log(`[CSV processing completed] Parsed ${rowCount} rows`);
-
+            .on("end", () => {
                 resolve(Object.fromEntries(termMap));
             });
     });
