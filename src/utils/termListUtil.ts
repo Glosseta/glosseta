@@ -1,4 +1,4 @@
-import { termItem } from "../../types/all-terms-item";
+import { termItem } from "../types/all-terms-item";
 import { parseStream } from "fast-csv";
 import { createReadStream } from "fs";
 
