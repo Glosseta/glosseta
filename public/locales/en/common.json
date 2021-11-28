@@ -16,8 +16,9 @@
     "searchResultContentSourceDescription" : "The definition you see above is stored on the Arweave network which is a protocol for storing data permanently in a decentralized manner among network users who have storage to spare. As a result, this definition will live forever on the Arweave network.",
     "searchResultContentSourceTransactionLinkText" : "Click here to view the Arweave transaction for this definition",
     
+    "glossaryPageHeading" : "Glossary (🔎, 🧠)",
     "somethingMissingHeading" : "Something missing?",
-    "twitterTermRequestDescription" : "If there's a specific term you were looking for but don't see below, please let us know and we'll get it added.  Give us a shout on ",
+    "twitterTermRequestDescription" : "If there's a specific term you were looking for but didn't see above, please let us know and we'll get it added.  Give us a shout on ",
 
     "opensInANewWindow" : "Opens in a new window",
     "twitter" : "Twitter",
