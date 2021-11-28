@@ -29,7 +29,7 @@ export default function NavItems({
       )}
 
       {(isHomePage || isSearchPage) && (
-        <Link href="/glossary" passHref>ƒ
+        <Link href="/glossary" passHref>
         </Link>
       )}
     </>
