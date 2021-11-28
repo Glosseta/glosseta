@@ -1,7 +1,5 @@
-import {
-  Button,
-} from "@chakra-ui/react";
-import { ArrowUpIcon } from '@chakra-ui/icons'
+import { Button } from "@chakra-ui/react";
+import { ArrowUpIcon } from "@chakra-ui/icons";
 import styles from "../../../styles/Home.module.css";
 import { useTranslation } from "next-i18next";
 
@@ -24,10 +22,12 @@ export const ScrollToTopButton = (): JSX.Element => {
         backgroundColor="#A3A3A3"
         fontSize="18px"
         textColor="black"
+        cursor="pointer"
+        _hover={{ backgroundColor: "#BABABA" }}
       >
-        <ArrowUpIcon/>
+        <ArrowUpIcon />
         <span className={styles.visuallyhidden}>
-            {t('scrollToTheTopButton')}
+          {t("scrollToTheTopButton")}
         </span>
       </Button>
     </>
