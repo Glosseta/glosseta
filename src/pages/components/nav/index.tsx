@@ -67,7 +67,7 @@ export default function Nav() {
           >
             <Link href="/" passHref>
               <a>
-                {t("homeButtonTitle")}
+                {t("searchButtonTitle")}
                 <span className={styles.visuallyhidden}>
                   {t("glossetaNavbarButtonA11yText")}
                 </span>
@@ -112,7 +112,7 @@ export default function Nav() {
               />
 
               <Link href="/" passHref>
-                <a>{t("homeButtonTitle")}</a>
+                <a>{t("searchButtonTitle")}</a>
               </Link>
 
               <Link href="/all-terms" passHref>

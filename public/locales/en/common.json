@@ -1,8 +1,8 @@
 {
     "glossetaTitle": "Glosseta",
-    "glossetaNavbarButtonA11yText": "Returns you to the Glosseta main page",
+    "glossetaNavbarButtonA11yText": "Takes you to the main search page",
     "allTermsButton": "All Terms",
-    "homeButtonTitle": "Home",
+    "searchButtonTitle": "Search",
 
     "web3GlossaryHeading": "Web3 Glossary",
     "glossetaDescription": "Glosseta is an open-source glossary meant to help people explore and learn the terminology behind web3",
