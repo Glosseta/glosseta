@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   chakra,
   Box,
@@ -74,8 +73,8 @@ export default function Nav() {
               </a>
             </Link>
 
-            <Link href="/all-terms" passHref>
-              <a>{t("allTermsButton")}</a>
+            <Link href="/glossary" passHref>
+              <a>{t("glossaryButton")}</a>
             </Link>
           </HStack>
 
@@ -115,8 +114,8 @@ export default function Nav() {
                 <a>{t("searchButtonTitle")}</a>
               </Link>
 
-              <Link href="/all-terms" passHref>
-                <a>{t("allTermsButton")}</a>
+              <Link href="/glossary" passHref>
+                <a>{t("glossaryButton")}</a>
               </Link>
             </VStack>
           </Box>
