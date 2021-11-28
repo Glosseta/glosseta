@@ -8,13 +8,15 @@ import {
   CloseButton,
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
-import Link from "next/link";
-import { useTranslation } from "react-i18next";
+import NavItems from "./nav-items";
 
-export default function MobileNav() {
+export default function MobileNav({
+  isHomePage,
+  isGlossaryPage,
+  isSearchPage,
+}: any) {
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
-  const { t } = useTranslation();
 
   return (
     <Box display={{ base: "inline-flex", md: "none" }}>
@@ -46,13 +48,11 @@ export default function MobileNav() {
       >
         <CloseButton aria-label="Close menu" onClick={mobileNav.onClose} />
 
-        <Link href="/" passHref>
-          <a>{t("searchButtonTitle")}</a>
-        </Link>
-
-        <Link href="/glossary" passHref>
-          <a>{t("glossaryButton")}</a>
-        </Link>
+        <NavItems
+          isHomePage={isHomePage}
+          isGlossaryPage={isGlossaryPage}
+          isSearchPage={isSearchPage}
+        />
       </VStack>
     </Box>
   );

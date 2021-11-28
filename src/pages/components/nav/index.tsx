@@ -2,8 +2,9 @@ import React from "react";
 import { chakra, Flex, HStack, Avatar } from "@chakra-ui/react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
-import styles from "../../../../styles/Home.module.css";
 import MobileNav from "./mobile-nav";
+import NavItems from "./nav-items";
+import { useRouter } from "next/router";
 
 /**
  * Implementation inspired from the developer dao website
@@ -12,12 +13,17 @@ import MobileNav from "./mobile-nav";
  *  */
 export default function Nav() {
   const { t } = useTranslation();
+  const router = useRouter();
+
+  const isHomePage = router.pathname === "/";
+  const isGlossaryPage = router.pathname === "/glossary";
+  const isSearchPage = router.pathname === "/search";
 
   return (
     <chakra.nav
       borderBottom="1px solid"
       borderColor="#2C3539"
-      backgroundColor="#2C3539!important"
+      backgroundColor="#2C3539"
       minWidth="100vw"
     >
       <Flex
@@ -56,21 +62,18 @@ export default function Nav() {
             spacing={{ base: 3, sm: 10 }}
             display={{ base: "none", md: "inline-flex" }}
           >
-            <Link href="/" passHref>
-              <a>
-                {t("searchButtonTitle")}
-                <span className={styles.visuallyhidden}>
-                  {t("glossetaNavbarButtonA11yText")}
-                </span>
-              </a>
-            </Link>
-
-            <Link href="/glossary" passHref>
-              <a>{t("glossaryButton")}</a>
-            </Link>
+            <NavItems
+              isHomePage={isHomePage}
+              isGlossaryPage={isGlossaryPage}
+              isSearchPage={isSearchPage}
+            />
           </HStack>
 
-          <MobileNav />
+          <MobileNav
+            isHomePage={isHomePage}
+            isGlossaryPage={isGlossaryPage}
+            isSearchPage={isSearchPage}
+          />
         </HStack>
       </Flex>
     </chakra.nav>
