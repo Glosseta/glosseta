@@ -17,7 +17,6 @@ export const ScrollToTopButton = (): JSX.Element => {
     <>
       <Button
         onClick={scrollToTheTop}
-        _hover={{ color: "white" }}
         position="fixed"
         bottom="20px"
         right="30px"
