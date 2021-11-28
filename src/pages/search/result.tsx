@@ -1,17 +1,6 @@
-import {
-  Heading,
-  Box,
-  Text,
-  Link,
-  Container,
-  VStack,
-  Tag,
-  TagLabel,
-} from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { VIEWBLOCK_URL } from "../../utils/glosseta-constants";
-import styles from "../../../styles/Home.module.css";
-import { useTranslation } from "next-i18next";
+import { Container, VStack } from "@chakra-ui/react";
+import { ResultBox } from "./result-box";
+import { ContentSourceBox } from "./content-source-box";
 
 export const Result = ({
   transactionId,
@@ -19,76 +8,12 @@ export const Result = ({
   category,
   term,
 }: any): JSX.Element => {
-  const { t } = useTranslation();
-  const view_block_url = `${VIEWBLOCK_URL}/${transactionId}` as string;
-
   return (
     <>
       <Container maxW={{ base: "sm", sm: "xl" }}>
         <VStack spacing={5}>
-          <Box
-            width="100%"
-            background="#2C3539"
-            borderWidth="1px"
-            borderColor="black"
-          >
-            <VStack padding={3}>
-              <Heading
-                as="h1"
-                padding={2}
-                color="white"
-                fontSize={{ base: "md", sm: "xl" }}
-              >
-                {term}
-              </Heading>
-              <Tag variant="solid" colorScheme="black" size={"sm"}>
-                <TagLabel color="white">{category}</TagLabel>
-              </Tag>
-              <Text
-                padding={2}
-                fontSize={{ base: "xs", sm: "md" }}
-                color="white"
-              >
-                {definition}
-              </Text>
-            </VStack>
-          </Box>
-          <Box
-            width="100%"
-            background="#2C3539"
-            borderWidth="1px"
-            borderColor="black"
-          >
-            <VStack padding={5}>
-              <Heading
-                as="h2"
-                padding={2}
-                color="white"
-                fontSize={{ base: "md", sm: "xl" }}
-              >
-                {t("searchResultContentSourceHeading")}
-              </Heading>
-              <Text
-                padding={2}
-                fontSize={{ base: "xs", sm: "md" }}
-                color="white"
-              >
-                {t("searchResultContentSourceDescription")}
-                <Link
-                  href={view_block_url}
-                  isExternal
-                  padding={2}
-                  color="aquamarine"
-                >
-                  {t("searchResultContentSourceTransactionLinkText")}
-                  <ExternalLinkIcon mx="2px" />
-                  <span className={styles.visuallyhidden}>
-                    {t("opensInANewWindow")}
-                  </span>
-                </Link>
-              </Text>
-            </VStack>
-          </Box>
+          <ResultBox definition={definition} category={category} term={term} />
+          <ContentSourceBox transactionId={transactionId} />
         </VStack>
       </Container>
     </>
