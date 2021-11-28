@@ -3,15 +3,13 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getTermList from "../../utils/termListUtil";
 import { SimpleGrid, chakra } from "@chakra-ui/react";
 import { ResultBox } from "../search/result-box";
+import { NewTermRequest } from "./new-term-request";
 
 const AllTerms = ({ terms }: any): JSX.Element => {
   /**
    * TODO:
    * 1. Add a return for if the terms map is empty
-   * 2. Add some lipstick to the page
-   * 3. Add the gray search result boxes into the view for each term instead of the list
    * 4. Add search bar for filtering
-   * 5. Sort the subarray's
    */
 
   return (
@@ -27,6 +25,7 @@ const AllTerms = ({ terms }: any): JSX.Element => {
             display="flex"
             alignItems="center"
           >
+            <NewTermRequest/>
             {terms.map((termItem: any) => {
               return (
                 <ResultBox
