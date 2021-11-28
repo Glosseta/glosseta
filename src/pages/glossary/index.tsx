@@ -12,14 +12,10 @@ import { ResultBox } from "../search/result-box";
 import { NewTermRequest } from "./new-term-request";
 import { ScrollToTopButton } from "./scroll-to-top-button";
 import { useTranslation } from "react-i18next";
+import { GlossaryDataFetchError } from "./glossary-data-fetch-error";
 
 const AllTerms = ({ terms }: any): JSX.Element => {
   const { t } = useTranslation();
-
-  /**
-   * TODO:
-   * 1. Add a return for if the terms map is empty
-   */
 
   return (
     <>
@@ -45,18 +41,24 @@ const AllTerms = ({ terms }: any): JSX.Element => {
           >
             <Container maxW={{ base: "sm", sm: "xl" }}>
               <VStack spacing={5}>
-                {terms.map((termItem: any) => {
-                  return (
-                    <ResultBox
-                      key={termItem.term}
-                      definition={termItem.definition}
-                      category={termItem.category.toUpperCase()}
-                      term={termItem.term.toUpperCase()}
-                    />
-                  );
-                })}
-                <ScrollToTopButton />
-                <NewTermRequest />
+                {terms.length === 0 ? (
+                  <GlossaryDataFetchError />
+                ) : (
+                  <>
+                    {terms.map((termItem: any) => {
+                      return (
+                        <ResultBox
+                          key={termItem.term}
+                          definition={termItem.definition}
+                          category={termItem.category.toUpperCase()}
+                          term={termItem.term.toUpperCase()}
+                        />
+                      );
+                    })}
+                    <ScrollToTopButton />
+                    <NewTermRequest />
+                  </>
+                )}
               </VStack>
             </Container>
           </SimpleGrid>

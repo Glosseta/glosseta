@@ -19,11 +19,13 @@
     "glossaryPageHeading" : "Glossary (🔎, 🧠)",
     "somethingMissingHeading" : "Something missing?",
     "twitterTermRequestDescription" : "If there's a specific term you were looking for but didn't see above, please let us know and we'll get it added.  Give us a shout on ",
+    "glossaryTermFetchErrorHeading": "Error",
+    "glossaryTermFetchErrorText" : "Something went wrong trying to retrieve the glossary terms.  Please refresh the page or try searching for an individual term.  If the issue persists please reach out to us on ",
 
     "opensInANewWindow" : "Opens in a new window",
     "twitter" : "Twitter",
     "or" : "or",
-    "gitHubIssueText": "open up a GitHub issue",
+    "gitHubIssueText" : "open up a GitHub issue",
 
     "unavailableSearchResultDescription" : "This term isn't in our knowledge base at the moment. If you think this is something we should have, please reach out to us on",
     "apiFetchErrorText" : "Something went wrong while trying to retrieve the definition.  Please refresh the page or search for another term.",
