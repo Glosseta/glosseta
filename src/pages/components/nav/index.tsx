@@ -28,7 +28,7 @@ export default function Nav() {
   const { t } = useTranslation();
 
   return (
-    <chakra.nav borderBottom="1px solid" borderColor="#2C3539" backgroundColor="#2C3539">
+    <chakra.nav borderBottom="1px solid" borderColor="#2C3539" backgroundColor="#2C3539" minWidth="100vw">
       <Flex
         alignItems="center"
         justifyContent="space-between"
