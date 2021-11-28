@@ -6,13 +6,13 @@ const createTermItem = (row: any) => {
     return {
         term: row['term'],
         category: row['category'],
-        href: `/search?term=${row['term']}`,
+        definition: row['description']
     } as termItem;
 };
 
 const readCSV = (locale: any) => {
     return new Promise((resolve, reject) => {
-        let termMap = new Map();
+        let terms = [] as termItem[];
 
         // We will default to the `en` locale for now until the other resource files are populated
         const stream = createReadStream(`./resources/master_term_bank_en.csv`)
@@ -28,19 +28,20 @@ const readCSV = (locale: any) => {
             })
             .on("data", (row) => {
                 const termItem = createTermItem(row);
-                const category = row['category'];
 
-                if (termMap.has(category)) {
-                    termMap.get(category).push(termItem);
-                } else {
-                    const categoryTermArray = [];
-                    categoryTermArray.push(termItem);
+                terms.push(termItem);
+                terms.sort((a: termItem, b: termItem) => {
+                    if (!a.term || a.term < b.term) {
+                        return -1
+                    } else if (!b.term || a.term > b.term) {
+                        return 1
+                    }
+                    return 0
+                })
 
-                    termMap.set(category, categoryTermArray);
-                }
             })
             .on("end", () => {
-                resolve(Object.fromEntries(termMap));
+                resolve(terms);
             });
     });
 
@@ -56,7 +57,7 @@ const getTermList = async (locale: any) => {
         console.log(`[Error processing terms from master list] error=${error}`);
     }
 
-    return new Map();
+    return [];
 }
 
 export default getTermList;

@@ -1,13 +1,8 @@
 import PageLayout from "../components/layout/page";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getTermList from "../../utils/termListUtil";
-import {
-  SimpleGrid,
-  chakra,
-  ListItem,
-  UnorderedList,
-  Button,
-} from "@chakra-ui/react";
+import { SimpleGrid, chakra } from "@chakra-ui/react";
+import { ResultBox } from "../search/result-box";
 
 const AllTerms = ({ terms }: any): JSX.Element => {
   /**
@@ -25,38 +20,23 @@ const AllTerms = ({ terms }: any): JSX.Element => {
         <chakra.main>
           <SimpleGrid
             columns={1}
-            spacing="80px"
+            spacing={5}
+            padding={3}
             flex={1}
-            justifyContent="left"
             flexDirection="column"
             display="flex"
             alignItems="center"
           >
-            <UnorderedList>
-              {Object.keys(terms).map((category) => {
-                return (
-                  <ListItem key={category} fontSize="4xl">
-                    {category.toUpperCase()}
-                    <UnorderedList>
-                      {terms[category].map((termItem: any) => {
-                        return (
-                          <chakra.a
-                            key={termItem.term}
-                            onClick={(event) => {
-                              event.preventDefault();
-                              location.assign(termItem.href);
-                            }}
-                            _hover={{ color: "black" }}
-                          >
-                            <ListItem fontSize="xl">{termItem.term}</ListItem>
-                          </chakra.a>
-                        );
-                      })}
-                    </UnorderedList>
-                  </ListItem>
-                );
-              })}
-            </UnorderedList>
+            {terms.map((termItem: any) => {
+              return (
+                <ResultBox
+                  key={termItem.term}
+                  definition={termItem.definition}
+                  category={termItem.category.toUpperCase()}
+                  term={termItem.term.toUpperCase()}
+                />
+              );
+            })}
           </SimpleGrid>
         </chakra.main>
       </PageLayout>

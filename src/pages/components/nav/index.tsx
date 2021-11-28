@@ -75,7 +75,7 @@ export default function Nav() {
             </Link>
 
             <Link href="/all-terms" passHref>
-              <a>{t('allTermsButton')}</a>
+              <a>{t("allTermsButton")}</a>
             </Link>
           </HStack>
 
@@ -104,6 +104,7 @@ export default function Nav() {
               spacing={3}
               rounded="sm"
               shadow="sm"
+              zIndex="99"
             >
               <CloseButton
                 aria-label="Close menu"
@@ -115,7 +116,7 @@ export default function Nav() {
               </Link>
 
               <Link href="/all-terms" passHref>
-                <a>{t('allTermsButton')}</a>
+                <a>{t("allTermsButton")}</a>
               </Link>
             </VStack>
           </Box>
