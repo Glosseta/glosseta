@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           <HStack spacing={3}>
             <Box width="100%" letterSpacing="wide">
               <Text
-              textAlign="center"
+                textAlign="center"
                 padding={2}
                 fontSize={{ base: "xs", md: "sm" }}
                 color="white"

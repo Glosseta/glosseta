@@ -17,6 +17,7 @@ export default function MobileNav({
 }: any) {
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
+  const { onClose, onOpen, isOpen } = useDisclosure();
 
   return (
     <Box display={{ base: "inline-flex", md: "none" }}>
@@ -27,7 +28,7 @@ export default function MobileNav({
         color={useColorModeValue("grey.800", "inherit")}
         variant="ghost"
         icon={<AiOutlineMenu />}
-        onClick={mobileNav.onOpen}
+        onClick={onOpen}
       />
 
       <VStack
@@ -35,7 +36,7 @@ export default function MobileNav({
         top={0}
         left={0}
         right={0}
-        display={mobileNav.isOpen ? "flex" : "none"}
+        display={isOpen ? "flex" : "none"}
         flexDirection="column"
         pt={7}
         pb={7}
@@ -46,7 +47,7 @@ export default function MobileNav({
         shadow="sm"
         zIndex="99"
       >
-        <CloseButton aria-label="Close menu" onClick={mobileNav.onClose} />
+        <CloseButton aria-label="Close menu" onClick={onClose} />
 
         <NavItems
           isHomePage={isHomePage}

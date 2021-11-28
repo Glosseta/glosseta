@@ -44,6 +44,7 @@ export default function NavItems({
               </span>
             </a>
           </Link>
+
           <Link href="/glossary" passHref>
             <a>{t("glossaryButton")}</a>
           </Link>
