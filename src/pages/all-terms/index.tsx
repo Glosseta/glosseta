@@ -4,12 +4,12 @@ import getTermList from "../../utils/termListUtil";
 import { SimpleGrid, chakra } from "@chakra-ui/react";
 import { ResultBox } from "../search/result-box";
 import { NewTermRequest } from "./new-term-request";
+import { ScrollToTopButton } from "./scroll-to-top-button";
 
 const AllTerms = ({ terms }: any): JSX.Element => {
   /**
    * TODO:
    * 1. Add a return for if the terms map is empty
-   * 4. Add search bar for filtering
    */
 
   return (
@@ -24,7 +24,7 @@ const AllTerms = ({ terms }: any): JSX.Element => {
             flexDirection="column"
             display="flex"
             alignItems="center"
-          >
+          >     
             <NewTermRequest/>
             {terms.map((termItem: any) => {
               return (
@@ -36,6 +36,7 @@ const AllTerms = ({ terms }: any): JSX.Element => {
                 />
               );
             })}
+            <ScrollToTopButton />
           </SimpleGrid>
         </chakra.main>
       </PageLayout>
