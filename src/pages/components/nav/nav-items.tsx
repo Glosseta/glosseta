@@ -30,6 +30,7 @@ export default function NavItems({
 
       {(isHomePage || isSearchPage) && (
         <Link href="/glossary" passHref>
+          <a>{t("glossaryButton")}</a>
         </Link>
       )}
     </>
