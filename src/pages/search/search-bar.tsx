@@ -55,7 +55,7 @@ const SearchBar = ({
                   fontSize: { base: "sm", sm: "md" },
                 }}
                 onClick={(event) => {
-                  event.currentTarget.scrollIntoView();
+                  event.currentTarget.scrollIntoView(true);
                 }}
                 onKeyPress={(event) => {
                   if (event.key === "Enter" && searchTerm !== "") {
