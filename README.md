@@ -34,7 +34,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to get Glo
 
 ## How do terms get uploaded?
 
-Ah so you want to know the recipe to our secret sauce eh?  Well sure, Glosseta is all about open source and stores all the definitions currently in it's knowledge bank in `resources/master_term_bank_en.csv`.  A companion script called the [arweave-json-uploader](https://github.com/narbs91/arweave-json-uploader) is used to upload this data to the Arweave network in bulk fashion.  Though uploading data to the network does cost AR token, the costs so far to upload the current terms onto the network has been very cost efficient and cost in the level of micro-pennies per term.
+Ah so you want to know the recipe to our secret sauce eh?  Well sure, Glosseta is all about open source and stores all the definitions currently in it's knowledge bank in `resources/master_term_bank_en.csv`.  A companion script called the [arweave-json-uploader](https://github.com/narbs91/arweave-json-uploader) is used to upload this data to the Arweave network in bulk fashion.  Though uploading data to the network does cost AR token, the costs so far to upload the current terms onto the network has been in the level of micro-pennies per term.
 
 ## How to Contribute
 
