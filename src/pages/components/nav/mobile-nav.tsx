@@ -15,8 +15,7 @@ export default function MobileNav({
   isGlossaryPage,
   isSearchPage,
 }: any) {
-  const bg = useColorModeValue("white", "gray.800");
-  const mobileNav = useDisclosure();
+  const bg = useColorModeValue("gray.800", "gray.800");
   const { onClose, onOpen, isOpen } = useDisclosure();
 
   return (
@@ -25,7 +24,7 @@ export default function MobileNav({
         display={{ base: "flex", md: "none" }}
         aria-label="Open menu"
         fontSize="20px"
-        color={useColorModeValue("grey.800", "inherit")}
+        color="white"
         variant="ghost"
         icon={<AiOutlineMenu />}
         onClick={onOpen}
@@ -47,7 +46,7 @@ export default function MobileNav({
         shadow="sm"
         zIndex="99"
       >
-        <CloseButton aria-label="Close menu" onClick={onClose} color="white"/>
+        <CloseButton aria-label="Close menu" onClick={onClose} color="white" />
 
         <NavItems
           isHomePage={isHomePage}
