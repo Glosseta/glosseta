@@ -54,4 +54,4 @@ If you find a bug or think of an awesome new feature for the site please take th
 
 ## Learn More
 
-If you're looking to learn more about web3 in general the following set of [resources](https://github.com/Developer-DAO/resources) put together by the [Developer-Dao](https://www.developerdao.com/) is a great starting point.
+If you're looking to learn more about Web3 in general the following set of [resources](https://github.com/Developer-DAO/resources) put together by the [Developer-Dao](https://www.developerdao.com/) is a great starting point.
