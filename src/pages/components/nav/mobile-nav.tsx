@@ -47,7 +47,7 @@ export default function MobileNav({
         shadow="sm"
         zIndex="99"
       >
-        <CloseButton aria-label="Close menu" onClick={onClose} />
+        <CloseButton aria-label="Close menu" onClick={onClose} color="white"/>
 
         <NavItems
           isHomePage={isHomePage}

@@ -51,6 +51,7 @@ export default function Nav() {
               fontWeight="bold"
               fontSize="sm"
               transition="color 300ms ease-in-out"
+              color="white"
             >
               {t("glossetaTitle")}
             </chakra.span>

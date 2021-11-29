@@ -19,7 +19,7 @@ export default function NavItems({
     <>
       {isGlossaryPage && (
         <Link href="/" passHref>
-          <a>
+          <a color="white">
             {t("searchButtonTitle")}
             <span className={styles.visuallyhidden}>
               {t("glossetaNavbarButtonA11yText")}
@@ -30,7 +30,7 @@ export default function NavItems({
 
       {(isHomePage || isSearchPage) && (
         <Link href="/glossary" passHref>
-          <a>{t("glossaryButton")}</a>
+          <a color="white">{t("glossaryButton")}</a>
         </Link>
       )}
     </>
