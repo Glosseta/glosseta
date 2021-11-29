@@ -3,12 +3,21 @@ import { ArrowUpIcon } from "@chakra-ui/icons";
 import styles from "../../../styles/Home.module.css";
 import { useTranslation } from "next-i18next";
 
-export const ScrollToTopButton = (): JSX.Element => {
+export const ScrollToTopButton = ({
+  anchorIdToFocus = "",
+}: {
+  anchorIdToFocus: string;
+}): JSX.Element => {
   const { t } = useTranslation();
 
   const scrollToTheTop = () => {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
+    if (anchorIdToFocus === "") {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    } else {
+      // @ts-ignore: Object is possibly 'null'.
+      document.getElementById(anchorIdToFocus).focus();
+    }
   };
 
   return (

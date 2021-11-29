@@ -27,6 +27,8 @@ const AllTerms = ({ terms }: any): JSX.Element => {
             color="white"
             fontSize={{ base: "xl", sm: "3xl" }}
             textAlign="center"
+            id="glossary-heading"
+            tabIndex={-1}
           >
             {t("glossaryPageHeading")}
           </Heading>
@@ -55,7 +57,7 @@ const AllTerms = ({ terms }: any): JSX.Element => {
                         />
                       );
                     })}
-                    <ScrollToTopButton />
+                    <ScrollToTopButton anchorIdToFocus="glossary-heading"/>
                     <NewTermRequest />
                   </>
                 )}
