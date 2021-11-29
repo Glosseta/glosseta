@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import styles from "../../../../styles/Home.module.css";
+import { Button } from "@chakra-ui/react";
 
 export default function NavItems({
   isHomePage,
@@ -19,18 +20,20 @@ export default function NavItems({
     <>
       {isGlossaryPage && (
         <Link href="/" passHref>
-          <a color="white">
+          <Button color="white" variant="ghost">
             {t("searchButtonTitle")}
             <span className={styles.visuallyhidden}>
               {t("glossetaNavbarButtonA11yText")}
             </span>
-          </a>
+          </Button>
         </Link>
       )}
 
       {(isHomePage || isSearchPage) && (
         <Link href="/glossary" passHref>
-          <a color="white">{t("glossaryButton")}</a>
+          <Button color="white" variant="ghost">
+            {t("glossaryButton")}
+          </Button>
         </Link>
       )}
     </>
