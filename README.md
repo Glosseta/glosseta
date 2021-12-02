@@ -1,4 +1,7 @@
 # Glosseta (🔎, 🧠)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Glosseta is the new internet's (i.e. Web3) glossary for common lingo, terms, people, applications, and more that you may see floating out on the web. Glosseta hopes to be your long term companion on your Web3 journey and looks to be the principal means of demystifying the awesome future we are all looking to build.
 
@@ -55,3 +58,22 @@ If you find a bug or think of an awesome new feature for the site please take th
 ## Learn More
 
 If you're looking to learn more about Web3 in general the following set of [resources](https://github.com/Developer-DAO/resources) put together by the [Developer-Dao](https://www.developerdao.com/) is a great starting point.
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://www.narbeh.xyz/"><img src="https://avatars.githubusercontent.com/u/29411347?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Narb</b></sub></a><br /><a href="#infra-narbs91" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Tests">⚠️</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
