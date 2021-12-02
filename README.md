@@ -1,6 +1,6 @@
 # Glosseta (🔎, 🧠)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Glosseta is the new internet's (i.e. Web3) glossary for common lingo, terms, people, applications, and more that you may see floating out on the web. Glosseta hopes to be your long term companion on your Web3 journey and looks to be the principal means of demystifying the awesome future we are all looking to build.
@@ -68,6 +68,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://www.narbeh.xyz/"><img src="https://avatars.githubusercontent.com/u/29411347?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Narb</b></sub></a><br /><a href="#infra-narbs91" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Tests">⚠️</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/shakeib98/"><img src="https://avatars.githubusercontent.com/u/28858011?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shakeib Shaida</b></sub></a><br /><a href="#data-shakeib98" title="Data">🔣</a></td>
   </tr>
 </table>
 
