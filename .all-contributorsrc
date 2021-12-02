@@ -17,6 +17,15 @@
         "data",
         "doc"
       ]
+    },
+    {
+      "login": "shakeib98",
+      "name": "Shakeib Shaida",
+      "avatar_url": "https://avatars.githubusercontent.com/u/28858011?v=4",
+      "profile": "https://www.linkedin.com/in/shakeib98/",
+      "contributions": [
+        "data"
+      ]
     }
   ],
   "contributorsPerLine": 7,
