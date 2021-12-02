@@ -40,7 +40,8 @@ body:
         - "DAO (i.e. Developer Dao, Friends with Benefits, etc...)"
         - "Token (i.e. DEVS, LINK, CryptoPunks, etc...)"
         - "People (i.e. Satoshi Nakamoto, Vitalik Buterin, etc...)"
-        - Application (i.e. glosseta, opensea, metamask, etc...)
+        - "Application (i.e. glosseta, opensea, metamask, etc...)"
+        - "Finance (i.e. dex, cex, defi, cefi, etc...)"
         - "Category is not here :("
     validations:
       required: true
