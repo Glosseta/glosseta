@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "narbs91",
+      "name": "Narb",
+      "avatar_url": "https://avatars.githubusercontent.com/u/29411347?v=4",
+      "profile": "http://www.narbeh.xyz/",
+      "contributions": [
+        "infra",
+        "test",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "glosseta",
+  "projectOwner": "narbs91",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
