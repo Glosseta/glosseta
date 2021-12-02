@@ -3,6 +3,8 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+[![Follow on Twitter](https://img.shields.io/badge/social-Twitter-1DA1F2?logo=twitter)](https://twitter.com/Glossetadotcom)
+
 Glosseta is the new internet's (i.e. Web3) glossary for common lingo, terms, people, applications, and more that you may see floating out on the web. Glosseta hopes to be your long term companion on your Web3 journey and looks to be the principal means of demystifying the awesome future we are all looking to build.
 
 ## Mission Statement
