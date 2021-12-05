@@ -16,6 +16,7 @@ const Footer = (): JSX.Element => {
               padding={2}
               href={"https://twitter.com/Glossetadotcom"}
               display="flex"
+              title="twitter"
               isExternal
             >
               <FaTwitter />
@@ -28,6 +29,7 @@ const Footer = (): JSX.Element => {
               padding={2}
               href={"https://github.com/narbs91/glosseta"}
               display="flex"
+              title="github"
               isExternal
             >
               <FaGithub />
@@ -40,6 +42,7 @@ const Footer = (): JSX.Element => {
               padding={2}
               href={"https://www.arweave.org/"}
               display="flex"
+              title="arweave"
               isExternal
             >
               <Image
