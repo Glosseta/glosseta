@@ -11,9 +11,12 @@ describe("Right side Nav items", () => {
     render(<NavItems isHomePage={false} isGlossaryPage={true} isSearchPage={false}/>);
 
     const searchButton = screen.getByTitle('nav-search-button');
+    const searchButtonAllyText = screen.getByTitle('nav-search-button-a11y-text')
     const glossaryButton = screen.queryByTitle('nav-glossary-button')
 
     expect(searchButton).toBeInTheDocument();
+    expect(searchButton).toHaveTextContent('search');
+    expect(searchButtonAllyText).toHaveTextContent('glossetaNavbarButtonA11yText');
     expect(glossaryButton).not.toBeInTheDocument();
   });
 
@@ -25,6 +28,7 @@ describe("Right side Nav items", () => {
 
     expect(searchButton).not.toBeInTheDocument();
     expect(glossaryButton).toBeInTheDocument();
+    expect(glossaryButton).toHaveTextContent('glossary');
   });
 
   it("It renders the Glossary button when on the search page", () => {
@@ -35,5 +39,6 @@ describe("Right side Nav items", () => {
 
     expect(searchButton).not.toBeInTheDocument();
     expect(glossaryButton).toBeInTheDocument();
+    expect(glossaryButton).toHaveTextContent('glossary');
   });
 });
