@@ -28,6 +28,7 @@ export default function MobileNav({
         variant="ghost"
         icon={<AiOutlineMenu />}
         onClick={onOpen}
+        title="mobile-nav-open-button"
       />
 
       <VStack
@@ -46,7 +47,7 @@ export default function MobileNav({
         shadow="sm"
         zIndex="99"
       >
-        <CloseButton aria-label="Close menu" onClick={onClose} color="white" />
+        <CloseButton aria-label="Close menu" onClick={onClose} color="white" title="mobile-nav-close-button"/>
 
         <NavItems
           isHomePage={isHomePage}
