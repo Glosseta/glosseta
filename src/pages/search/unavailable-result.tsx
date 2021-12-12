@@ -10,7 +10,7 @@ export const UnavailableResult = ({ term }: any): JSX.Element => {
 
   return (
     <>
-      <Container maxW={{ base: "sm", sm: "xl" }}>
+      <Container title="unavailable-search-result" maxW={{ base: "sm", sm: "xl" }}>
         <Box
           width="100%"
           background="#2C3539"
