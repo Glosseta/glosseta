@@ -9,7 +9,7 @@ export const GlossaryDataFetchError = (): JSX.Element => {
 
   return (
     <>
-      <Container maxW={{ base: "sm", sm: "xl" }}>
+      <Container title="glossary-data-fetch-error" maxW={{ base: "sm", sm: "xl" }}>
         <Box
           width="100%"
           background="#2C3539"
