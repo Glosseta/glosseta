@@ -21,11 +21,15 @@ const Home: NextPage = () => {
     <PageLayout>
       <Container maxW={{ base: "sm", sm: "xl" }} marginTop="-65px">
         <VStack spacing={5}>
-          <Image src="/glosseta.png" alt="Glosseta logo" width={300} />
+          <Image title="glosseta-logo" src="/glosseta.png" alt="Glosseta logo" width={300} />
         </VStack>
       </Container>
       <chakra.main>
-        <Container maxW={{ base: "sm", sm: "xl" }} marginTop="-65px">
+        <Container
+          title="glosseta-landing-page"
+          maxW={{ base: "sm", sm: "xl" }}
+          marginTop="-65px"
+        >
           <VStack>
             <Heading as="h1" padding={1} color="white" textAlign="center">
               {t("web3GlossaryHeading")}
