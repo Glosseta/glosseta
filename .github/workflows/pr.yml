@@ -46,7 +46,7 @@ jobs:
     - name: Build app
       run: yarn build
       
-    - name: unit tests
+    - name: Unit tests
       run: yarn test
 
     
