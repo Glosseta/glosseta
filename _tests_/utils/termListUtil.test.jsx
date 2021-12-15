@@ -11,9 +11,9 @@ describe("Tests building glossary terms", () => {
     expect(resp.length > 0).toBeTruthy();
 
     resp.forEach((item) => {
-      expect(item.term).not.toBeNull();
-      expect(item.category).not.toBeNull();
-      expect(item.definition).not.toBeNull();
+      expect(item.term).toBeTruthy();
+      expect(item.category).toBeTruthy();
+      expect(item.definition).toBeTruthy();
     });
   });
 });
