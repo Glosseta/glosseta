@@ -1,3 +1,4 @@
+//Import needed as dependency in test scope
 import setimmediate from "setimmediate";
 import getTermList from "../../src/utils/termListUtil";
 
@@ -8,5 +9,11 @@ describe("Tests building glossary terms", () => {
 
     expect(resp).not.toBeNull();
     expect(resp.length > 0).toBeTruthy();
+
+    resp.forEach((item) => {
+      expect(item.term).not.toBeNull();
+      expect(item.category).not.toBeNull();
+      expect(item.definition).not.toBeNull();
+    });
   });
 });
