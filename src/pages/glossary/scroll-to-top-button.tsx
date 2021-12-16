@@ -23,6 +23,7 @@ export const ScrollToTopButton = ({
   return (
     <>
       <Button
+        title="glossary-scroll-to-top-button"
         onClick={scrollToTheTop}
         position="fixed"
         bottom="20px"

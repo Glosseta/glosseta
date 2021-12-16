@@ -3,13 +3,13 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 import styles from "../../../styles/Home.module.css";
 import { useTranslation } from 'next-i18next';
 
-export const NewTermRequest = ({ term }: any): JSX.Element => {
+export const NewTermRequest = (): JSX.Element => {
   const { t } = useTranslation();
   const twitter_href = 'https://twitter.com/intent/tweet?screen_name=Glossetadotcom&text=Please%20add%20the%20following%20term%20to%20the%20knowledge%20base:';
 
   return (
     <>
-      <Container maxW={{ base: "sm", sm: "6xl" }}>
+      <Container title="glossary-new-term-request" maxW={{ base: "sm", sm: "6xl" }}>
         <Box>
           <VStack padding={3}>
             <Heading

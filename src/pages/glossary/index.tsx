@@ -22,6 +22,7 @@ const AllTerms = ({ terms }: any): JSX.Element => {
       <PageLayout>
         <chakra.main>
           <Heading
+            title="glossary-list-heading"
             as="h1"
             padding={5}
             color="white"
@@ -41,7 +42,7 @@ const AllTerms = ({ terms }: any): JSX.Element => {
             display="flex"
             alignItems="center"
           >
-            <Container maxW={{ base: "sm", sm: "xl" }}>
+            <Container title="glossary-term-list" maxW={{ base: "sm", sm: "xl" }}>
               <VStack spacing={5}>
                 {terms.length === 0 ? (
                   <GlossaryDataFetchError />

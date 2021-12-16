@@ -25,6 +25,7 @@ export default function Nav() {
       borderColor="#2C3539"
       backgroundColor="#2C3539"
       minWidth="100vw"
+      title="glosseta-nav"
     >
       <Flex
         alignItems="center"
@@ -46,12 +47,14 @@ export default function Nav() {
               src="/glosseta_icon.png"
               alt="Glosseta logo"
               bg="#7a08fc"
+              title="nav-glosseta-icon"
             />
             <chakra.span
               fontWeight="bold"
               fontSize="sm"
               transition="color 300ms ease-in-out"
               color="white"
+              title="nav-glosseta-home-button"
             >
               {t("glossetaTitle")}
             </chakra.span>

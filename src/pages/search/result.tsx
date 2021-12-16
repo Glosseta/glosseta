@@ -10,7 +10,7 @@ export const Result = ({
 }: any): JSX.Element => {
   return (
     <>
-      <Container maxW={{ base: "sm", sm: "xl" }}>
+      <Container title="search-result-content" maxW={{ base: "sm", sm: "xl" }}>
         <VStack spacing={5}>
           <ResultBox definition={definition} category={category} term={term} />
           <ContentSourceBox transactionId={transactionId} />

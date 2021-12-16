@@ -5,7 +5,7 @@ export const ApiError = ({ term }: any): JSX.Element => {
   const { t } = useTranslation();
   return (
     <>
-      <Container maxW={{ base: "sm", sm: "xl" }}>
+      <Container title="api-error-result" maxW={{ base: "sm", sm: "xl" }}>
         <Box
           width="100%"
           background="#2C3539"
@@ -24,7 +24,7 @@ export const ApiError = ({ term }: any): JSX.Element => {
               {term}
             </Heading>
             <Text padding={2} fontSize={{ base: "xs", sm: "md" }} color="white">
-              {t('apiFetchErrorText')}
+              {t("apiFetchErrorText")}
             </Text>
           </VStack>
         </Box>

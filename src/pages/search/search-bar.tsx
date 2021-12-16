@@ -26,6 +26,7 @@ const SearchBar = ({
                 className="InputLeft"
                 pointerEvents="none"
                 size="xs"
+                title="search-bar-icon"
               >
                 <SearchIcon
                   aria-label={t("searchIconAriaLabel")}
@@ -34,6 +35,7 @@ const SearchBar = ({
                 />
               </InputLeftElement>
               <Input
+                title="search-bar-input"
                 autoComplete={"off"}
                 variant="outline"
                 aria-label={t("searchInputAriaLabel")}
