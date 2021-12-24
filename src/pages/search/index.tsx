@@ -14,6 +14,7 @@ import PageLayout from "../components/layout/page";
 import SearchBar from "./search-bar";
 import ApiError from "./api-error";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import getTermList from "../../utils/termListUtil";
 
 const SearchResults = ({
   term,
@@ -22,7 +23,9 @@ const SearchResults = ({
   category,
   transactionId,
   isError,
+  terms
 }: any): JSX.Element => {
+
   if (isError) {
     return (
       <PageLayout>
@@ -31,6 +34,7 @@ const SearchResults = ({
           smWidth={"50vw"}
           mdWidth={"50vw"}
           lgWidth={"30vw"}
+          terms={terms}
         />
         <chakra.main>
           <SimpleGrid
@@ -57,6 +61,7 @@ const SearchResults = ({
           smWidth={"50vw"}
           mdWidth={"50vw"}
           lgWidth={"30vw"}
+          terms={terms}
         />
         <chakra.main>
           <SimpleGrid
@@ -144,6 +149,8 @@ export const getServerSideProps: GetServerSideProps = async ({
     result.transactionId = edges[0].node.id;
   }
 
+  const terms = await getTermList(locale);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
@@ -153,6 +160,7 @@ export const getServerSideProps: GetServerSideProps = async ({
       category: result.category,
       transactionId: result.transactionId,
       isError: result.isError,
+      terms: terms
     },
   };
 };

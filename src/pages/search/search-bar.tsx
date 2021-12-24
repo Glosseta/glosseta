@@ -1,20 +1,65 @@
+import { useEffect, useContext } from "react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { Input, InputGroup, InputLeftElement, HStack } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
+import Trie from "../../filter/trie";
+import { termItem } from "../../types/glossary-item";
 
 const SearchBar = ({
   baseWidth,
   smWidth,
   mdWidth,
   lgWidth,
-}: any): JSX.Element => {
+  terms,
+}: {
+  baseWidth: string;
+  smWidth: string;
+  mdWidth: string;
+  lgWidth: string;
+  terms: termItem[];
+}): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [filterTrie, setFilterTrie] = useState(new Trie());
+  const [activeSuggestion, setActiveSuggestion] = useState(0);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [filteredSuggestions, setFilteredSuggestions] = useState(
+    [] as string[]
+  );
+
   const { t } = useTranslation();
+
+  const Terms = () => {
+    const filterTrie = new Trie();
+
+    terms.forEach((term: termItem) => {
+      filterTrie.insert(term.term);
+    });
+
+    setFilterTrie(filterTrie);
+  };
+
+  useEffect(() => {
+    Terms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSearchTermChange = (event: {
     target: { value: SetStateAction<string> };
-  }) => setSearchTerm(event.target.value);
+  }) => {
+    const userInput = event.target.value as string;
+    if (userInput.length === 0) {
+      setSearchTerm("");
+      setFilteredSuggestions([]);
+      setShowSuggestions(false);
+    } else {
+      setSearchTerm(userInput);
+      const filter = filterTrie.find(userInput);
+      console.log(filter);
+      setFilteredSuggestions(filter);
+      setShowSuggestions(true);
+    }
+  };
 
   return (
     <>
@@ -66,6 +111,20 @@ const SearchBar = ({
                   }
                 }}
               />
+              {showSuggestions && (
+                <ul className="autocomplete">
+                  {filteredSuggestions.map((suggestion, index) => {
+                    return (
+                      <li
+                        key={suggestion}
+                        // onClick={onClick}
+                      >
+                        {suggestion}
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
             </InputGroup>
           </fieldset>
         </form>
