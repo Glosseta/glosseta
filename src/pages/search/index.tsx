@@ -117,10 +117,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   query,
   locale,
 }: any) => {
-  const data = (await fetchTransactionIdsByTag(
-    query.term.toLowerCase(),
-    locale
-  )) as any;
+  const [data, terms] = await Promise.all([
+    fetchTransactionIdsByTag(query.term.toLowerCase(),locale), 
+    getTermList(locale)
+  ]) as any;
 
   const { edges } = data.props;
 
@@ -148,8 +148,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     result = createSearchResult(edges[0].node.tags) as glossetaSearchResult;
     result.transactionId = edges[0].node.id;
   }
-
-  const terms = await getTermList(locale);
 
   return {
     props: {

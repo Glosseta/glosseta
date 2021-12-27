@@ -208,6 +208,7 @@ const SearchBar = ({
 };
 
 // TODO:
+// 2. In test environment, on the search page the filter does not work
 // 3. clean up the code
 // 4. unit tests
 
