@@ -11,6 +11,7 @@
     "searchInputGroupAriaLabel" : "Search Bar",
     "searchIconAriaLabel" : "Magnifying glass image",
     "searchInputAriaLabel" : "Search web3 terms here",
+    "searchTermNotFoundInFilter" : "Term not found",
 
     "searchResultContentSourceHeading" : "Content Source",
     "searchResultContentSourceDescription" : "The definition you see above is stored on the Arweave network which is a protocol for storing data permanently in a decentralized manner among network users who have storage to spare. As a result, this definition will live forever on the Arweave network.",
