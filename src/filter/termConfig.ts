@@ -44,5 +44,6 @@ export const termFilter = [
     "web1",
     "ens",
     "hot wallet",
-    "cold wallet"
+    "cold wallet",
+    "amm"
 ];
