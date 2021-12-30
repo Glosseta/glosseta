@@ -97,7 +97,6 @@ const SearchBar = ({
       <VStack>
         <HStack padding={2}>
           <form action="#">
-            <button disabled style={{display : "none"}}/>
             <fieldset>
               <InputGroup aria-label={t("searchInputGroupAriaLabel")}>
                 <InputLeftElement
@@ -139,6 +138,7 @@ const SearchBar = ({
                   }}
                   onKeyDown={onKeyDown}
                   value={searchTerm}
+                  isRequired={true}
                 />
               </InputGroup>
             </fieldset>
@@ -202,7 +202,6 @@ const SearchBar = ({
 };
 
 // TODO:
-// 3. clean up the code
 // 4. unit tests
 
 export default SearchBar;
