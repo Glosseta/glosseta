@@ -15,7 +15,7 @@ const readCSV = (locale: any) => {
         let terms = [] as termItem[];
 
         // We will default to the `en` locale for now until the other resource files are populated
-        const stream = createReadStream(`public/resources/master_term_bank_en.csv`)
+        const stream = createReadStream(`./resources/master_term_bank_en.csv`)
             .on("error", (error) => {
                 return reject(error);
             });

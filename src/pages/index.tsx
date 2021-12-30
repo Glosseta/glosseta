@@ -13,9 +13,8 @@ import PageLayout from "./components/layout/page";
 import SearchBar from "./search/search-bar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import getTermList from "../utils/termListUtil";
 
-const Home: NextPage = ({ terms } : any) => {
+const Home: NextPage = () => {
   const { t } = useTranslation();
 
   return (
@@ -46,7 +45,6 @@ const Home: NextPage = ({ terms } : any) => {
                 smWidth={"50vw"}
                 mdWidth={"50vw"}
                 lgWidth={"30vw"}
-                terms={terms}
               />
             </HStack>
             <HStack spacing={3}>
@@ -69,12 +67,10 @@ const Home: NextPage = ({ terms } : any) => {
 };
 
 export async function getStaticProps({ locale }: any) {
-  const terms = await getTermList(locale);
 
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
-      terms: terms,
       // Will be passed to the page component as props
     },
   };

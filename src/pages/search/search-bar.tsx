@@ -12,25 +12,22 @@ import {
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
-import Trie from "../../filter/trie";
-import { termItem } from "../../types/glossary-item";
+import { TermFilter, Trie } from "../../filter/trie";
 
 const SearchBar = ({
   baseWidth,
   smWidth,
   mdWidth,
   lgWidth,
-  terms,
 }: {
   baseWidth: string;
   smWidth: string;
   mdWidth: string;
   lgWidth: string;
-  terms: termItem[];
 }): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterTrie, setFilterTrie] = useState(new Trie());
-  const [activeSuggestion, setActiveSuggestion] = useState(0);
+  const [activeSuggestion, setActiveSuggestion] = useState(-1);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [filteredSuggestions, setFilteredSuggestions] = useState(
     [] as string[]
@@ -39,13 +36,9 @@ const SearchBar = ({
   const { t } = useTranslation();
 
   const SetUpFilter = () => {
-    const filterTrie = new Trie();
-
-    terms.forEach((item: termItem) => {
-      filterTrie.insert(item.term.toLowerCase());
-    });
-
-    setFilterTrie(filterTrie);
+    const termFilter = new TermFilter();
+    const filter =  termFilter.getFilter() as Trie;
+    setFilterTrie(filter);
   };
 
   useEffect(() => {
@@ -61,7 +54,7 @@ const SearchBar = ({
       setSearchTerm("");
       setFilteredSuggestions([]);
       setShowSuggestions(false);
-      setActiveSuggestion(0);
+      setActiveSuggestion(-1);
     } else {
       //Grab the first 5 entries found in the trie to limit the size of the filter
       const filter = filterTrie.find(userInput.toLowerCase()).slice(0, 5);
@@ -69,7 +62,7 @@ const SearchBar = ({
       setSearchTerm(userInput);
       setFilteredSuggestions(filter);
       setShowSuggestions(true);
-      setActiveSuggestion(0);
+      setActiveSuggestion(-1);
     }
   };
 
@@ -170,7 +163,7 @@ const SearchBar = ({
                   <>
                     <ListItem
                       color={"black"}
-                      key={`${suggestion}-${index}`}
+                      key={index}
                       onClick={(event) => {
                         setSearchTerm(event.currentTarget.innerText);
                         setFilteredSuggestions([]);
@@ -185,7 +178,7 @@ const SearchBar = ({
                       }
                       padding={1}
                     >
-                      <ListIcon key={index} as={SearchIcon} color="gray.300" />
+                      <ListIcon as={SearchIcon} color="gray.300" />
                       {suggestion}
                     </ListItem>
                   </>
@@ -194,7 +187,7 @@ const SearchBar = ({
 
             {filteredSuggestions.length === 0 && (
               <>
-                <ListItem color={"black"}>
+                <ListItem key="unknown" color={"black"}>
                   <ListIcon as={SearchIcon} color="gray.300" />
                   {t("searchTermNotFoundInFilter")}
                 </ListItem>
@@ -208,7 +201,6 @@ const SearchBar = ({
 };
 
 // TODO:
-// 2. In test environment, on the search page the filter does not work
 // 3. clean up the code
 // 4. unit tests
 

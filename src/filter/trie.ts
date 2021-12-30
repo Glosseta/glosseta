@@ -1,5 +1,6 @@
-const ALPHABET_SIZE = 26;
+import { termFilter } from "./termConfig";
 
+const ALPHABET_SIZE = 26;
 
 // Trie implementation for storing alphabetical strings
 class TrieNode {
@@ -116,5 +117,24 @@ class Trie {
 }
 
 
+class TermFilter {
 
-export default Trie
+    trie: Trie;
+
+    constructor() {
+        this.trie = new Trie();
+    }
+
+    getFilter = () => {
+        const terms = termFilter;
+
+        terms.forEach((item: string) => {
+            this.trie.insert(item.toLowerCase());
+        });
+
+        return this.trie;
+    }
+}
+
+
+export { TermFilter, Trie }
