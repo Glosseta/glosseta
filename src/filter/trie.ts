@@ -1,5 +1,3 @@
-import { termFilter } from "./termConfig";
-
 const ALPHABET_SIZE = 26;
 
 // Trie implementation for storing alphabetical strings
@@ -117,7 +115,7 @@ class Trie {
 }
 
 
-class TermFilter {
+class AutocompleteFilter {
 
     trie: Trie;
 
@@ -125,10 +123,9 @@ class TermFilter {
         this.trie = new Trie();
     }
 
-    getFilter = () => {
-        const terms = termFilter;
+    getFilter = (filterItems : string[]) => {
 
-        terms.forEach((item: string) => {
+        filterItems.forEach((item: string) => {
             this.trie.insert(item.toLowerCase());
         });
 
@@ -137,4 +134,4 @@ class TermFilter {
 }
 
 
-export { TermFilter, Trie }
+export { AutocompleteFilter, Trie }

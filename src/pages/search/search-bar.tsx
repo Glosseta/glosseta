@@ -12,18 +12,20 @@ import {
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
-import { TermFilter, Trie } from "../../filter/trie";
+import { AutocompleteFilter, Trie } from "../../filter/trie";
 
 const SearchBar = ({
   baseWidth,
   smWidth,
   mdWidth,
   lgWidth,
+  filterItems,
 }: {
   baseWidth: string;
   smWidth: string;
   mdWidth: string;
   lgWidth: string;
+  filterItems: any[];
 }): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterTrie, setFilterTrie] = useState(new Trie());
@@ -36,8 +38,8 @@ const SearchBar = ({
   const { t } = useTranslation();
 
   const SetUpFilter = () => {
-    const termFilter = new TermFilter();
-    const filter =  termFilter.getFilter() as Trie;
+    const autocompleteFilter = new AutocompleteFilter();
+    const filter = autocompleteFilter.getFilter(filterItems) as Trie;
     setFilterTrie(filter);
   };
 
@@ -67,7 +69,7 @@ const SearchBar = ({
   };
 
   const onKeyDown = (event: any) => {
-    if (event.key === "Enter" && searchTerm.trim().length > 0) {
+    if (event.key === "Enter" && searchTerm.trim().length != 0) {
       event.preventDefault();
       location.assign(`/search?term=${searchTerm.trim().toLowerCase()}`);
     } else if (event.key === "ArrowUp" && filteredSuggestions.length > 0) {
@@ -92,11 +94,17 @@ const SearchBar = ({
     }
   };
 
+  // This submit handler prevents input of whitespace from being submitted
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    return false;
+  };
+
   return (
     <>
       <VStack>
         <HStack padding={2}>
-          <form action="#">
+          <form action="#" onSubmit={handleSubmit}>
             <fieldset>
               <InputGroup aria-label={t("searchInputGroupAriaLabel")}>
                 <InputLeftElement
@@ -164,14 +172,16 @@ const SearchBar = ({
                   <>
                     <ListItem
                       color={"black"}
-                      key={index}
+                      key={suggestion}
                       onClick={(event) => {
                         setSearchTerm(event.currentTarget.innerText);
                         setFilteredSuggestions([]);
                         setShowSuggestions(false);
                         setActiveSuggestion(0);
                         location.assign(
-                          `/search?term=${event.currentTarget.innerText.trim().toLowerCase()}`
+                          `/search?term=${event.currentTarget.innerText
+                            .trim()
+                            .toLowerCase()}`
                         );
                       }}
                       background={
@@ -200,8 +210,5 @@ const SearchBar = ({
     </>
   );
 };
-
-// TODO:
-// 4. unit tests
 
 export default SearchBar;

@@ -13,6 +13,7 @@ import PageLayout from "./components/layout/page";
 import SearchBar from "./search/search-bar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { termFilter } from "../filter/termConfig";
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
@@ -45,6 +46,7 @@ const Home: NextPage = () => {
                 smWidth={"50vw"}
                 mdWidth={"50vw"}
                 lgWidth={"30vw"}
+                filterItems={termFilter}
               />
             </HStack>
             <HStack spacing={3}>
