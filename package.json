@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@apollo/client": "^3.4.16",
-    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.7.3",
-    "@emotion/react": "^11.4.1",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@testing-library/jest-dom": "^5.16.0",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",

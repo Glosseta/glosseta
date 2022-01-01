@@ -12,7 +12,8 @@ import {
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
-import { AutocompleteFilter, Trie } from "../../filter/trie";
+import Trie from "../../filter/trie";
+import AutocompleteFilter from "../../filter/autocomplete";
 
 const SearchBar = ({
   baseWidth,
