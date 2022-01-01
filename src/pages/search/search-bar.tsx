@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
+import styles from "../../../styles/Home.module.css";
 import Trie from "../../filter/trie";
 import AutocompleteFilter from "../../filter/autocomplete";
 
@@ -69,11 +70,19 @@ const SearchBar = ({
     }
   };
 
+  const shouldMoveUpFilter = (event: any) => {
+    return event.key === "ArrowUp" || (event.shiftKey && event.key === "Tab");
+  };
+
+  const shouldMoveDownFilter = (event: any) => {
+    return event.key === "ArrowDown" || event.key === "Tab";
+  };
+
   const onKeyDown = (event: any) => {
     if (event.key === "Enter" && searchTerm.trim().length != 0) {
       event.preventDefault();
       location.assign(`/search?term=${searchTerm.trim().toLowerCase()}`);
-    } else if (event.key === "ArrowUp" && filteredSuggestions.length > 0) {
+    } else if (shouldMoveUpFilter(event) && filteredSuggestions.length > 0) {
       event.preventDefault();
 
       //Compute the modulo so that we can wrap around the filter
@@ -86,7 +95,7 @@ const SearchBar = ({
 
       setActiveSuggestion(index);
       setSearchTerm(filteredSuggestions[index]);
-    } else if (event.key === "ArrowDown" && filteredSuggestions.length > 0) {
+    } else if (shouldMoveDownFilter(event) && filteredSuggestions.length > 0) {
       event.preventDefault();
 
       const index = (activeSuggestion + 1) % filteredSuggestions.length;
@@ -191,6 +200,9 @@ const SearchBar = ({
                       padding={1}
                     >
                       <ListIcon as={SearchIcon} color="gray.300" />
+                      <span className={styles.visuallyhidden}>
+                        {suggestion}
+                      </span>
                       {suggestion}
                     </ListItem>
                   </>
