@@ -12,7 +12,6 @@ import {
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
-import styles from "../../../styles/Home.module.css";
 import Trie from "../../filter/trie";
 import AutocompleteFilter from "../../filter/autocomplete";
 
@@ -200,9 +199,6 @@ const SearchBar = ({
                       padding={1}
                     >
                       <ListIcon as={SearchIcon} color="gray.300" />
-                      <span className={styles.visuallyhidden}>
-                        {suggestion}
-                      </span>
                       {suggestion}
                     </ListItem>
                   </>
