@@ -70,7 +70,10 @@ const SearchBar = ({
   };
 
   const shouldMoveUpFilter = (event: any) => {
-    return event.key === "ArrowUp" || (event.shiftKey && event.key === "Tab");
+    return (
+      (event.key === "ArrowUp" && activeSuggestion !== -1) ||
+      (event.shiftKey && event.key === "Tab" && activeSuggestion !== -1)
+    );
   };
 
   const shouldMoveDownFilter = (event: any) => {

@@ -6,7 +6,7 @@ jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),
 }));
 
-const filter = ["eip", "ethereum", "whale", "web3"];
+const filter = ["eip", "ethereum", "whale", "web3", "web2"];
 const baseWidth = "100vw";
 const smWidth = "80vw";
 const mdWidth = "70vw";
@@ -102,7 +102,7 @@ describe("Search Bar", () => {
     fireEvent.change(searchBarInput, { target: { value: searchTerm } });
     expect(searchBarInput.value).toBe(searchTerm);
 
-    const autoCompleteFilter = screen.getAllByRole("listitem");
+    const autoCompleteFilter = screen.getAllByRole("option");
     expect(autoCompleteFilter.length).toBe(2);
   });
 
@@ -122,7 +122,7 @@ describe("Search Bar", () => {
     fireEvent.change(searchBarInput, { target: { value: searchTerm } });
     expect(searchBarInput.value).toBe(searchTerm);
 
-    const autoCompleteFilter = screen.getAllByRole("listitem");
+    const autoCompleteFilter = screen.getAllByRole("option");
     expect(autoCompleteFilter.length).toBe(2);
 
     fireEvent.keyDown(searchBarInput, {
@@ -170,7 +170,7 @@ describe("Search Bar", () => {
     fireEvent.change(searchBarInput, { target: { value: searchTerm } });
     expect(searchBarInput.value).toBe(searchTerm);
 
-    const autoCompleteFilter = screen.getAllByRole("listitem");
+    const autoCompleteFilter = screen.getAllByRole("option");
     expect(autoCompleteFilter.length).toBe(2);
 
     fireEvent.keyDown(searchBarInput, {
@@ -218,16 +218,16 @@ describe("Search Bar", () => {
     fireEvent.change(searchBarInput, { target: { value: searchTerm } });
     expect(searchBarInput.value).toBe(searchTerm);
 
-    const autoCompleteFilter = screen.getAllByRole("listitem");
+    const autoCompleteFilter = screen.getAllByRole("option");
     expect(autoCompleteFilter.length).toBe(2);
 
     const filterSelection = autoCompleteFilter[0].textContent;
 
-    fireEvent.click(autoCompleteFilter[0] , {
+    fireEvent.click(autoCompleteFilter[0], {
       target: {
         innerText: filterSelection,
       },
-    })
+    });
 
     expect(searchBarInput.value).toBe(filterSelection);
     expect(window.location.assign).toHaveBeenCalledWith(
@@ -235,7 +235,7 @@ describe("Search Bar", () => {
     );
   });
 
-  it("It doesn't cycles through the filter when no matches found", () => {
+  it("It doesn't cycle through the filter when no matches found", () => {
     render(
       <SearchBar
         baseWidth={baseWidth}
@@ -262,6 +262,50 @@ describe("Search Bar", () => {
       code: "ArrowDown",
       charCode: 40,
     });
+
+    //SearchTerm should not change if there is no filter options displayed
+    expect(searchBarInput.value).toBe(searchTerm);
+  });
+
+  it("It cycles through the filter using tab and shift+tab", () => {
+    render(
+      <SearchBar
+        baseWidth={baseWidth}
+        smWidth={smWidth}
+        mdWidth={mdWidth}
+        lgWidth={lgWidth}
+        filterItems={filter}
+      />
+    );
+    const searchBarInput = screen.getByTitle("search-bar-input");
+    const searchTerm = "w";
+
+    fireEvent.change(searchBarInput, { target: { value: searchTerm } });
+    expect(searchBarInput.value).toBe(searchTerm);
+
+    const autoCompleteFilter = screen.getAllByRole("option");
+    expect(autoCompleteFilter.length).toBe(3);
+
+    fireEvent.keyDown(searchBarInput, {
+      key: "Tab",
+      code: "Tab",
+      charCode: 9,
+    });
+
+    fireEvent.keyDown(searchBarInput, {
+      key: "Tab",
+      code: "Tab",
+      charCode: 9,
+    });
+
+    fireEvent.keyDown(searchBarInput, {
+      key: "Tab",
+      code: "Tab",
+      charCode: 9,
+      shiftKey: true,
+    });
+
+    expect(searchBarInput.value).toBe(autoCompleteFilter[0].textContent);
   });
 });
 
