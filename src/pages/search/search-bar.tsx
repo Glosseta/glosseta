@@ -9,7 +9,6 @@ import {
   ListItem,
   ListIcon,
   VStack,
-  VisuallyHidden,
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
