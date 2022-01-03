@@ -13,6 +13,7 @@ import PageLayout from "./components/layout/page";
 import SearchBar from "./search/search-bar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { termFilter } from "../filter/termConfig";
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
@@ -21,7 +22,12 @@ const Home: NextPage = () => {
     <PageLayout>
       <Container maxW={{ base: "sm", sm: "xl" }} marginTop="-65px">
         <VStack spacing={5}>
-          <Image title="glosseta-logo" src="/glosseta.png" alt="Glosseta logo" width={300} />
+          <Image
+            title="glosseta-logo"
+            src="/glosseta.png"
+            alt="Glosseta logo"
+            width={300}
+          />
         </VStack>
       </Container>
       <chakra.main>
@@ -40,6 +46,7 @@ const Home: NextPage = () => {
                 smWidth={"50vw"}
                 mdWidth={"50vw"}
                 lgWidth={"30vw"}
+                filterItems={termFilter}
               />
             </HStack>
             <HStack spacing={3}>
@@ -61,10 +68,14 @@ const Home: NextPage = () => {
   );
 };
 
-export const getStaticProps = async ({ locale }: { locale: string }) => ({
-  props: {
-    ...(await serverSideTranslations(locale, ["common"])),
-  },
-});
+export async function getStaticProps({ locale }: any) {
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+      // Will be passed to the page component as props
+    },
+  };
+}
 
 export default Home;

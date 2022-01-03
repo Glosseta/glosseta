@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 import { apolloClient } from './apollo-client';
 
-export const fetchTransactionIdsByTag = async (tag: string, locale: string) => {
+export const fetchTransactionsByTag = async (tag: string, locale: string) => {
     let tags = [
         { "name": "source", "values": ["GLOSSETA-PROD"] }, 
         { "name": "locale", "values": [locale] }, 

@@ -18,7 +18,7 @@ export const ResultBox = ({ definition, category, term }: any): JSX.Element => {
           >
             {term}
           </Heading>
-          <Tag variant="solid" colorScheme="black" size={"sm"}>
+          <Tag variant="solid" colorScheme="blackAlpha" size={"sm"}>
             <TagLabel color="white">{category}</TagLabel>
           </Tag>
           <Text padding={2} fontSize={{ base: "xs", sm: "md" }} color="white">

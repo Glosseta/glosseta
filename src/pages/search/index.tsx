@@ -1,4 +1,4 @@
-import { fetchTransactionIdsByTag } from "../api/arweave/arweave-client";
+import { fetchTransactionsByTag } from "../api/arweave/arweave-client";
 import { GetServerSideProps } from "next";
 import {
   TERM_TAG,
@@ -14,6 +14,7 @@ import PageLayout from "../components/layout/page";
 import SearchBar from "./search-bar";
 import ApiError from "./api-error";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { termFilter } from "../../filter/termConfig";
 
 const SearchResults = ({
   term,
@@ -31,6 +32,7 @@ const SearchResults = ({
           smWidth={"50vw"}
           mdWidth={"50vw"}
           lgWidth={"30vw"}
+          filterItems={termFilter}
         />
         <chakra.main>
           <SimpleGrid
@@ -57,6 +59,7 @@ const SearchResults = ({
           smWidth={"50vw"}
           mdWidth={"50vw"}
           lgWidth={"30vw"}
+          filterItems={termFilter}
         />
         <chakra.main>
           <SimpleGrid
@@ -112,7 +115,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   query,
   locale,
 }: any) => {
-  const data = (await fetchTransactionIdsByTag(
+  const data = (await fetchTransactionsByTag(
     query.term.toLowerCase(),
     locale
   )) as any;
