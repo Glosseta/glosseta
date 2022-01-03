@@ -53,14 +53,14 @@ const SearchBar = ({
     target: { value: SetStateAction<string> };
   }) => {
     const userInput = event.target.value as string;
-    if (userInput.length === 0) {
+    if (userInput.trim().length === 0) {
       setSearchTerm("");
       setFilteredSuggestions([]);
       setShowSuggestions(false);
       setActiveSuggestion(-1);
     } else {
       //Grab the first 5 entries found in the trie to limit the size of the filter
-      const filter = filterTrie.find(userInput.toLowerCase()).slice(0, 5);
+      const filter = filterTrie.find(userInput.trim().toLowerCase()).slice(0, 5);
 
       setSearchTerm(userInput);
       setFilteredSuggestions(filter);

@@ -347,7 +347,7 @@ describe("Search Bar - preventing bad user input", () => {
     const searchBarInput = screen.getByTitle("search-bar-input");
 
     fireEvent.change(searchBarInput, { target: { value: "   " } });
-    expect(searchBarInput.value).toBe("   ");
+    expect(searchBarInput.value).toBe("");
 
     fireEvent.keyPress(searchBarInput, {
       key: "Enter",
