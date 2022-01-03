@@ -9,6 +9,7 @@ import {
   ListItem,
   ListIcon,
   VStack,
+  VisuallyHidden,
 } from "@chakra-ui/react";
 import { useState, SetStateAction } from "react";
 import { useTranslation } from "next-i18next";
@@ -115,7 +116,10 @@ const SearchBar = ({
         <HStack padding={2}>
           <form action="#" onSubmit={handleSubmit}>
             <fieldset>
-              <InputGroup aria-label={t("searchInputGroupAriaLabel")}>
+              <InputGroup
+                aria-label={t("searchInputGroupAriaLabel")}
+                role={"combobox"}
+              >
                 <InputLeftElement
                   className="InputLeft"
                   pointerEvents="none"
@@ -130,6 +134,8 @@ const SearchBar = ({
                 </InputLeftElement>
                 <Input
                   title="search-bar-input"
+                  aria-expanded={showSuggestions}
+                  aria-owns="filter-list"
                   autoComplete={"off"}
                   variant="outline"
                   aria-label={t("searchInputAriaLabel")}
@@ -163,6 +169,8 @@ const SearchBar = ({
         </HStack>
         {showSuggestions && (
           <List
+            id="filter-list"
+            role={"listbox"}
             spacing={3}
             padding={2}
             background="white"
@@ -180,8 +188,10 @@ const SearchBar = ({
                 return (
                   <>
                     <ListItem
+                      role={"option"}
                       color={"black"}
                       key={suggestion}
+                      aria-selected={index === activeSuggestion ? true : false}
                       onClick={(event) => {
                         setSearchTerm(event.currentTarget.innerText);
                         setFilteredSuggestions([]);
