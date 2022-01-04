@@ -43,4 +43,4 @@ The master list of term definitions found under the `resources` directory is a C
 - **description**: This is the definition of the term.  Definitions should always be concise (2 sentences max) and written in a fashion so that people of all skill levels can understand
 - **locale**: The locale of the given term and definition.  Valid locales at the moment are `en`, `es`, `fr`, `de`, `pt`, `zh` though more is intended to be added
 - **source**:  This is a metadata tag used to ensure that the content is coming from the intended resources.  This should always be set to `GLOSSETA-PROD` unless otherwise specified
-- **category**:  This is metadata to help identify what category a given term belongs under.  The current supported set is: `general`, `protocol`, `dao`, `token`, `people`, `application`
+- **category**:  This is metadata to help identify what category a given term belongs under.  The current supported set is: `general`, `protocol`, `dao`, `token`, `people`, `application`, `finance`
