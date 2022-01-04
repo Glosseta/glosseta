@@ -18,6 +18,10 @@ To start contributing, I ask all contributors to fork a copy of this repo. Once 
 
 If you're looking for a place to start, you should for sure check out the [open issues](https://github.com/narbs91/glosseta/issues) to see if there's anything up for grabs.  As always feel free to submit a feature request if you have a great idea of how the site can be improved.
 
+## How to work on defintion intake requests
+
+Please follow the [how to guide](https://github.com/narbs91/glosseta/wiki/How-to-guide:-Definition-intake-request) on how to approach working on a defintion intake request issue
+
 ## Translations
 
 The app is translated using the [next-i18next](https://github.com/isaachinman/next-i18next) framework with the following list of languages put up for initial support:
