@@ -40,7 +40,7 @@ Though this list is not final by any means but just something I thought was a go
 The master list of term definitions found under the `resources` directory is a CSV with the following rows:
 - **Content-Type**:  This is the content type of the data to be uploaded.  This should always be `application/json`
 - **term**:  This is the literal term to be defined
-- **description**: This is the definition of the term.  Definitions should always be concise (2 sentences max) and written in a fashion so that people of all skill levels can understand
+- **description**: This is the definition of the term.  Definitions should always be concise (2-3 sentences max) and written in a fashion so that people of all skill levels can understand
 - **locale**: The locale of the given term and definition.  Valid locales at the moment are `en`, `es`, `fr`, `de`, `pt`, `zh` though more is intended to be added
 - **source**:  This is a metadata tag used to ensure that the content is coming from the intended resources.  This should always be set to `GLOSSETA-PROD` unless otherwise specified
 - **category**:  This is metadata to help identify what category a given term belongs under.  The current supported set is: `general`, `protocol`, `dao`, `token`, `people`, `application`, `finance`
