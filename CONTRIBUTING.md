@@ -18,6 +18,10 @@ To start contributing, I ask all contributors to fork a copy of this repo. Once 
 
 If you're looking for a place to start, you should for sure check out the [open issues](https://github.com/narbs91/glosseta/issues) to see if there's anything up for grabs.  As always feel free to submit a feature request if you have a great idea of how the site can be improved.
 
+## How to work on defintion intake requests
+
+Please follow the [how to guide](https://github.com/narbs91/glosseta/wiki/How-to-guide:-Definition-intake-request) on how to approach working on a defintion intake request issue
+
 ## Translations
 
 The app is translated using the [next-i18next](https://github.com/isaachinman/next-i18next) framework with the following list of languages put up for initial support:
@@ -36,7 +40,7 @@ Though this list is not final by any means but just something I thought was a go
 The master list of term definitions found under the `resources` directory is a CSV with the following rows:
 - **Content-Type**:  This is the content type of the data to be uploaded.  This should always be `application/json`
 - **term**:  This is the literal term to be defined
-- **description**: This is the definition of the term.  Definitions should always be concise (2 sentences max) and written in a fashion so that people of all skill levels can understand
+- **description**: This is the definition of the term.  Definitions should always be concise (2-3 sentences max) and written in a fashion so that people of all skill levels can understand
 - **locale**: The locale of the given term and definition.  Valid locales at the moment are `en`, `es`, `fr`, `de`, `pt`, `zh` though more is intended to be added
 - **source**:  This is a metadata tag used to ensure that the content is coming from the intended resources.  This should always be set to `GLOSSETA-PROD` unless otherwise specified
-- **category**:  This is metadata to help identify what category a given term belongs under.  The current supported set is: `general`, `protocol`, `dao`, `token`, `people`, `application`
+- **category**:  This is metadata to help identify what category a given term belongs under.  The current supported set is: `general`, `protocol`, `dao`, `token`, `people`, `application`, `finance`
