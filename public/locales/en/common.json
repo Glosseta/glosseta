@@ -23,6 +23,9 @@
     "glossaryTermFetchErrorHeading": "Error",
     "glossaryTermFetchErrorText" : "Something went wrong trying to retrieve the glossary terms.  Please refresh the page or try searching for an individual term.  If the issue persists please reach out to us on ",
 
+    "ENSSearchLandingPageHeading" : "ENS Search",
+    "ENSSearchLandingPageDescription" : "Search up the details of an ethereum account or ENS name here",
+
     "opensInANewWindow" : "Opens in a new window",
     "twitter" : "Twitter",
     "or" : "or",
