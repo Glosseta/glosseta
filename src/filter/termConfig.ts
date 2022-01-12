@@ -50,5 +50,6 @@ export const termFilter = [
     "cold wallet",
     "amm",
     "peer",
-    "proof of work"
+    "proof of work",
+    "beacon chain"
 ];
