@@ -20,6 +20,7 @@
     "@testing-library/user-event": "^13.5.0",
     "arweave": "^1.10.17",
     "axios": "^0.22.0",
+    "ethers": "^5.5.3",
     "fast-csv": "^4.3.6",
     "framer-motion": "^4.1.17",
     "graphql": "^15.6.1",
