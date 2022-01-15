@@ -31,6 +31,8 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { ethers } from "ethers";
 
+const NOT_SET = "NOT_SET";
+
 const LookUpResult = ({
   accountAddress,
   ensName,
@@ -90,6 +92,39 @@ const LookUpResult = ({
     );
   }
 
+  const linkComponent = ({
+    username,
+    url,
+    icon,
+    allyTextKey,
+  }: {
+    username: string;
+    url: string;
+    icon: JSX.Element;
+    allyTextKey: string;
+  }) => {
+    if (!url.toLocaleLowerCase().includes("http")) {
+      url = "http://" + url;
+    }
+    return (
+      <>
+        {username != NOT_SET && (
+          <Link
+            padding={2}
+            href={url}
+            display="flex"
+            title="twitter"
+            isExternal
+          >
+            {icon}
+            <VisuallyHidden>{t(allyTextKey)}</VisuallyHidden>
+            <ExternalLinkIcon mx="2px" />
+          </Link>
+        )}
+      </>
+    );
+  };
+
   return (
     <>
       <PageLayout>
@@ -130,71 +165,36 @@ const LookUpResult = ({
                       />
 
                       <HStack>
-                        <Link
-                          padding={2}
-                          href={`${twitterPrefix}${twitter}`}
-                          display="flex"
-                          title="twitter"
-                          isExternal
-                        >
-                          <FaTwitter title="ens-twitter-icon" />
-                          <VisuallyHidden>
-                            {t("footerTwitterA11yText")}
-                          </VisuallyHidden>
-                          <ExternalLinkIcon mx="2px" />
-                        </Link>
-                        <Link
-                          padding={2}
-                          href={`${githubPrefix}${github}`}
-                          display="flex"
-                          title="github"
-                          isExternal
-                        >
-                          <FaGithub title="ens-github-icon" />
-                          <VisuallyHidden>
-                            {t("footerTwitterA11yText")}
-                          </VisuallyHidden>
-                          <ExternalLinkIcon mx="2px" />
-                        </Link>
-                        <Link
-                          padding={2}
-                          href={`${linkedInPrefix}${linkedin}`}
-                          display="flex"
-                          title="linkedin"
-                          isExternal
-                        >
-                          <FaLinkedin title="ens-twitter-icon" />
-                          <VisuallyHidden>
-                            {t("footerTwitterA11yText")}
-                          </VisuallyHidden>
-                          <ExternalLinkIcon mx="2px" />
-                        </Link>
-                        <Link
-                          padding={2}
-                          href={url}
-                          display="flex"
-                          title="website"
-                          isExternal
-                        >
-                          <FaHome title="ens-website-icon" />
-                          <VisuallyHidden>
-                            {t("footerTwitterA11yText")}
-                          </VisuallyHidden>
-                          <ExternalLinkIcon mx="2px" />
-                        </Link>
-                        <Link
-                          padding={2}
-                          href={`${etherScanPrefix}${accountAddress}`}
-                          display="flex"
-                          title="etherscan"
-                          isExternal
-                        >
-                          <FaEthereum title="ens-etherscan-icon" />
-                          <VisuallyHidden>
-                            Etherscan link. Opens in a new window
-                          </VisuallyHidden>
-                          <ExternalLinkIcon mx="2px" />
-                        </Link>
+                        {linkComponent({
+                          username: twitter,
+                          url: `${twitterPrefix}${twitter}`,
+                          icon: <FaTwitter title="ens-twitter-icon" />,
+                          allyTextKey: "",
+                        })}
+                        {linkComponent({
+                          username: github,
+                          url: `${githubPrefix}${github}`,
+                          icon: <FaGithub title="ens-github-icon" />,
+                          allyTextKey: "",
+                        })}
+                        {linkComponent({
+                          username: linkedin,
+                          url: `${linkedInPrefix}${linkedin}`,
+                          icon: <FaLinkedin title="ens-twitter-icon" />,
+                          allyTextKey: "",
+                        })}
+                        {linkComponent({
+                          username: url,
+                          url: url,
+                          icon: <FaHome title="ens-website-icon" />,
+                          allyTextKey: "",
+                        })}
+                        {linkComponent({
+                          username: accountAddress,
+                          url: `${etherScanPrefix}${accountAddress}`,
+                          icon: <FaEthereum title="ens-etherscan-icon" />,
+                          allyTextKey: "",
+                        })}
                       </HStack>
                       <Stat>
                         <StatLabel>Wallet address</StatLabel>
@@ -239,7 +239,6 @@ export const getStaticProps: GetStaticProps = async ({
     infura: process.env.NEXT_PUBLIC_INFURA_API_KEY,
     alchemy: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
   });
-  const NOT_SET = "Not set";
 
   let ensName;
   let accountAddress;
