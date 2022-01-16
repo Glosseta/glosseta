@@ -14,7 +14,7 @@ const LinkComponent = ({
   icon: JSX.Element;
   allyText: string;
 }): JSX.Element => {
-  if (!url.toLocaleLowerCase().includes("http")) {
+  if (url && !url.toLocaleLowerCase().includes("http")) {
     url = "http://" + url;
   }
   return (
