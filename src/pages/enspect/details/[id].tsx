@@ -264,6 +264,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /**
  * TODO
+ * 0. Figure out why arweave image is broken on this page
+ * 1. Fix search bar so it doesn't move up and down when there is a different amount of content on the page
  * 2. Need to fix the case when the ENS name is not registered - touch up the UI to display available data
  *  - can add an availability link to the ens.app for the user to purchase
  *   - i.e https://app.ens.domains/name/narbehshahnazarian.eth/register
@@ -275,6 +277,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
  *      - cons: power users can't search for
  * 5. Figure out if adding the tipping is feasible/works
  * 6. Integrate opensea api for fetching NFTs
+ * 7/ unit tests
  */
 
 export default LookUpResult;

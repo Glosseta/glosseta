@@ -54,7 +54,7 @@ const Footer = (): JSX.Element => {
               <Image
                 borderRadius="full"
                 boxSize="18px"
-                src="./arweave_logo.png"
+                src="/arweave_logo.png"
                 alt=""
                 title="footer-arweave-icon"
               />
