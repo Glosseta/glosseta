@@ -1,4 +1,4 @@
-import PageLayout from "../../components/layout/page";
+import PageLayout from "../../../components/layout/page";
 import {
   SimpleGrid,
   chakra,
@@ -9,6 +9,9 @@ import {
   Avatar,
   Divider,
   Image,
+  useToast,
+  IconButton,
+  VisuallyHidden,
 } from "@chakra-ui/react";
 import {
   FaGithub,
@@ -16,17 +19,19 @@ import {
   FaLinkedin,
   FaHome,
   FaEthereum,
+  FaCopy,
 } from "react-icons/fa";
 import FallBack from "./fallback";
 import LinkComponent from "./link-component";
 import DataComponent from "./data-component";
-import SearchBar from "../../components/input/chain-contact-search-bar";
+import SearchBar from "../../../components/input/chain-contact-search-bar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { ethers } from "ethers";
 import QRCode from "qrcode";
+import { useCallback } from "react";
 
 const NOT_SET = "NOT_SET";
 
@@ -53,6 +58,7 @@ const LookUpResult = ({
 }): JSX.Element => {
   const { t } = useTranslation();
   const router = useRouter();
+  const toast = useToast();
   const { id } = router.query;
 
   const linkedInPrefix = "https://www.linkedin.com/in/";
@@ -60,6 +66,15 @@ const LookUpResult = ({
   const twitterPrefix = "https://twitter.com/";
   const etherScanPrefix = "https://etherscan.io/address/";
   const avatarLink = `https://metadata.ens.domains/mainnet/avatar/${ensName}?v=1.0`;
+
+  const copyText = useCallback(() => {
+    navigator.clipboard.writeText(accountAddress);
+    toast({
+      title: "Address copied",
+      status: "success",
+      isClosable: true,
+    });
+  }, [toast, accountAddress]);
 
   if (router.isFallback) {
     return <FallBack />;
@@ -99,10 +114,10 @@ const LookUpResult = ({
                         padding={1}
                         color="black"
                         textAlign="center"
-                        fontSize={{ base: "md", sm: "xl" }}
+                        fontSize={{ base: "lg", sm: "xl" }}
                         isTruncated
                       >
-                        {ensName}
+                        {ensName.toUpperCase()}
                       </Heading>
                       <Avatar
                         size="2xl"
@@ -111,16 +126,6 @@ const LookUpResult = ({
                         borderColor="black"
                       />
 
-                      <Divider orientation="horizontal" />
-                      <VStack textAlign={"center"}>
-                        <DataComponent label="Name" data={name} />
-                        <DataComponent label="Description" data={description} />
-                        <DataComponent
-                          label="Ethereum Wallet Address"
-                          data={accountAddress}
-                        />
-                        <Image src={qrcode} alt="qrcode" />
-                      </VStack>
                       <HStack>
                         <LinkComponent
                           username={twitter}
@@ -153,6 +158,31 @@ const LookUpResult = ({
                           allyText=""
                         />
                       </HStack>
+                      
+                      <Divider orientation="horizontal" />
+
+                      <VStack textAlign={"center"}>
+                        <DataComponent label="Name" data={name} />
+                        <DataComponent label="Description" data={description} />
+                        <DataComponent
+                          label="Ethereum Wallet Address"
+                          data={accountAddress}
+                        />
+                        <IconButton
+                          onClick={copyText}
+                          colorScheme={"gray"}
+                          aria-label="Copy Ethereum address"
+                          size="lg"
+                          icon={<FaCopy />}
+                          isRound
+                        >
+                          <VisuallyHidden>
+                            Click this button to copy the Ethereum wallet
+                            address
+                          </VisuallyHidden>
+                        </IconButton>
+                        <Image src={qrcode} alt="qrcode" />
+                      </VStack>
                     </VStack>
                   </>
                 </VStack>
@@ -235,14 +265,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 /**
  * TODO
  * 2. Need to fix the case when the ENS name is not registered - touch up the UI to display available data
+ *  - can add an availability link to the ens.app for the user to purchase
+ *   - i.e https://app.ens.domains/name/narbehshahnazarian.eth/register
  * 3. Need to fix the case when an eth address doesn't have an ENS
  *  - in this case the user should only be displayed the address and the etherscan link
+ *
  *  - Flip side is to only allow the user to search a .eth name
  *      - pros: reduce friction for new users, easier to search
  *      - cons: power users can't search for
- * 4. Need to fix the cases when certain elements are available and when others aren't
  * 5. Figure out if adding the tipping is feasible/works
- * 6. Figure out how to prevent the missing translation while the use waits for the page to load
  * 6. Integrate opensea api for fetching NFTs
  */
 
