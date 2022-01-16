@@ -16,6 +16,7 @@ import {
   Link,
   VisuallyHidden,
   Button,
+  Divider,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
@@ -115,11 +116,27 @@ const LookUpResult = ({
             display="flex"
             title="twitter"
             isExternal
+            fontSize={{ base: "md", sm: "xl" }}
           >
             {icon}
             <VisuallyHidden>{t(allyTextKey)}</VisuallyHidden>
             <ExternalLinkIcon mx="2px" />
           </Link>
+        )}
+      </>
+    );
+  };
+
+  const dataComponent = ({ label, data }: { label: string; data: string }) => {
+    return (
+      <>
+        {data != NOT_SET && (
+          <Stat>
+            <StatLabel fontSize={{ base: "md", sm: "xl" }} fontWeight={"bold"}>
+              {label}
+            </StatLabel>
+            {data}
+          </Stat>
         )}
       </>
     );
@@ -163,7 +180,32 @@ const LookUpResult = ({
                         borderWidth="5px"
                         borderColor="black"
                       />
-
+                      {/* <Button
+                        as="a"
+                        href={`https://tipeth.xyz/${
+                          accountAddress
+                        }`}
+                        colorScheme="purple"
+                        leftIcon={<FaEthereum />}
+                        size={"lg"}
+                      >
+                        <Text color={"white"}>Tip</Text>
+                      </Button> */}
+                      <Divider orientation="horizontal" />
+                      <VStack textAlign={"center"}>
+                        {dataComponent({
+                          label: "Wallet address",
+                          data: accountAddress,
+                        })}
+                        {dataComponent({
+                          label: "Name",
+                          data: name,
+                        })}
+                        {dataComponent({
+                          data: description,
+                          label: "Description",
+                        })}
+                      </VStack>
                       <HStack>
                         {linkComponent({
                           username: twitter,
@@ -196,28 +238,6 @@ const LookUpResult = ({
                           allyTextKey: "",
                         })}
                       </HStack>
-                      <Stat>
-                        <StatLabel>Wallet address</StatLabel>
-                        {accountAddress}
-                      </Stat>
-                      <Stat>
-                        <StatLabel>Name</StatLabel>
-                        <Text>{name}</Text>
-                      </Stat>
-                      <Stat>
-                        <StatLabel>Description</StatLabel>
-                        <Text>{description}</Text>
-                      </Stat>
-                      <Button
-                        as="a"
-                        href={`https://tipeth.xyz/${
-                          ensName ? ensName : accountAddress
-                        }`}
-                        colorScheme="purple"
-                        leftIcon={<FaEthereum />}
-                      >
-                        Tip
-                      </Button>
                     </VStack>
                   </>
                 </VStack>
