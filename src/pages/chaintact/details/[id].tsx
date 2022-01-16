@@ -6,19 +6,10 @@ import {
   VStack,
   Heading,
   HStack,
-  Box,
-  Text,
-  SkeletonCircle,
-  SkeletonText,
   Avatar,
-  Stat,
-  StatLabel,
-  Link,
-  VisuallyHidden,
-  Button,
   Divider,
+  Image,
 } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   FaGithub,
   FaTwitter,
@@ -26,11 +17,16 @@ import {
   FaHome,
   FaEthereum,
 } from "react-icons/fa";
+import FallBack from "./fallback";
+import LinkComponent from "./link-component";
+import DataComponent from "./data-component";
+import SearchBar from "../../components/input/chain-contact-search-bar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { ethers } from "ethers";
+import QRCode from "qrcode";
 
 const NOT_SET = "NOT_SET";
 
@@ -43,6 +39,7 @@ const LookUpResult = ({
   github,
   linkedin,
   url,
+  qrcode,
 }: {
   accountAddress: string;
   ensName: string;
@@ -52,6 +49,7 @@ const LookUpResult = ({
   github: string;
   linkedin: string;
   url: string;
+  qrcode: string;
 }): JSX.Element => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -63,84 +61,9 @@ const LookUpResult = ({
   const etherScanPrefix = "https://etherscan.io/address/";
   const avatarLink = `https://metadata.ens.domains/mainnet/avatar/${ensName}?v=1.0`;
 
-  //TODO: Issue with the nav bar element translations showing up when staticProps hasn't returned
-
   if (router.isFallback) {
-    return (
-      <>
-        <PageLayout>
-          <chakra.main>
-            <SimpleGrid
-              columns={1}
-              spacing="80px"
-              flex={1}
-              justifyContent="center"
-              flexDirection="column"
-              display="flex"
-              alignItems="center"
-              w="100vw"
-            >
-              <Container title="glosseta-landing-page" marginTop="-65px">
-                <Box padding="6" boxShadow="lg" bg="white">
-                  <SkeletonCircle size="20" />
-                  <SkeletonText mt="4" noOfLines={4} spacing="4" />
-                </Box>
-              </Container>
-            </SimpleGrid>
-          </chakra.main>
-        </PageLayout>
-      </>
-    );
+    return <FallBack />;
   }
-
-  const linkComponent = ({
-    username,
-    url,
-    icon,
-    allyTextKey,
-  }: {
-    username: string;
-    url: string;
-    icon: JSX.Element;
-    allyTextKey: string;
-  }) => {
-    if (!url.toLocaleLowerCase().includes("http")) {
-      url = "http://" + url;
-    }
-    return (
-      <>
-        {username != NOT_SET && (
-          <Link
-            padding={2}
-            href={url}
-            display="flex"
-            title="twitter"
-            isExternal
-            fontSize={{ base: "md", sm: "xl" }}
-          >
-            {icon}
-            <VisuallyHidden>{t(allyTextKey)}</VisuallyHidden>
-            <ExternalLinkIcon mx="2px" />
-          </Link>
-        )}
-      </>
-    );
-  };
-
-  const dataComponent = ({ label, data }: { label: string; data: string }) => {
-    return (
-      <>
-        {data != NOT_SET && (
-          <Stat>
-            <StatLabel fontSize={{ base: "md", sm: "xl" }} fontWeight={"bold"}>
-              {label}
-            </StatLabel>
-            {data}
-          </Stat>
-        )}
-      </>
-    );
-  };
 
   return (
     <>
@@ -155,10 +78,15 @@ const LookUpResult = ({
             display="flex"
             alignItems="center"
           >
+            <SearchBar
+              baseWidth={"80vw"}
+              smWidth={"50vw"}
+              mdWidth={"50vw"}
+              lgWidth={"30vw"}
+            />
             {!router.isFallback && (
               <Container
                 maxW={{ base: "sm", sm: "xl" }}
-                marginTop="-65px"
                 background="white"
                 borderWidth="5px"
                 borderColor="black"
@@ -171,6 +99,8 @@ const LookUpResult = ({
                         padding={1}
                         color="black"
                         textAlign="center"
+                        fontSize={{ base: "md", sm: "xl" }}
+                        isTruncated
                       >
                         {ensName}
                       </Heading>
@@ -180,63 +110,48 @@ const LookUpResult = ({
                         borderWidth="5px"
                         borderColor="black"
                       />
-                      {/* <Button
-                        as="a"
-                        href={`https://tipeth.xyz/${
-                          accountAddress
-                        }`}
-                        colorScheme="purple"
-                        leftIcon={<FaEthereum />}
-                        size={"lg"}
-                      >
-                        <Text color={"white"}>Tip</Text>
-                      </Button> */}
+
                       <Divider orientation="horizontal" />
                       <VStack textAlign={"center"}>
-                        {dataComponent({
-                          label: "Wallet address",
-                          data: accountAddress,
-                        })}
-                        {dataComponent({
-                          label: "Name",
-                          data: name,
-                        })}
-                        {dataComponent({
-                          data: description,
-                          label: "Description",
-                        })}
+                        <DataComponent label="Name" data={name} />
+                        <DataComponent label="Description" data={description} />
+                        <DataComponent
+                          label="Ethereum Wallet Address"
+                          data={accountAddress}
+                        />
+                        <Image src={qrcode} alt="qrcode" />
                       </VStack>
                       <HStack>
-                        {linkComponent({
-                          username: twitter,
-                          url: `${twitterPrefix}${twitter}`,
-                          icon: <FaTwitter title="ens-twitter-icon" />,
-                          allyTextKey: "",
-                        })}
-                        {linkComponent({
-                          username: github,
-                          url: `${githubPrefix}${github}`,
-                          icon: <FaGithub title="ens-github-icon" />,
-                          allyTextKey: "",
-                        })}
-                        {linkComponent({
-                          username: linkedin,
-                          url: `${linkedInPrefix}${linkedin}`,
-                          icon: <FaLinkedin title="ens-twitter-icon" />,
-                          allyTextKey: "",
-                        })}
-                        {linkComponent({
-                          username: url,
-                          url: url,
-                          icon: <FaHome title="ens-website-icon" />,
-                          allyTextKey: "",
-                        })}
-                        {linkComponent({
-                          username: accountAddress,
-                          url: `${etherScanPrefix}${accountAddress}`,
-                          icon: <FaEthereum title="ens-etherscan-icon" />,
-                          allyTextKey: "",
-                        })}
+                        <LinkComponent
+                          username={twitter}
+                          url={`${twitterPrefix}${twitter}`}
+                          icon={<FaTwitter title="ens-twitter-icon" />}
+                          allyText=""
+                        />
+                        <LinkComponent
+                          username={github}
+                          url={`${githubPrefix}${github}`}
+                          icon={<FaGithub title="ens-github-icon" />}
+                          allyText=""
+                        />
+                        <LinkComponent
+                          username={linkedin}
+                          url={`${linkedInPrefix}${linkedin}`}
+                          icon={<FaLinkedin title="ens-twitter-icon" />}
+                          allyText=""
+                        />
+                        <LinkComponent
+                          username={url}
+                          url={url}
+                          icon={<FaHome title="ens-website-icon" />}
+                          allyText=""
+                        />
+                        <LinkComponent
+                          username={accountAddress}
+                          url={`${etherScanPrefix}${accountAddress}`}
+                          icon={<FaEthereum title="ens-etherscan-icon" />}
+                          allyText=""
+                        />
                       </HStack>
                     </VStack>
                   </>
@@ -262,24 +177,36 @@ export const getStaticProps: GetStaticProps = async ({
 
   let ensName;
   let accountAddress;
+  let name;
+  let description;
+  let twitter;
+  let github;
+  let linkedin;
+  let url;
+  let qrcode;
 
-  if (!params.id.includes(".eth")) {
-    ensName = await provider.lookupAddress(params.id);
-    // must preform a reverse resolution here to ensure that both the name that was found here
-    // and what's returned above match.  If they don't then you should not display the ens name and only the address
-    accountAddress = params.id;
-  } else {
-    ensName = params.id;
-    accountAddress = await provider.resolveName(ensName);
+  try {
+    if (!params.id.includes(".eth")) {
+      ensName = await provider.lookupAddress(params.id);
+      // must preform a reverse resolution here to ensure that both the name that was found here
+      // and what's returned above match.  If they don't then you should not display the ens name and only the address
+      accountAddress = params.id;
+    } else {
+      ensName = params.id;
+      accountAddress = await provider.resolveName(ensName);
+    }
+
+    const resolver = await provider.getResolver(ensName);
+    name = await resolver?.getText("name");
+    description = await resolver?.getText("description");
+    twitter = await resolver?.getText("com.twitter");
+    github = await resolver?.getText("com.github");
+    linkedin = await resolver?.getText("com.linkedin");
+    url = await resolver?.getText("url");
+    qrcode = await QRCode.toDataURL(accountAddress);
+  } catch (error) {
+    console.log(`[error retrieving ens related data] error=${error}`);
   }
-
-  const resolver = await provider.getResolver(ensName);
-  const name = await resolver?.getText("name");
-  const description = await resolver?.getText("description");
-  const twitter = await resolver?.getText("com.twitter");
-  const github = await resolver?.getText("com.github");
-  const linkedin = await resolver?.getText("com.linkedin");
-  const url = await resolver?.getText("url");
 
   return {
     props: {
@@ -291,6 +218,7 @@ export const getStaticProps: GetStaticProps = async ({
       github: github ? github : NOT_SET,
       linkedin: linkedin ? linkedin : NOT_SET,
       url: url ? url : NOT_SET,
+      qrcode: qrcode ? qrcode : NOT_SET,
       ...(await serverSideTranslations(locale, ["common"])),
     },
     revalidate: 60, // In seconds
