@@ -32,7 +32,7 @@ const FallBack = () : JSX.Element => {
                 alignItems="center"
                 w="100vw"
               >
-                <Container title="glosseta-landing-page" marginTop="-65px">
+                <Container title="glosseta-enslookop-fallback-page" marginTop="-65px">
                   <Box padding="6" boxShadow="lg" bg="white">
                     <SkeletonCircle size="15" />
                     <SkeletonText mt="4" noOfLines={20} spacing="4" />

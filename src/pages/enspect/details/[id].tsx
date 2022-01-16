@@ -1,4 +1,4 @@
-import PageLayout from "../../../components/layout/page";
+import PageLayout from "../../components/layout/page";
 import {
   SimpleGrid,
   chakra,
@@ -24,7 +24,7 @@ import {
 import FallBack from "./fallback";
 import LinkComponent from "./link-component";
 import DataComponent from "./data-component";
-import SearchBar from "../../../components/input/chain-contact-search-bar";
+import SearchBar from "../../components/input/enspect-search-bar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps, GetStaticPaths } from "next";
@@ -124,6 +124,7 @@ const LookUpResult = ({
                         src={avatarLink}
                         borderWidth="5px"
                         borderColor="black"
+                        name={ensName}
                       />
 
                       <HStack>
@@ -131,57 +132,56 @@ const LookUpResult = ({
                           username={twitter}
                           url={`${twitterPrefix}${twitter}`}
                           icon={<FaTwitter title="ens-twitter-icon" />}
-                          allyText=""
+                          a11yText={t("ensTwitterA11yText")}
                         />
                         <LinkComponent
                           username={github}
                           url={`${githubPrefix}${github}`}
                           icon={<FaGithub title="ens-github-icon" />}
-                          allyText=""
+                          a11yText={t("ensGithubA11yText")}
                         />
                         <LinkComponent
                           username={linkedin}
                           url={`${linkedInPrefix}${linkedin}`}
                           icon={<FaLinkedin title="ens-twitter-icon" />}
-                          allyText=""
+                          a11yText={t("ensLinkedin11yText")}
                         />
                         <LinkComponent
                           username={url}
                           url={url}
                           icon={<FaHome title="ens-website-icon" />}
-                          allyText=""
+                          a11yText={t("ensPersonalWebsitebA11yText")}
                         />
                         <LinkComponent
                           username={accountAddress}
                           url={`${etherScanPrefix}${accountAddress}`}
                           icon={<FaEthereum title="ens-etherscan-icon" />}
-                          allyText=""
+                          a11yText={t("ensEtherscanA11yText")}
                         />
                       </HStack>
-                      
+
                       <Divider orientation="horizontal" />
 
                       <VStack textAlign={"center"}>
                         <DataComponent label="Name" data={name} />
                         <DataComponent label="Description" data={description} />
                         <DataComponent
-                          label="Ethereum Wallet Address"
+                          label={t("ethereumWalletAddress")}
                           data={accountAddress}
                         />
                         <IconButton
                           onClick={copyText}
                           colorScheme={"gray"}
-                          aria-label="Copy Ethereum address"
+                          aria-label={t("copyEthereumAddress")}
                           size="lg"
                           icon={<FaCopy />}
                           isRound
                         >
                           <VisuallyHidden>
-                            Click this button to copy the Ethereum wallet
-                            address
+                            {t("copyEthereumAddressA11yText")}
                           </VisuallyHidden>
                         </IconButton>
-                        <Image src={qrcode} alt="qrcode" />
+                        <Image src={qrcode} alt={t("ethereumAddressQRCode")} />
                       </VStack>
                     </VStack>
                   </>

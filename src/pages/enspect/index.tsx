@@ -11,9 +11,9 @@ import {
 } from "@chakra-ui/react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import SearchBar from "../components/input/chain-contact-search-bar";
+import SearchBar from "../components/input/enspect-search-bar";
 
-const Chaintact = (): JSX.Element => {
+const ENSpect = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (
@@ -30,7 +30,7 @@ const Chaintact = (): JSX.Element => {
             alignItems="center"
           >
             <Container
-              title="glosseta-landing-page"
+              title="glosseta-enspect-page"
               maxW={{ base: "sm", sm: "xl" }}
               marginTop="-65px"
             >
@@ -76,4 +76,4 @@ export async function getStaticProps({ locale }: any) {
   };
 }
 
-export default Chaintact;
+export default ENSpect;

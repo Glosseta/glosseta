@@ -38,7 +38,7 @@ const SearchBar = ({
   const onKeyDown = (event: any) => {
     if (event.key === "Enter" && searchTerm.trim().length != 0) {
       event.preventDefault();
-      location.assign(`/chain-lookup/ens/details/${searchTerm.trim().toLowerCase()}`);
+      location.assign(`/enspect/details/${searchTerm.trim().toLowerCase()}`);
     }
   };
 

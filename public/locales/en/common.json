@@ -3,6 +3,7 @@
     "glossetaNavbarButtonA11yText": "Takes you to the main search page",
     "glossaryButton": "Glossary",
     "searchButtonTitle": "Search",
+    "enspectButtonTitle": "ENSpect",
     "scrollToTheTopButton": "Click here to scroll to the top of the page",
 
     "web3GlossaryHeading": "Web3 Glossary",
@@ -23,8 +24,17 @@
     "glossaryTermFetchErrorHeading": "Error",
     "glossaryTermFetchErrorText" : "Something went wrong trying to retrieve the glossary terms.  Please refresh the page or try searching for an individual term.  If the issue persists please reach out to us on ",
 
-    "ENSSearchLandingPageHeading" : "ENS Search",
+    "ENSSearchLandingPageHeading" : "ENSpect",
     "ENSSearchLandingPageDescription" : "Search up the details of an ethereum account or ENS name here",
+    "ethereumWalletAddress": "Ethereum Wallet Address",
+    "copyEthereumAddress": "Copy Ethereum address",
+    "copyEthereumAddressA11yText": "Click this button to copy the Ethereum wallet address",
+    "ethereumAddressQRCode": "Ethereum address QRcode",
+    "ensGithubA11yText": "Opens GitHub profile in a new window",
+    "ensTwitterA11yText": "Opens Twitter profile in a new window",
+    "ensLinkedin11yText": "Opens Linkedin profile in a new window",
+    "ensPersonalWebsitebA11yText": "Opens personal website in a new window",
+    "ensEtherscanA11yText": "Opens Etherscan explorer in a new window",
 
     "opensInANewWindow" : "Opens in a new window",
     "twitter" : "Twitter",

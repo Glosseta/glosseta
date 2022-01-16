@@ -7,12 +7,12 @@ const LinkComponent = ({
   username,
   url,
   icon,
-  allyText,
+  a11yText,
 }: {
   username: string;
   url: string;
   icon: JSX.Element;
-  allyText: string;
+  a11yText: string;
 }): JSX.Element => {
   if (url && !url.toLocaleLowerCase().includes("http")) {
     url = "http://" + url;
@@ -28,7 +28,7 @@ const LinkComponent = ({
           fontSize={{ base: "md", sm: "xl" }}
         >
           {icon}
-          <VisuallyHidden>{allyText}</VisuallyHidden>
+          <VisuallyHidden>{a11yText}</VisuallyHidden>
           <ExternalLinkIcon mx="2px" />
         </Link>
       )}
