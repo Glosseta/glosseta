@@ -35,6 +35,11 @@
     "ensLinkedin11yText": "Opens Linkedin profile in a new window",
     "ensPersonalWebsitebA11yText": "Opens personal website in a new window",
     "ensEtherscanA11yText": "Opens Etherscan explorer in a new window",
+    "ensNameAvailableText": "This ENS name may be available for purchase.  You can click the following link to search ",
+    "ens": "ENS",
+    "ensLinkA11yText": "Click this link to search the ENS app for this names availability",
+    "ensFetchErrorText" : "Something went wrong while trying to retrieve information for this ENS name.  Please refresh the page or search for another name. If the problem persists please notify us via ",
+    "addressQRCodeToolTip" : "Scan this QRCode to copy the address associated to this account",
 
     "opensInANewWindow" : "Opens in a new window",
     "twitter" : "Twitter",

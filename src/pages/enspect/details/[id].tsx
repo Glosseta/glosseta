@@ -12,7 +12,11 @@ import {
   useToast,
   IconButton,
   VisuallyHidden,
+  Tooltip,
+  Text,
+  Link,
 } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   FaGithub,
   FaTwitter,
@@ -25,6 +29,7 @@ import FallBack from "./fallback";
 import LinkComponent from "./link-component";
 import DataComponent from "./data-component";
 import SearchBar from "../../components/input/enspect-search-bar";
+import EnsSearchError from "./ens-search-error";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { GetStaticProps, GetStaticPaths } from "next";
@@ -45,6 +50,7 @@ const LookUpResult = ({
   linkedin,
   url,
   qrcode,
+  isError,
 }: {
   accountAddress: string;
   ensName: string;
@@ -55,6 +61,7 @@ const LookUpResult = ({
   linkedin: string;
   url: string;
   qrcode: string;
+  isError: boolean;
 }): JSX.Element => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -66,6 +73,9 @@ const LookUpResult = ({
   const twitterPrefix = "https://twitter.com/";
   const etherScanPrefix = "https://etherscan.io/address/";
   const avatarLink = `https://metadata.ens.domains/mainnet/avatar/${ensName}?v=1.0`;
+  const openseaLink = `https://opensea.io/${accountAddress}`;
+  const looksRareLink = `https://looksrare.org/accounts/${accountAddress}`;
+  const ensSearchLink = `https://app.ens.domains/search/${ensName}`;
 
   const copyText = useCallback(() => {
     navigator.clipboard.writeText(accountAddress);
@@ -78,6 +88,10 @@ const LookUpResult = ({
 
   if (router.isFallback) {
     return <FallBack />;
+  }
+
+  if (isError) {
+    return <EnsSearchError ensName={ensName} />;
   }
 
   return (
@@ -109,16 +123,19 @@ const LookUpResult = ({
                 <VStack>
                   <>
                     <VStack spacing={3}>
-                      <Heading
-                        as="h1"
-                        padding={1}
-                        color="black"
-                        textAlign="center"
-                        fontSize={{ base: "lg", sm: "xl" }}
-                        isTruncated
-                      >
-                        {ensName.toUpperCase()}
-                      </Heading>
+                      <Tooltip label={ensName.toUpperCase()}>
+                        <Heading
+                          as="h1"
+                          padding={1}
+                          color="black"
+                          textAlign="center"
+                          fontSize={{ base: "lg", sm: "xl" }}
+                          maxW={"xs"}
+                          isTruncated
+                        >
+                          {ensName.toUpperCase()}
+                        </Heading>
+                      </Tooltip>
                       <Avatar
                         size="2xl"
                         src={avatarLink}
@@ -165,23 +182,56 @@ const LookUpResult = ({
                       <VStack textAlign={"center"}>
                         <DataComponent label="Name" data={name} />
                         <DataComponent label="Description" data={description} />
-                        <DataComponent
-                          label={t("ethereumWalletAddress")}
-                          data={accountAddress}
-                        />
-                        <IconButton
-                          onClick={copyText}
-                          colorScheme={"gray"}
-                          aria-label={t("copyEthereumAddress")}
-                          size="lg"
-                          icon={<FaCopy />}
-                          isRound
-                        >
-                          <VisuallyHidden>
-                            {t("copyEthereumAddressA11yText")}
-                          </VisuallyHidden>
-                        </IconButton>
-                        <Image src={qrcode} alt={t("ethereumAddressQRCode")} />
+                        {accountAddress != NOT_SET && (
+                          <>
+                            <DataComponent
+                              label={t("ethereumWalletAddress")}
+                              data={accountAddress}
+                            />
+                            <IconButton
+                              onClick={copyText}
+                              colorScheme={"gray"}
+                              aria-label={t("copyEthereumAddress")}
+                              size="lg"
+                              icon={<FaCopy />}
+                              isRound
+                            >
+                              <VisuallyHidden>
+                                {t("copyEthereumAddressA11yText")}
+                              </VisuallyHidden>
+                            </IconButton>
+                            <Tooltip label={t("addressQRCodeToolTip")}>
+                              <Image
+                                src={qrcode}
+                                alt={t("ethereumAddressQRCode")}
+                              />
+                            </Tooltip>
+                          </>
+                        )}
+                        {accountAddress == NOT_SET && (
+                          <>
+                            <VStack>
+                              <Text
+                                textAlign={"left"}
+                                color="black"
+                                fontSize={{ base: "sm", sm: "md" }}
+                              >
+                                {t("ensNameAvailableText")}
+                                <Link
+                                  href={ensSearchLink}
+                                  color="blue"
+                                  isExternal
+                                >
+                                  {t("ens")}
+                                  <VisuallyHidden>
+                                    {t("ensLinkA11yText")}
+                                  </VisuallyHidden>
+                                  <ExternalLinkIcon mx="2px" />
+                                </Link>
+                              </Text>
+                            </VStack>
+                          </>
+                        )}
                       </VStack>
                     </VStack>
                   </>
@@ -214,17 +264,11 @@ export const getStaticProps: GetStaticProps = async ({
   let linkedin;
   let url;
   let qrcode;
+  let isError = false;
 
   try {
-    if (!params.id.includes(".eth")) {
-      ensName = await provider.lookupAddress(params.id);
-      // must preform a reverse resolution here to ensure that both the name that was found here
-      // and what's returned above match.  If they don't then you should not display the ens name and only the address
-      accountAddress = params.id;
-    } else {
-      ensName = params.id;
-      accountAddress = await provider.resolveName(ensName);
-    }
+    ensName = params.id;
+    accountAddress = await provider.resolveName(ensName);
 
     const resolver = await provider.getResolver(ensName);
     name = await resolver?.getText("name");
@@ -233,14 +277,15 @@ export const getStaticProps: GetStaticProps = async ({
     github = await resolver?.getText("com.github");
     linkedin = await resolver?.getText("com.linkedin");
     url = await resolver?.getText("url");
-    qrcode = await QRCode.toDataURL(accountAddress);
+    qrcode = accountAddress ? await QRCode.toDataURL(accountAddress) : null;
   } catch (error) {
     console.log(`[error retrieving ens related data] error=${error}`);
+    isError = true;
   }
 
   return {
     props: {
-      accountAddress: accountAddress,
+      accountAddress: accountAddress ? accountAddress : NOT_SET,
       ensName: ensName ? ensName : NOT_SET,
       name: name ? name : NOT_SET,
       description: description ? description : NOT_SET,
@@ -249,6 +294,7 @@ export const getStaticProps: GetStaticProps = async ({
       linkedin: linkedin ? linkedin : NOT_SET,
       url: url ? url : NOT_SET,
       qrcode: qrcode ? qrcode : NOT_SET,
+      isError: isError,
       ...(await serverSideTranslations(locale, ["common"])),
     },
     revalidate: 60, // In seconds
@@ -264,18 +310,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /**
  * TODO
- * 0. Figure out why arweave image is broken on this page
  * 1. Fix search bar so it doesn't move up and down when there is a different amount of content on the page
- * 2. Need to fix the case when the ENS name is not registered - touch up the UI to display available data
- *  - can add an availability link to the ens.app for the user to purchase
- *   - i.e https://app.ens.domains/name/narbehshahnazarian.eth/register
- * 3. Need to fix the case when an eth address doesn't have an ENS
- *  - in this case the user should only be displayed the address and the etherscan link
- *
- *  - Flip side is to only allow the user to search a .eth name
- *      - pros: reduce friction for new users, easier to search
- *      - cons: power users can't search for
- * 5. Figure out if adding the tipping is feasible/works
  * 6. Integrate opensea api for fetching NFTs
  * 7/ unit tests
  */

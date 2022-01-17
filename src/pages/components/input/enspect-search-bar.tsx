@@ -38,7 +38,12 @@ const SearchBar = ({
   const onKeyDown = (event: any) => {
     if (event.key === "Enter" && searchTerm.trim().length != 0) {
       event.preventDefault();
-      location.assign(`/enspect/details/${searchTerm.trim().toLowerCase()}`);
+      let request = searchTerm.trim().toLowerCase();
+      if (!request.includes(".eth")) {
+        request = `${request}.eth`;
+      }
+
+      location.assign(`/enspect/details/${request}`);
     }
   };
 
