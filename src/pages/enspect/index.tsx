@@ -8,6 +8,7 @@ import {
   HStack,
   Box,
   Text,
+  Link,
 } from "@chakra-ui/react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
@@ -39,14 +40,6 @@ const ENSpect = (): JSX.Element => {
                   {t("ENSSearchLandingPageHeading")}
                 </Heading>
                 <HStack spacing={3}>
-                  <SearchBar
-                    baseWidth={"80vw"}
-                    smWidth={"50vw"}
-                    mdWidth={"50vw"}
-                    lgWidth={"30vw"}
-                  />
-                </HStack>
-                <HStack spacing={3}>
                   <Box width="100%" letterSpacing="wide">
                     <Text
                       textAlign="center"
@@ -58,6 +51,25 @@ const ENSpect = (): JSX.Element => {
                     </Text>
                   </Box>
                 </HStack>
+
+                <HStack spacing={3}>
+                  <SearchBar
+                    baseWidth={"80vw"}
+                    smWidth={"50vw"}
+                    mdWidth={"50vw"}
+                    lgWidth={"30vw"}
+                  />
+                </HStack>
+
+                <Link
+                  padding={2}
+                  href={"/search?term=ens"}
+                  display="flex"
+                  fontSize={{ base: "md", sm: "xl" }}
+                  color={"white"}
+                >
+                  {t("whatIsEnsLink")}
+                </Link>
               </VStack>
             </Container>
           </SimpleGrid>

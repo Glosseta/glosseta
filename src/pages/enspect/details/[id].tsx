@@ -66,7 +66,6 @@ const LookUpResult = ({
   const { t } = useTranslation();
   const router = useRouter();
   const toast = useToast();
-  const { id } = router.query;
 
   const linkedInPrefix = "https://www.linkedin.com/in/";
   const githubPrefix = "https://github.com/";
@@ -74,17 +73,16 @@ const LookUpResult = ({
   const etherScanPrefix = "https://etherscan.io/address/";
   const avatarLink = `https://metadata.ens.domains/mainnet/avatar/${ensName}?v=1.0`;
   const openseaLink = `https://opensea.io/${accountAddress}`;
-  const looksRareLink = `https://looksrare.org/accounts/${accountAddress}`;
   const ensSearchLink = `https://app.ens.domains/search/${ensName}`;
 
   const copyText = useCallback(() => {
     navigator.clipboard.writeText(accountAddress);
     toast({
-      title: "Address copied",
+      title: t("ensCopyAddressToastMessage"),
       status: "success",
       isClosable: true,
     });
-  }, [toast, accountAddress]);
+  }, [toast, t, accountAddress]);
 
   if (router.isFallback) {
     return <FallBack />;
@@ -113,131 +111,142 @@ const LookUpResult = ({
               mdWidth={"50vw"}
               lgWidth={"30vw"}
             />
-            {!router.isFallback && (
-              <Container
-                maxW={{ base: "sm", sm: "xl" }}
-                background="white"
-                borderWidth="5px"
-                borderColor="black"
-              >
-                <VStack>
-                  <>
-                    <VStack spacing={3}>
-                      <Tooltip label={ensName.toUpperCase()}>
-                        <Heading
-                          as="h1"
-                          padding={1}
-                          color="black"
-                          textAlign="center"
-                          fontSize={{ base: "lg", sm: "xl" }}
-                          maxW={"xs"}
-                          isTruncated
-                        >
-                          {ensName.toUpperCase()}
-                        </Heading>
-                      </Tooltip>
-                      <Avatar
-                        size="2xl"
-                        src={avatarLink}
-                        borderWidth="5px"
-                        borderColor="black"
-                        name={ensName}
+            <Container
+              maxW={{ base: "sm", sm: "xl" }}
+              background="white"
+              borderWidth="5px"
+              borderColor="black"
+            >
+              <VStack>
+                <>
+                  <VStack spacing={3}>
+                    <Tooltip label={ensName.toUpperCase()}>
+                      <Heading
+                        as="h1"
+                        padding={1}
+                        color="black"
+                        textAlign="center"
+                        fontSize={{ base: "lg", sm: "xl" }}
+                        maxW={"xs"}
+                        isTruncated
+                      >
+                        {ensName.toUpperCase()}
+                      </Heading>
+                    </Tooltip>
+                    <Avatar
+                      size="2xl"
+                      src={avatarLink}
+                      borderWidth="5px"
+                      borderColor="black"
+                      name={ensName}
+                    />
+
+                    <HStack>
+                      <LinkComponent
+                        username={twitter}
+                        url={`${twitterPrefix}${twitter}`}
+                        icon={<FaTwitter title="ens-twitter-icon" />}
+                        a11yText={t("ensTwitterA11yText")}
                       />
+                      <LinkComponent
+                        username={github}
+                        url={`${githubPrefix}${github}`}
+                        icon={<FaGithub title="ens-github-icon" />}
+                        a11yText={t("ensGithubA11yText")}
+                      />
+                      <LinkComponent
+                        username={linkedin}
+                        url={`${linkedInPrefix}${linkedin}`}
+                        icon={<FaLinkedin title="ens-twitter-icon" />}
+                        a11yText={t("ensLinkedin11yText")}
+                      />
+                      <LinkComponent
+                        username={url}
+                        url={url}
+                        icon={<FaHome title="ens-website-icon" />}
+                        a11yText={t("ensPersonalWebsitebA11yText")}
+                      />
+                      <LinkComponent
+                        username={accountAddress}
+                        url={`${etherScanPrefix}${accountAddress}`}
+                        icon={<FaEthereum title="ens-etherscan-icon" />}
+                        a11yText={t("ensEtherscanA11yText")}
+                      />
+                      <LinkComponent
+                        username={accountAddress}
+                        url={openseaLink}
+                        icon={
+                          <Image
+                            height="24px"
+                            width="24px"
+                            src="/opensea_logo.svg"
+                            alt="Opensea"
+                          />
+                        }
+                        a11yText={t("ensOpenseaA11yText")}
+                      />
+                    </HStack>
 
-                      <HStack>
-                        <LinkComponent
-                          username={twitter}
-                          url={`${twitterPrefix}${twitter}`}
-                          icon={<FaTwitter title="ens-twitter-icon" />}
-                          a11yText={t("ensTwitterA11yText")}
-                        />
-                        <LinkComponent
-                          username={github}
-                          url={`${githubPrefix}${github}`}
-                          icon={<FaGithub title="ens-github-icon" />}
-                          a11yText={t("ensGithubA11yText")}
-                        />
-                        <LinkComponent
-                          username={linkedin}
-                          url={`${linkedInPrefix}${linkedin}`}
-                          icon={<FaLinkedin title="ens-twitter-icon" />}
-                          a11yText={t("ensLinkedin11yText")}
-                        />
-                        <LinkComponent
-                          username={url}
-                          url={url}
-                          icon={<FaHome title="ens-website-icon" />}
-                          a11yText={t("ensPersonalWebsitebA11yText")}
-                        />
-                        <LinkComponent
-                          username={accountAddress}
-                          url={`${etherScanPrefix}${accountAddress}`}
-                          icon={<FaEthereum title="ens-etherscan-icon" />}
-                          a11yText={t("ensEtherscanA11yText")}
-                        />
-                      </HStack>
+                    <Divider orientation="horizontal" />
 
-                      <Divider orientation="horizontal" />
-
-                      <VStack textAlign={"center"}>
-                        <DataComponent label="Name" data={name} />
-                        <DataComponent label="Description" data={description} />
-                        {accountAddress != NOT_SET && (
-                          <>
-                            <DataComponent
-                              label={t("ethereumWalletAddress")}
-                              data={accountAddress}
+                    <VStack textAlign={"center"}>
+                      <DataComponent label="Name" data={name} />
+                      <DataComponent label="About" data={description} />
+                      {accountAddress != NOT_SET && (
+                        <>
+                          <DataComponent
+                            label={t("ethereumWalletAddress")}
+                            data={accountAddress}
+                          />
+                          <IconButton
+                            onClick={copyText}
+                            colorScheme={"gray"}
+                            aria-label={t("copyEthereumAddress")}
+                            size="lg"
+                            icon={<FaCopy />}
+                            isRound
+                          >
+                            <VisuallyHidden>
+                              {t("copyEthereumAddressA11yText")}
+                            </VisuallyHidden>
+                          </IconButton>
+                          <Tooltip label={t("addressQRCodeToolTip")}>
+                            <Image
+                              src={qrcode}
+                              alt={t("ethereumAddressQRCode")}
                             />
-                            <IconButton
-                              onClick={copyText}
-                              colorScheme={"gray"}
-                              aria-label={t("copyEthereumAddress")}
-                              size="lg"
-                              icon={<FaCopy />}
-                              isRound
+                          </Tooltip>
+                        </>
+                      )}
+                      {accountAddress == NOT_SET && (
+                        <>
+                          <VStack>
+                            <Text
+                              textAlign={"left"}
+                              color="black"
+                              fontSize={{ base: "sm", sm: "md" }}
                             >
-                              <VisuallyHidden>
-                                {t("copyEthereumAddressA11yText")}
-                              </VisuallyHidden>
-                            </IconButton>
-                            <Tooltip label={t("addressQRCodeToolTip")}>
-                              <Image
-                                src={qrcode}
-                                alt={t("ethereumAddressQRCode")}
-                              />
-                            </Tooltip>
-                          </>
-                        )}
-                        {accountAddress == NOT_SET && (
-                          <>
-                            <VStack>
-                              <Text
-                                textAlign={"left"}
-                                color="black"
-                                fontSize={{ base: "sm", sm: "md" }}
+                              {t("ensNameAvailableText")}
+                              <Link
+                                href={ensSearchLink}
+                                color="blue"
+                                isExternal
                               >
-                                {t("ensNameAvailableText")}
-                                <Link
-                                  href={ensSearchLink}
-                                  color="blue"
-                                  isExternal
-                                >
-                                  {t("ens")}
-                                  <VisuallyHidden>
-                                    {t("ensLinkA11yText")}
-                                  </VisuallyHidden>
-                                  <ExternalLinkIcon mx="2px" />
-                                </Link>
-                              </Text>
-                            </VStack>
-                          </>
-                        )}
-                      </VStack>
+                                {t("ens")}
+                                <VisuallyHidden>
+                                  {t("ensLinkA11yText")}
+                                </VisuallyHidden>
+                                <ExternalLinkIcon mx="2px" />
+                              </Link>
+                            </Text>
+                          </VStack>
+                        </>
+                      )}
                     </VStack>
-                  </>
-                </VStack>
-              </Container>
-            )}
+                  </VStack>
+                </>
+              </VStack>
+            </Container>
           </SimpleGrid>
         </chakra.main>
       </PageLayout>
@@ -311,7 +320,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 /**
  * TODO
  * 1. Fix search bar so it doesn't move up and down when there is a different amount of content on the page
- * 6. Integrate opensea api for fetching NFTs
  * 7/ unit tests
  */
 
