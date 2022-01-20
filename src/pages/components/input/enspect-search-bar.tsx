@@ -39,7 +39,7 @@ const SearchBar = ({
     if (event.key === "Enter" && searchTerm.trim().length != 0) {
       event.preventDefault();
       let request = searchTerm.trim().toLowerCase();
-      if (!request.includes(".eth")) {
+      if (!request.includes(".eth") && !request.includes(".xyz")) {
         request = `${request}.eth`;
       }
 

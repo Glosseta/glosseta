@@ -67,9 +67,9 @@ const LookUpResult = ({
   const router = useRouter();
   const toast = useToast();
 
-  const linkedInPrefix = "https://www.linkedin.com/in/";
-  const githubPrefix = "https://github.com/";
-  const twitterPrefix = "https://twitter.com/";
+  const linkedInUrl = linkedin && linkedin.toLocaleLowerCase().includes("http") ? linkedin : `https://www.linkedin.com/in/${linkedin}`;
+  const githubUrl = github && github.toLocaleLowerCase().includes("http") ? github : `https://github.com/${github}`;
+  const twitterUrl = twitter && twitter.toLocaleLowerCase().includes("http") ? twitter : `https://twitter.com/${twitter}`;
   const etherScanPrefix = "https://etherscan.io/address/";
   const avatarLink = `https://metadata.ens.domains/mainnet/avatar/${ensName}?v=1.0`;
   const openseaLink = `https://opensea.io/${accountAddress}`;
@@ -144,19 +144,19 @@ const LookUpResult = ({
                     <HStack>
                       <LinkComponent
                         username={twitter}
-                        url={`${twitterPrefix}${twitter}`}
+                        url={twitterUrl}
                         icon={<FaTwitter title="ens-twitter-icon" />}
                         a11yText={t("ensTwitterA11yText")}
                       />
                       <LinkComponent
                         username={github}
-                        url={`${githubPrefix}${github}`}
+                        url={githubUrl}
                         icon={<FaGithub title="ens-github-icon" />}
                         a11yText={t("ensGithubA11yText")}
                       />
                       <LinkComponent
                         username={linkedin}
-                        url={`${linkedInPrefix}${linkedin}`}
+                        url={linkedInUrl}
                         icon={<FaLinkedin title="ens-twitter-icon" />}
                         a11yText={t("ensLinkedin11yText")}
                       />
