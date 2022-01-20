@@ -319,6 +319,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /**
  * TODO
+ * 0. Social links need to be tested for if they contain "http" and adjust the set link as needed (just like the website urls)
  * 1. Fix search bar so it doesn't move up and down when there is a different amount of content on the page
  * 7/ unit tests
  */
