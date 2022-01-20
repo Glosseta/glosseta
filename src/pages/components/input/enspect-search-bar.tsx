@@ -35,11 +35,19 @@ const SearchBar = ({
     }
   };
 
+  const requestContainsValidTLD = (request : string) => {
+    return request.includes(".eth") || 
+          request.includes(".xyz") ||
+          request.includes(".luxe") ||
+          request.includes(".kred");
+  }
+
   const onKeyDown = (event: any) => {
     if (event.key === "Enter" && searchTerm.trim().length != 0) {
       event.preventDefault();
       let request = searchTerm.trim().toLowerCase();
-      if (!request.includes(".eth") && !request.includes(".xyz")) {
+      // If the user types a name without a valid TLD, default to .eth
+      if (!requestContainsValidTLD(request)) {
         request = `${request}.eth`;
       }
 
