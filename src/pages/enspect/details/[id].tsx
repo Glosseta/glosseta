@@ -48,7 +48,7 @@ const LookUpResult = ({
   twitter,
   github,
   linkedin,
-  url,
+  website,
   qrcode,
   isError,
 }: {
@@ -59,7 +59,7 @@ const LookUpResult = ({
   twitter: string;
   github: string;
   linkedin: string;
-  url: string;
+  website: string;
   qrcode: string;
   isError: boolean;
 }): JSX.Element => {
@@ -67,9 +67,22 @@ const LookUpResult = ({
   const router = useRouter();
   const toast = useToast();
 
-  const linkedInUrl = linkedin && linkedin.toLocaleLowerCase().includes("http") ? linkedin : `https://www.linkedin.com/in/${linkedin}`;
-  const githubUrl = github && github.toLocaleLowerCase().includes("http") ? github : `https://github.com/${github}`;
-  const twitterUrl = twitter && twitter.toLocaleLowerCase().includes("http") ? twitter : `https://twitter.com/${twitter}`;
+  const linkedInUrl =
+    linkedin && linkedin.toLocaleLowerCase().includes("http")
+      ? linkedin
+      : `https://www.linkedin.com/in/${linkedin}`;
+  const githubUrl =
+    github && github.toLocaleLowerCase().includes("http")
+      ? github
+      : `https://github.com/${github}`;
+  const twitterUrl =
+    twitter && twitter.toLocaleLowerCase().includes("http")
+      ? twitter
+      : `https://twitter.com/${twitter}`;
+  const websiteUrl =
+    website && !website.toLocaleLowerCase().includes("http")
+      ? `http://${website}`
+      : website;
   const etherScanPrefix = "https://etherscan.io/address/";
   const avatarLink = `https://metadata.ens.domains/mainnet/avatar/${ensName}?v=1.0`;
   const openseaLink = `https://opensea.io/${accountAddress}`;
@@ -143,37 +156,37 @@ const LookUpResult = ({
 
                     <HStack>
                       <LinkComponent
-                        username={twitter}
+                        identifier={twitter}
                         url={twitterUrl}
                         icon={<FaTwitter title="ens-twitter-icon" />}
                         a11yText={t("ensTwitterA11yText")}
                       />
                       <LinkComponent
-                        username={github}
+                        identifier={github}
                         url={githubUrl}
                         icon={<FaGithub title="ens-github-icon" />}
                         a11yText={t("ensGithubA11yText")}
                       />
                       <LinkComponent
-                        username={linkedin}
+                        identifier={linkedin}
                         url={linkedInUrl}
                         icon={<FaLinkedin title="ens-twitter-icon" />}
                         a11yText={t("ensLinkedin11yText")}
                       />
                       <LinkComponent
-                        username={url}
-                        url={url}
+                        identifier={website}
+                        url={websiteUrl}
                         icon={<FaHome title="ens-website-icon" />}
                         a11yText={t("ensPersonalWebsitebA11yText")}
                       />
                       <LinkComponent
-                        username={accountAddress}
+                        identifier={accountAddress}
                         url={`${etherScanPrefix}${accountAddress}`}
                         icon={<FaEthereum title="ens-etherscan-icon" />}
                         a11yText={t("ensEtherscanA11yText")}
                       />
                       <LinkComponent
-                        username={accountAddress}
+                        identifier={accountAddress}
                         url={openseaLink}
                         icon={
                           <Image
@@ -191,25 +204,30 @@ const LookUpResult = ({
 
                     <VStack textAlign={"center"}>
                       <DataComponent label={t("ensNameLabel")} data={name} />
-                      <DataComponent label={t("ensAboutLabel")} data={description} />
+                      <DataComponent
+                        label={t("ensAboutLabel")}
+                        data={description}
+                      />
                       {accountAddress != NOT_SET && (
                         <>
                           <DataComponent
                             label={t("ethereumWalletAddress")}
                             data={accountAddress}
                           />
-                          <IconButton
-                            onClick={copyText}
-                            colorScheme={"gray"}
-                            aria-label={t("copyEthereumAddress")}
-                            size="lg"
-                            icon={<FaCopy />}
-                            isRound
-                          >
-                            <VisuallyHidden>
-                              {t("copyEthereumAddressA11yText")}
-                            </VisuallyHidden>
-                          </IconButton>
+                          <Tooltip label={t("addressCopyToolTip")}>
+                            <IconButton
+                              onClick={copyText}
+                              colorScheme={"gray"}
+                              aria-label={t("copyEthereumAddress")}
+                              size="lg"
+                              icon={<FaCopy />}
+                              isRound
+                            >
+                              <VisuallyHidden>
+                                {t("copyEthereumAddressA11yText")}
+                              </VisuallyHidden>
+                            </IconButton>
+                          </Tooltip>
                           <Tooltip label={t("addressQRCodeToolTip")}>
                             <Image
                               src={qrcode}
@@ -271,7 +289,7 @@ export const getStaticProps: GetStaticProps = async ({
   let twitter;
   let github;
   let linkedin;
-  let url;
+  let website;
   let qrcode;
   let isError = false;
 
@@ -285,7 +303,7 @@ export const getStaticProps: GetStaticProps = async ({
     twitter = await resolver?.getText("com.twitter");
     github = await resolver?.getText("com.github");
     linkedin = await resolver?.getText("com.linkedin");
-    url = await resolver?.getText("url");
+    website = await resolver?.getText("url");
     qrcode = accountAddress ? await QRCode.toDataURL(accountAddress) : null;
   } catch (error) {
     console.log(`[error retrieving ens related data] error=${error}`);
@@ -301,7 +319,7 @@ export const getStaticProps: GetStaticProps = async ({
       twitter: twitter ? twitter : NOT_SET,
       github: github ? github : NOT_SET,
       linkedin: linkedin ? linkedin : NOT_SET,
-      url: url ? url : NOT_SET,
+      website: website ? website : NOT_SET,
       qrcode: qrcode ? qrcode : NOT_SET,
       isError: isError,
       ...(await serverSideTranslations(locale, ["common"])),

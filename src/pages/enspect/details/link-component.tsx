@@ -4,22 +4,19 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 const NOT_SET = "NOT_SET";
 
 const LinkComponent = ({
-  username,
+  identifier,
   url,
   icon,
   a11yText,
 }: {
-  username: string;
+  identifier: string;
   url: string;
   icon: JSX.Element;
   a11yText: string;
 }): JSX.Element => {
-  if (url && !url.toLocaleLowerCase().includes("http")) {
-    url = "http://" + url;
-  }
   return (
     <>
-      {username != NOT_SET && (
+      {identifier != NOT_SET && (
         <Link
           padding={2}
           href={url}

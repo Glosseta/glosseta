@@ -42,6 +42,7 @@
     "ensLinkA11yText": "Click this link to search the ENS app for this names availability",
     "ensFetchErrorText" : "Something went wrong while trying to retrieve information for this ENS name.  Please refresh the page or search for another name. If the problem persists please notify us via ",
     "addressQRCodeToolTip" : "Scan this QRCode to copy the address associated to this account",
+    "addressCopyToolTip" : "Copy wallet address",
     "ensCopyAddressToastMessage": "Address copied",
     "ensAboutLabel": "About",
     "ensNameLabel": "Name",
