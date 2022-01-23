@@ -16,8 +16,9 @@ const LinkComponent = ({
 }): JSX.Element => {
   return (
     <>
-      {identifier != NOT_SET && (
+      {identifier && identifier != NOT_SET && (
         <Link
+          tille={identifier}
           padding={2}
           href={url}
           display="flex"

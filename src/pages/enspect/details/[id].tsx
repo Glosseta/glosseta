@@ -337,7 +337,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 /**
  * TODO
- * 1. Fix search bar so it doesn't move up and down when there is a different amount of content on the page
+ * 0. Fix error handling to properly handle the case of 
+ *    error=Error: invalid ENS address; missing component (argument="name", value="test.test.test.brantly.xyz.luxe.", code=INVALID_ARGUMENT, version=hash/5.5.0)
+ * 1. Add header tooltip to ens-search-error heading
+ * 2. Fix search bar so it doesn't move up and down when there is a different amount of content on the page
  * 7/ unit tests
  */
 
