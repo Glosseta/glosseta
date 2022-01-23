@@ -10,8 +10,8 @@ const DataComponent = ({
 }): JSX.Element => {
   return (
     <>
-      {data != NOT_SET && (
-        <Stat>
+      {data && data != NOT_SET && (
+        <Stat title={label}>
           <StatLabel fontSize={{ base: "md", sm: "xl" }} fontWeight={"bold"}>
             {label}
           </StatLabel>
