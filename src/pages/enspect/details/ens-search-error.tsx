@@ -7,6 +7,7 @@ import {
   Link,
   VisuallyHidden,
   SimpleGrid,
+  Tooltip,
 } from "@chakra-ui/react";
 import SearchBar from "../../components/input/enspect-search-bar";
 import PageLayout from "../../components/layout/page";
@@ -49,23 +50,25 @@ export const EnsSearchError = ({
               borderColor="black"
             >
               <VStack padding={3}>
-                <Heading
-                  as="h1"
-                  padding={2}
-                  maxWidth="50%"
-                  color="black"
-                  fontSize={{ base: "md", sm: "xl" }}
-                  isTruncated
-                >
-                  {ensName}
-                </Heading>
+                <Tooltip label={ensName.toUpperCase()}>
+                  <Heading
+                    as="h1"
+                    padding={2}
+                    maxWidth="50%"
+                    color="black"
+                    fontSize={{ base: "md", sm: "xl" }}
+                    isTruncated
+                  >
+                    {ensName}
+                  </Heading>
+                </Tooltip>
                 <Text
                   padding={2}
                   fontSize={{ base: "xs", sm: "md" }}
                   color="black"
                 >
                   {t("ensFetchErrorText")}{" "}
-                  <Link color="aquamarine" href={twitter_href} isExternal>
+                  <Link title="ens-search-error-twitter-link" color="aquamarine" href={twitter_href} isExternal>
                     {t("twitter")} <ExternalLinkIcon mx="2px" />
                     <VisuallyHidden>{t("opensInANewWindow")}</VisuallyHidden>
                   </Link>
