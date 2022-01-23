@@ -68,7 +68,7 @@ export const EnsSearchError = ({
                   color="black"
                 >
                   {t("ensFetchErrorText")}{" "}
-                  <Link title="ens-search-error-twitter-link" color="aquamarine" href={twitter_href} isExternal>
+                  <Link title="ens-search-error-twitter-link" color="twitter.400" href={twitter_href} isExternal>
                     {t("twitter")} <ExternalLinkIcon mx="2px" />
                     <VisuallyHidden>{t("opensInANewWindow")}</VisuallyHidden>
                   </Link>
