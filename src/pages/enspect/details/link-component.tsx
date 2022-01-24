@@ -4,11 +4,13 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 const NOT_SET = "NOT_SET";
 
 const LinkComponent = ({
+  title,
   identifier,
   url,
   icon,
   a11yText,
 }: {
+  title: string;
   identifier: string;
   url: string;
   icon: JSX.Element;
@@ -18,7 +20,7 @@ const LinkComponent = ({
     <>
       {identifier && identifier != NOT_SET && (
         <Link
-          tille={identifier}
+          title={title}
           padding={2}
           href={url}
           display="flex"

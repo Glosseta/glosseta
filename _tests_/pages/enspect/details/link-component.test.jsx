@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import LinkComponent from "../../../../src/pages/enspect/details/link-component";
-import { FaGithub } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),
@@ -17,10 +17,11 @@ describe("Link component suite", () => {
     const url = "https://www.twitter.com/glossetadotcom";
     const a11yText = "text";
     const iconTitle = "test-icon";
-    const icon = <FaGithub title={iconTitle} />;
+    const icon = <FaTwitter title={iconTitle} />;
 
     render(
       <LinkComponent
+        title="twitter"
         identifier={identifier}
         url={url}
         a11yText={a11yText}
@@ -34,7 +35,7 @@ describe("Link component suite", () => {
 
     expect(linkElement).toBeInTheDocument();
     expect(linkElement).toHaveAttribute("href", url);
-    
+
     expect(iconElement).toBeInTheDocument();
     expect(a11yTextElement).toBeInTheDocument();
   });
@@ -44,10 +45,11 @@ describe("Link component suite", () => {
     const url = "https://www.twitter.com/glossetadotcom";
     const a11yText = "text";
     const iconTitle = "test-icon";
-    const icon = <FaGithub title={iconTitle} />;
+    const icon = <FaTwitter title={iconTitle} />;
 
     render(
       <LinkComponent
+        title="twitter"
         identifier={identifier}
         url={url}
         a11yText={a11yText}
@@ -60,7 +62,7 @@ describe("Link component suite", () => {
     const a11yTextElement = screen.queryByText(a11yText);
 
     expect(linkElement).not.toBeInTheDocument();
-    
+
     expect(iconElement).not.toBeInTheDocument();
     expect(a11yTextElement).not.toBeInTheDocument();
   });
@@ -70,10 +72,11 @@ describe("Link component suite", () => {
     const url = "https://www.twitter.com/glossetadotcom";
     const a11yText = "text";
     const iconTitle = "test-icon";
-    const icon = <FaGithub title={iconTitle} />;
+    const icon = <FaTwitter title={iconTitle} />;
 
     render(
       <LinkComponent
+        title="twitter"
         identifier={identifier}
         url={url}
         a11yText={a11yText}
@@ -86,7 +89,7 @@ describe("Link component suite", () => {
     const a11yTextElement = screen.queryByText(a11yText);
 
     expect(linkElement).not.toBeInTheDocument();
-    
+
     expect(iconElement).not.toBeInTheDocument();
     expect(a11yTextElement).not.toBeInTheDocument();
   });

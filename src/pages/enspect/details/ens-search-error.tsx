@@ -50,7 +50,7 @@ export const EnsSearchError = ({
               borderColor="black"
             >
               <VStack padding={3}>
-                <Tooltip label={ensName.toUpperCase()}>
+                <Tooltip label={ensName}>
                   <Heading
                     as="h1"
                     padding={2}
