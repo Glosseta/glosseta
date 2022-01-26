@@ -35,12 +35,14 @@ const SearchBar = ({
     }
   };
 
-  const requestContainsValidTLD = (request : string) => {
-    return request.includes(".eth") || 
-          request.includes(".xyz") ||
-          request.includes(".luxe") ||
-          request.includes(".kred");
-  }
+  const requestContainsValidTLD = (request: string) => {
+    return (
+      request.includes(".eth") ||
+      request.includes(".xyz") ||
+      request.includes(".luxe") ||
+      request.includes(".kred")
+    );
+  };
 
   const onKeyDown = (event: any) => {
     if (event.key === "Enter" && searchTerm.trim().length != 0) {
@@ -63,7 +65,7 @@ const SearchBar = ({
 
   return (
     <>
-      <VStack>
+      <VStack title="enspect-search-bar">
         <HStack padding={2}>
           <form action="#" onSubmit={handleSubmit}>
             <fieldset>
@@ -75,7 +77,7 @@ const SearchBar = ({
                   className="InputLeft"
                   pointerEvents="none"
                   size="xs"
-                  title="search-bar-icon"
+                  title="enspect-bar-icon"
                 >
                   <SearchIcon
                     aria-label={t("searchIconAriaLabel")}
@@ -84,10 +86,10 @@ const SearchBar = ({
                   />
                 </InputLeftElement>
                 <Input
-                  title="search-bar-input"
+                  title="enspect-bar-input"
                   autoComplete={"off"}
                   variant="outline"
-                  aria-label={t("searchInputAriaLabel")}
+                  aria-label={t("enspectSearchInputAriaLabel")}
                   backgroundColor="white"
                   color="black"
                   rounded="lg"

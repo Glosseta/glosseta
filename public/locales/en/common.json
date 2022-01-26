@@ -26,6 +26,7 @@
 
     "ENSSearchLandingPageHeading" : "ENSpect",
     "ENSSearchLandingPageDescription" : "Search an ENS name to see their profile details",
+    "enspectSearchInputAriaLabel" : "Search an ENS name here",
     "whatIsEnsLink": "What's ENS?",
     "ethereumWalletAddress": "Ethereum Wallet Address",
     "copyEthereumAddress": "Copy Ethereum address",
