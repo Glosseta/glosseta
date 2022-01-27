@@ -91,6 +91,10 @@ export const getStaticProps: GetStaticProps = async ({
     etherscan: process.env.NEXT_PUBLIC_ETHERSCAN_API_KEY,
     infura: process.env.NEXT_PUBLIC_INFURA_API_KEY,
     alchemy: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
+    pocket: {
+      applicationId: process.env.NEXT_PUBLIC_POCKET_APP_ID,
+      applicationSecretKey: process.env.NEXT_PUBLIC_POCKET_SECRET_KEY
+    }
   });
 
   let ensName = params.id as string;;
@@ -144,14 +148,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: true,
   };
 };
-
-/**
- * TODO
- * 0. Fix error handling to properly handle the case of
- *    error=Error: invalid ENS address; missing component (argument="name", value="test.test.test.brantly.xyz.luxe.", code=INVALID_ARGUMENT, version=hash/5.5.0)
- * 1. consider adding email
- * 2. Fix search bar so it doesn't move up and down when there is a different amount of content on the page
- * 7/ unit tests
- */
 
 export default LookUpResult;

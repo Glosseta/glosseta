@@ -25,7 +25,7 @@
     "glossaryTermFetchErrorText" : "Something went wrong trying to retrieve the glossary terms.  Please refresh the page or try searching for an individual term.  If the issue persists please reach out to us on ",
 
     "ENSSearchLandingPageHeading" : "ENSpect",
-    "ENSSearchLandingPageDescription" : "Search an ENS name to see their profile details",
+    "ENSSearchLandingPageDescription" : "Search for an ENS name to see their profile",
     "enspectSearchInputAriaLabel" : "Search an ENS name here",
     "whatIsEnsLink": "What's ENS?",
     "ethereumWalletAddress": "Ethereum Wallet Address",
@@ -41,7 +41,7 @@
     "ensNameAvailableText": "This ENS name/subdomain may not be configured with an Ethereum address or may be available for purchase.  You can verify through searching ",
     "ens": "ENS",
     "ensLinkA11yText": "Click this link to search the ENS app for this names availability",
-    "ensFetchErrorText" : "Something went wrong while trying to retrieve information for this ENS name.  Please refresh the page or search for another name. If the problem persists please notify us via ",
+    "ensFetchErrorText" : "Something went wrong while trying to retrieve information for this ENS name.  Please check the formatting of the name to ensure you are using a currently supported top level domain (.eth, .xyz, .luxe, .kred).  You can also try refreshing the page or searching for another name. If the problem persists please notify us via ",
     "addressQRCodeToolTip" : "Scan this QRCode to copy the address associated to this account",
     "addressCopyToolTip" : "Copy wallet address",
     "ensCopyAddressToastMessage": "Address copied",

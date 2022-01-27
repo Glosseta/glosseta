@@ -40,7 +40,8 @@ const SearchBar = ({
       request.includes(".eth") ||
       request.includes(".xyz") ||
       request.includes(".luxe") ||
-      request.includes(".kred")
+      request.includes(".kred") ||
+      request.includes(".")
     );
   };
 
@@ -102,7 +103,7 @@ const SearchBar = ({
                   }}
                   type="search"
                   id="search"
-                  placeholder="Search for an ENS name i.e. glosseta.eth"
+                  placeholder="Search an ENS name i.e. parishilton.eth"
                   _placeholder={{
                     color: "gray.500",
                     fontSize: { base: "sm", sm: "md" },

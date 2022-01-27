@@ -156,7 +156,7 @@ const ProfileCard = ({
                 title="linkedin"
                 identifier={linkedin}
                 url={linkedInUrl}
-                icon={<FaLinkedin title="ens-twitter-icon" />}
+                icon={<FaLinkedin title="ens-linkedin-icon" />}
                 a11yText={t("ensLinkedin11yText")}
               />
               <LinkComponent
@@ -216,7 +216,11 @@ const ProfileCard = ({
                     </IconButton>
                   </Tooltip>
                   <Tooltip label={t("addressQRCodeToolTip")}>
-                    <Image title="qrcode-ethereum-address" src={qrcode} alt={t("ethereumAddressQRCode")} />
+                    <Image
+                      title="qrcode-ethereum-address"
+                      src={qrcode}
+                      alt={t("ethereumAddressQRCode")}
+                    />
                   </Tooltip>
                 </>
               )}
