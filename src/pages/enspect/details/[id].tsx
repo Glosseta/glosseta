@@ -50,6 +50,7 @@ const LookUpResult = ({
       <PageLayout>
         <chakra.main>
           <SimpleGrid
+            title="enspect-details-content"
             columns={1}
             spacing="80px"
             flex={1}
@@ -92,7 +93,7 @@ export const getStaticProps: GetStaticProps = async ({
     alchemy: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY,
   });
 
-  let ensName;
+  let ensName = params.id as string;;
   let accountAddress;
   let name;
   let description;
@@ -104,7 +105,6 @@ export const getStaticProps: GetStaticProps = async ({
   let isError = false;
 
   try {
-    ensName = params.id as string;
     accountAddress = await provider.resolveName(ensName);
 
     const resolver = await provider.getResolver(ensName);
