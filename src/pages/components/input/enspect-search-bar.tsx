@@ -103,7 +103,7 @@ const SearchBar = ({
                   }}
                   type="search"
                   id="search"
-                  placeholder="Search an ENS name i.e. parishilton.eth"
+                  placeholder="search here i.e. brantly.eth"
                   _placeholder={{
                     color: "gray.500",
                     fontSize: { base: "sm", sm: "md" },

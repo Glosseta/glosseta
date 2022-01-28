@@ -41,6 +41,7 @@
     "ensNameAvailableText": "This ENS name/subdomain may not be configured with an Ethereum address or may be available for purchase.  You can verify through searching ",
     "ens": "ENS",
     "ensLinkA11yText": "Click this link to search the ENS app for this names availability",
+    "ensBlockScanChatA11yText": "Click this link to goto blockscan chat to message with this account",
     "ensFetchErrorText" : "Something went wrong while trying to retrieve information for this ENS name.  Please check the formatting of the name to ensure you are using a currently supported top level domain (.eth, .xyz, .luxe, .kred).  You can also try refreshing the page or searching for another name. If the problem persists please notify us via ",
     "addressQRCodeToolTip" : "Scan this QRCode to copy the address associated to this account",
     "addressCopyToolTip" : "Copy wallet address",

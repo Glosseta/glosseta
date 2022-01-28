@@ -10,8 +10,6 @@ jest.spyOn(require("next/router"), "useRouter").mockImplementation(() => ({
   pathname: jest.fn(),
 }));
 
-//2. test different permutations of partial data load
-
 describe("ENS search result component suite", () => {
   it("It renders the ENS full profile", () => {
     const ensName = "abc.eth";
@@ -29,6 +27,7 @@ describe("ENS search result component suite", () => {
     const website = "glosseta.com";
     const websiteHref = `http://${website}`;
     const qrcode = "abc123";
+    const blockScanChatHref = `https://chat.blockscan.com/index?a=${accountAddress}`
 
     render(
       <ProfileCard
@@ -58,6 +57,7 @@ describe("ENS search result component suite", () => {
     const ethereumAddress = screen.getByText(accountAddress);
     const copyAddressButton = screen.getByTitle("copy-ethereum-address-button");
     const qrCodeImage = screen.getByTitle("qrcode-ethereum-address");
+    const blockScanChat = screen.getByTitle("blockScanChat");
 
     expect(container).toBeInTheDocument();
 
@@ -78,9 +78,6 @@ describe("ENS search result component suite", () => {
     expect(websiteLink).toBeInTheDocument();
     expect(websiteLink).toHaveAttribute("href", websiteHref);
 
-    expect(etherscanLink).toBeInTheDocument();
-    expect(etherscanLink).toHaveAttribute("href", etherscanHref);
-
     expect(openseaLink).toBeInTheDocument();
     expect(openseaLink).toHaveAttribute("href", openseaHref);
 
@@ -90,6 +87,10 @@ describe("ENS search result component suite", () => {
     expect(ethereumAddress).toBeInTheDocument();
     expect(copyAddressButton).toBeInTheDocument();
     expect(qrCodeImage).toBeInTheDocument();
+    expect(etherscanLink).toBeInTheDocument();
+    expect(etherscanLink).toHaveAttribute("href", etherscanHref);
+    expect(blockScanChat).toBeInTheDocument();
+    expect(blockScanChat).toHaveAttribute("href", blockScanChatHref);
   });
 
   it("Copies the ethereum address from the profile", () => {
@@ -161,6 +162,7 @@ describe("ENS search result component suite", () => {
     const nameData = screen.queryByTitle("ensNameLabel");
     const aboutData = screen.queryByTitle("ensAboutLabel");
     const ethereumAddress = screen.queryByTitle("ethereumWalletAddress");
+    const blockScanChat = screen.queryByTitle("blockScanChat");
     const copyAddressButton = screen.queryByTitle(
       "copy-ethereum-address-button"
     );
@@ -196,6 +198,7 @@ describe("ENS search result component suite", () => {
     expect(ethereumAddress).not.toBeInTheDocument();
     expect(copyAddressButton).not.toBeInTheDocument();
     expect(qrCodeImage).not.toBeInTheDocument();
+    expect(blockScanChat).not.toBeInTheDocument();
   });
 
   it("loads the profile card with partial profile metadata - github, twitter", () => {
@@ -212,6 +215,7 @@ describe("ENS search result component suite", () => {
     const linkedin = "NOT_SET";
     const website = "NOT_SET";
     const qrcode = "abc123";
+    const blockScanChatHref = `https://chat.blockscan.com/index?a=${accountAddress}`
 
     render(
       <ProfileCard
@@ -239,6 +243,7 @@ describe("ENS search result component suite", () => {
     const nameData = screen.queryByTitle("ensNameLabel");
     const aboutData = screen.queryByTitle("ensAboutLabel");
     const ethereumAddress = screen.getByTitle("ethereumWalletAddress");
+    const blockScanChat = screen.getByTitle("blockScanChat");
     const copyAddressButton = screen.getByTitle(
       "copy-ethereum-address-button"
     );
@@ -261,9 +266,6 @@ describe("ENS search result component suite", () => {
 
     expect(websiteLink).not.toBeInTheDocument();
 
-    expect(etherscanLink).toBeInTheDocument();
-    expect(etherscanLink).toHaveAttribute("href", etherscanHref);
-
     expect(openseaLink).toBeInTheDocument();
     expect(openseaLink).toHaveAttribute("href", openseaHref);
 
@@ -273,5 +275,9 @@ describe("ENS search result component suite", () => {
     expect(ethereumAddress).toBeInTheDocument();
     expect(copyAddressButton).toBeInTheDocument();
     expect(qrCodeImage).toBeInTheDocument();
+    expect(etherscanLink).toBeInTheDocument();
+    expect(etherscanLink).toHaveAttribute("href", etherscanHref);
+    expect(blockScanChat).toBeInTheDocument();
+    expect(blockScanChat).toHaveAttribute("href", blockScanChatHref);
   });
 });

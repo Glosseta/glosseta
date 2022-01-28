@@ -22,6 +22,7 @@ import {
   FaHome,
   FaEthereum,
   FaCopy,
+  FaComments,
 } from "react-icons/fa";
 import LinkComponent from "./link-component";
 import DataComponent from "./data-component";
@@ -102,6 +103,12 @@ const ProfileCard = ({
     identifier: ensName,
     urlPrefix: "https://app.ens.domains/search/",
   });
+
+  const blockScanChatUrl = createUrl({
+    identifier: accountAddress,
+    urlPrefix: "https://chat.blockscan.com/index?a=",
+  });
+
   const avatarLink = `https://metadata.ens.domains/mainnet/avatar/${ensName}?v=1.0`;
 
   return (
@@ -111,6 +118,7 @@ const ProfileCard = ({
       background="white"
       borderWidth="5px"
       borderColor="black"
+      display={"flex"}
     >
       <VStack>
         <>
@@ -167,20 +175,13 @@ const ProfileCard = ({
                 a11yText={t("ensPersonalWebsitebA11yText")}
               />
               <LinkComponent
-                title="etherscan"
-                identifier={accountAddress}
-                url={etherScanUrl}
-                icon={<FaEthereum title="ens-etherscan-icon" />}
-                a11yText={t("ensEtherscanA11yText")}
-              />
-              <LinkComponent
                 title="opensea"
                 identifier={accountAddress}
                 url={openseaUrl}
                 icon={
                   <Image
-                    height="24px"
-                    width="24px"
+                    height="20px"
+                    width="20px"
                     src="/opensea_logo.svg"
                     alt="Opensea"
                   />
@@ -222,6 +223,22 @@ const ProfileCard = ({
                       alt={t("ethereumAddressQRCode")}
                     />
                   </Tooltip>
+                  <HStack>
+                    <LinkComponent
+                      title="blockScanChat"
+                      identifier={accountAddress}
+                      url={blockScanChatUrl}
+                      icon={<FaComments title="ens-blockscan-chat-icon" />}
+                      a11yText={t("ensBlockScanChatA11yText")}
+                    />
+                    <LinkComponent
+                      title="etherscan"
+                      identifier={accountAddress}
+                      url={etherScanUrl}
+                      icon={<FaEthereum title="ens-etherscan-icon" />}
+                      a11yText={t("ensEtherscanA11yText")}
+                    />
+                  </HStack>
                 </>
               )}
               {accountAddress == NOT_SET && (
