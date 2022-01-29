@@ -36,7 +36,13 @@ const ENSpect = (): JSX.Element => {
               marginTop="-65px"
             >
               <VStack>
-                <Heading as="h1" padding={1} color="white" textAlign="center">
+                <Heading
+                  as="h1"
+                  padding={1}
+                  fontSize={"7xl"}
+                  color="white"
+                  textAlign="center"
+                >
                   {t("ENSSearchLandingPageHeading")}
                 </Heading>
                 <HStack spacing={3}>
