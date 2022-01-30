@@ -37,10 +37,10 @@ const SearchBar = ({
 
   const requestContainsValidTLD = (request: string) => {
     return (
-      request.includes(".eth") ||
-      request.includes(".xyz") ||
-      request.includes(".luxe") ||
-      request.includes(".kred") ||
+      /.eth$/.test(request) ||
+      /.xyz$/.test(request) ||
+      /.luxe$/.test(request) ||
+      /.kred$/.test(request) ||
       request.includes(".")
     );
   };
@@ -67,7 +67,7 @@ const SearchBar = ({
   return (
     <>
       <VStack title="enspect-search-bar">
-        <HStack padding={2}>
+        <HStack padding={2} marginTop={10}>
           <form action="#" onSubmit={handleSubmit}>
             <fieldset>
               <InputGroup

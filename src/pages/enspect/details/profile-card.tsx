@@ -118,7 +118,6 @@ const ProfileCard = ({
       background="white"
       borderWidth="5px"
       borderColor="black"
-      display={"flex"}
     >
       <VStack>
         <>

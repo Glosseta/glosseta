@@ -38,7 +38,7 @@
     "ensPersonalWebsitebA11yText": "Opens personal website in a new window",
     "ensEtherscanA11yText": "Opens Etherscan explorer in a new window",
     "ensOpenseaA11yText": "Open Opensea in a new window",
-    "ensNameAvailableText": "This ENS name/subdomain may not be configured with an Ethereum address or may be available for purchase.  You can verify through searching ",
+    "ensNameAvailableText": "This ENS name/subdomain may not be configured with an Ethereum address, may not be valid or may be available for sale.  You can verify through searching ",
     "ens": "ENS",
     "ensLinkA11yText": "Click this link to search the ENS app for this names availability",
     "ensBlockScanChatA11yText": "Click this link to goto blockscan chat to message with this account",

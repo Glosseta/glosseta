@@ -33,11 +33,10 @@ const FallBack = (): JSX.Element => {
           >
             <Container
               title="glosseta-enspect-search-fallback-page"
-              marginTop="-65px"
             >
               <Box padding="6" boxShadow="lg" bg="white">
                 <SkeletonCircle size="15" />
-                <SkeletonText mt="4" noOfLines={20} spacing="4" />
+                <SkeletonText mt="4" noOfLines={12} spacing="4" />
               </Box>
             </Container>
           </SimpleGrid>
