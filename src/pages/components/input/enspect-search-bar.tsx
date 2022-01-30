@@ -67,7 +67,7 @@ const SearchBar = ({
   return (
     <>
       <VStack title="enspect-search-bar">
-        <HStack padding={2} marginTop={10}>
+        <HStack padding={2}>
           <form action="#" onSubmit={handleSubmit}>
             <fieldset>
               <InputGroup
@@ -103,7 +103,7 @@ const SearchBar = ({
                   }}
                   type="search"
                   id="search"
-                  placeholder="search here i.e. brantly.eth"
+                  placeholder="Search here i.e. brantly.eth"
                   _placeholder={{
                     color: "gray.500",
                     fontSize: { base: "sm", sm: "md" },

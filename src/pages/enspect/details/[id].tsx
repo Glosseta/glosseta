@@ -58,6 +58,7 @@ const LookUpResult = ({
             flexDirection="column"
             display="flex"
             alignItems="center"
+            marginTop={10}
           >
             <SearchBar
               baseWidth={"80vw"}

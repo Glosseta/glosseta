@@ -192,10 +192,13 @@ const ProfileCard = ({
             <Divider orientation="horizontal" />
 
             <VStack textAlign={"center"}>
-              <DataComponent label={t("ensNameLabel")} data={name} />
-              <DataComponent label={t("ensAboutLabel")} data={description} />
               {accountAddress != NOT_SET && (
                 <>
+                  <DataComponent label={t("ensNameLabel")} data={name} />
+                  <DataComponent
+                    label={t("ensAboutLabel")}
+                    data={description}
+                  />
                   <DataComponent
                     label={t("ethereumWalletAddress")}
                     data={accountAddress}
