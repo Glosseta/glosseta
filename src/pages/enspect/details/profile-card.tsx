@@ -13,6 +13,8 @@ import {
   Tooltip,
   Text,
   Link,
+  Stat,
+  StatLabel,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
@@ -192,13 +194,10 @@ const ProfileCard = ({
             <Divider orientation="horizontal" />
 
             <VStack textAlign={"center"}>
+              <DataComponent label={t("ensNameLabel")} data={name} />
+              <DataComponent label={t("ensAboutLabel")} data={description} />
               {accountAddress != NOT_SET && (
                 <>
-                  <DataComponent label={t("ensNameLabel")} data={name} />
-                  <DataComponent
-                    label={t("ensAboutLabel")}
-                    data={description}
-                  />
                   <DataComponent
                     label={t("ethereumWalletAddress")}
                     data={accountAddress}
@@ -246,19 +245,29 @@ const ProfileCard = ({
               {accountAddress == NOT_SET && (
                 <>
                   <VStack>
-                    <Text
-                      padding={2}
-                      textAlign={"left"}
-                      color="black"
-                      fontSize={{ base: "sm", sm: "md" }}
-                    >
-                      {t("ensNameAvailableText")}
-                      <Link href={ensSearchUrl} color="blue" isExternal>
-                        {t("ens")}
-                        <VisuallyHidden>{t("ensLinkA11yText")}</VisuallyHidden>
-                        <ExternalLinkIcon mx="2px" />
-                      </Link>
-                    </Text>
+                    <Stat title={"trouble"}>
+                      <StatLabel
+                        fontSize={{ base: "md", sm: "xl" }}
+                        fontWeight={"bold"}
+                      >
+                        {t("ethereumWalletAddress")}
+                      </StatLabel>
+                      <Text
+                        padding={2}
+                        textAlign={"left"}
+                        color="black"
+                        fontSize={{ base: "sm", sm: "md" }}
+                      >
+                        {t("ensNameAvailableText")}
+                        <Link href={ensSearchUrl} color="blue" isExternal>
+                          {t("ens")}
+                          <VisuallyHidden>
+                            {t("ensLinkA11yText")}
+                          </VisuallyHidden>
+                          <ExternalLinkIcon mx="2px" />
+                        </Link>
+                      </Text>
+                    </Stat>
                   </VStack>
                 </>
               )}
