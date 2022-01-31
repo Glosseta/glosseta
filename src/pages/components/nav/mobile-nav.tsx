@@ -10,11 +10,7 @@ import {
 import { AiOutlineMenu } from "react-icons/ai";
 import NavItems from "./nav-items";
 
-export default function MobileNav({
-  isHomePage,
-  isGlossaryPage,
-  isSearchPage,
-}: any) {
+export default function MobileNav() {
   const bg = useColorModeValue("gray.800", "gray.800");
   const { onClose, onOpen, isOpen } = useDisclosure();
 
@@ -47,13 +43,14 @@ export default function MobileNav({
         shadow="sm"
         zIndex="99"
       >
-        <CloseButton aria-label="Close menu" onClick={onClose} color="white" title="mobile-nav-close-button"/>
-
-        <NavItems
-          isHomePage={isHomePage}
-          isGlossaryPage={isGlossaryPage}
-          isSearchPage={isSearchPage}
+        <CloseButton
+          aria-label="Close menu"
+          onClick={onClose}
+          color="white"
+          title="mobile-nav-close-button"
         />
+
+        <NavItems />
       </VStack>
     </Box>
   );

@@ -11,7 +11,7 @@ import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
 import { Result } from "./result";
 import { UnavailableResult } from "./unavailable-result";
 import PageLayout from "../components/layout/page";
-import SearchBar from "./search-bar";
+import SearchBar from "../components/input/search-bar";
 import ApiError from "./api-error";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { termFilter } from "../../filter/termConfig";
