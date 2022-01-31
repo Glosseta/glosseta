@@ -139,7 +139,7 @@ export const getStaticProps: GetStaticProps = async ({
       isError: isError,
       ...(await serverSideTranslations(locale, ["common"])),
     },
-    revalidate: 60, // In seconds
+    revalidate: 1200, // In seconds
   };
 };
 
