@@ -245,12 +245,12 @@ const ProfileCard = ({
               {accountAddress == NOT_SET && (
                 <>
                   <VStack>
-                    <Stat title={"trouble"}>
+                    <Stat title={"account-address-missing"}>
                       <StatLabel
                         fontSize={{ base: "md", sm: "xl" }}
                         fontWeight={"bold"}
                       >
-                        {t("ethereumWalletAddress")}
+                        {t("ensAccountAddressMissingHeaderText")}
                       </StatLabel>
                       <Text
                         padding={2}
