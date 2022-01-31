@@ -72,7 +72,6 @@ const SearchBar = ({
             <fieldset>
               <InputGroup
                 aria-label={t("searchInputGroupAriaLabel")}
-                role={"combobox"}
               >
                 <InputLeftElement
                   className="InputLeft"
