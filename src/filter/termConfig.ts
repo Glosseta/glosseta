@@ -51,5 +51,6 @@ export const termFilter = [
     "amm",
     "peer",
     "proof of work",
-    "beacon chain"
+    "beacon chain",
+    "proof of stake"
 ];
