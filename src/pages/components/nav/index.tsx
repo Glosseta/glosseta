@@ -13,11 +13,6 @@ import { useRouter } from "next/router";
  *  */
 export default function Nav() {
   const { t } = useTranslation();
-  const router = useRouter();
-
-  const isHomePage = router.pathname === "/";
-  const isGlossaryPage = router.pathname === "/glossary";
-  const isSearchPage = router.pathname === "/search";
 
   return (
     <chakra.nav
@@ -65,18 +60,10 @@ export default function Nav() {
             spacing={{ base: 3, sm: 10 }}
             display={{ base: "none", md: "inline-flex" }}
           >
-            <NavItems
-              isHomePage={isHomePage}
-              isGlossaryPage={isGlossaryPage}
-              isSearchPage={isSearchPage}
-            />
+            <NavItems />
           </HStack>
 
-          <MobileNav
-            isHomePage={isHomePage}
-            isGlossaryPage={isGlossaryPage}
-            isSearchPage={isSearchPage}
-          />
+          <MobileNav />
         </HStack>
       </Flex>
     </chakra.nav>
