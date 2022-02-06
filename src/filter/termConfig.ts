@@ -52,5 +52,7 @@ export const termFilter = [
     "peer",
     "proof of work",
     "beacon chain",
-    "proof of stake"
+    "proof of stake",
+    "public key",
+    "private key"
 ];
