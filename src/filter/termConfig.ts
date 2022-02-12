@@ -54,5 +54,10 @@ export const termFilter = [
     "beacon chain",
     "proof of stake",
     "public key",
-    "private key"
+    "private key",
+    "sidechain",
+    "layer 1",
+    "layer 2",
+    "blockchain trilema",
+    "block"
 ];
