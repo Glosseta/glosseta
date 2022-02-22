@@ -59,5 +59,7 @@ export const termFilter = [
     "layer 1",
     "layer 2",
     "blockchain trilema",
-    "block"
+    "block",
+    "solana",
+    "proof of history"
 ];
