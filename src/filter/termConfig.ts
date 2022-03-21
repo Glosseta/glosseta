@@ -61,5 +61,7 @@ export const termFilter = [
     "blockchain trilema",
     "block",
     "solana",
-    "proof of history"
+    "proof of history",
+    "centralized",
+    "sharding"
 ];
