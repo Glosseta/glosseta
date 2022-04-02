@@ -58,7 +58,7 @@ const styles: PageStyles = {
   }
 
 }
-const RequestDefinition = (): JSX.Element => {
+const RequestTerm = (): JSX.Element => {
   const { t } = useTranslation()
   return (
     <>
@@ -121,4 +121,4 @@ export async function getStaticProps({ locale }: any) {
   };
 }
 
-export default RequestDefinition;
+export default RequestTerm;
