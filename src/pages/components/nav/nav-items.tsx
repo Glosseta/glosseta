@@ -26,6 +26,13 @@ export default function NavItems() {
           {t("glossaryButton")}
         </Button>
       </Link>
+
+      <Link href="/request-term" passHref>
+        <Button color="white" variant="ghost" title="nav-request-term-button">
+          {t("requestTermButton")}
+        </Button>
+      </Link>
+
       <Link href="/enspect" passHref>
         <Button color="white" variant="ghost" title="nav-enspect-button">
           {t("enspectButtonTitle")}
