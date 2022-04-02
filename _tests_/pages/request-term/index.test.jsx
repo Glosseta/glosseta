@@ -1,16 +1,14 @@
 import React from "react";
 import {render, screen} from "@testing-library/react";
 
-import RequestDefinitions from "../../../src/pages/request-term";
-// mock serverSideTranslations
+import RequestTerm from "../../../src/pages/request-term";
 
 jest.mock("next-i18next/serverSideTranslations");
 
-// build unit tests beyond here:
-describe("Renders RequestDefinitions page", () => {
-  it("Renders Renders RequestDefinitions page Component with content", () => {
-    render(<RequestDefinitions/>)
-    const RequestDefinitionsTitle = screen.getByTitle("request-a-term")
-    expect(RequestDefinitionsTitle).toBeInTheDocument()
+describe("Renders RequestTerm page", () => {
+  it("Renders Renders RequestTerm page Component with content", () => {
+    render(<RequestTerm/>)
+    const RequestATermTitle = screen.getByTitle("request-a-term")
+    expect(RequestATermTitle).toBeInTheDocument()
   })
 })
