@@ -100,12 +100,12 @@ const RequestTerm = (): JSX.Element => {
                       width={{ base: "300px", md: "526px", lg: "600px" }}
                       marginTop="1"
                       marginBottom={{ base: 8, md: 6, lg: 4 }}>
-                      <option value="general">General</option>
-                      <option value="protocol">Protocol</option>
-                      <option value="dao">DAO</option>
-                      <option value="Token">Token</option>
-                      <option value="application">Application</option>
-                      <option value="finance">Finance</option>
+                      <option value="general">{t("generalOption")}</option>
+                      <option value="protocol">{t("protocolOption")}</option>
+                      <option value="dao">{t("DAOoption")}</option>
+                      <option value="Token">{t("tokenOption")}</option>
+                      <option value="application">{t("applicationOption")}</option>
+                      <option value="finance">{t("financeOption")}</option>
                     </Select>
                     <FormLabel
                       style={{ color: "#FFFDFD" }}
