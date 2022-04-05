@@ -59,6 +59,13 @@
     "termLabel": "Term",
     "termCategoryLabel": "Category",
     "termAdditionReasonLabel": "Why should this term be added?",
-    "submitBtnText": "Submit"
+    "submitBtnText": "Submit",
+    "generalOption": "General",
+    "protocolOption": "Protocol",
+    "DAOoption": "Dao",
+    "tokenOption": "Token",
+    "applicationOption": "Application",
+    "financeOption": "Finance"
+
 
 }
