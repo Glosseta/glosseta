@@ -17,14 +17,36 @@ import {
 } from "@chakra-ui/react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { ChangeEvent, useState } from "react";
 
 const RequestTerm = (): JSX.Element => {
+
   const { t } = useTranslation()
+  type FormEntries = {
+    term: string,
+    category: string,
+    reason: string
+  }
+  const [formEntries, setFormEntries] = useState<FormEntries>({ term: '', category: '', reason: '' })
+  type Event = ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+
+  const handlechange = (event: Event) => {
+    setFormEntries({
+      ...formEntries,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    console.log(formEntries)
+  }
+
   return (
     <>
       <PageLayout>
         <chakra.main>
-
           <Container centerContent>
             <Box
               as="div"
@@ -60,7 +82,7 @@ const RequestTerm = (): JSX.Element => {
               paddingLeft={{ base: 10 }}
               paddingRight={{ base: 10 }}>
               <Center>
-                <form>
+                <form onSubmit={handleSubmit}>
                   <Flex
                     direction="column"
                     justifyContent="center"
@@ -73,6 +95,10 @@ const RequestTerm = (): JSX.Element => {
                       {t("termLabel")}
                     </FormLabel>
                     <Input
+                      errorBorderColor="red.300"
+                      value={formEntries.term}
+                      onChange={handlechange}
+                      name="term"
                       data-testid="term-input"
                       border="1px solid #000000"
                       boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
@@ -81,7 +107,7 @@ const RequestTerm = (): JSX.Element => {
                       borderRadius="3px"
                       height="37px"
                       width={{ base: "300px", md: "526px", lg: "600px" }}
-                      marginTop={{base: 1}}
+                      marginTop={{ base: 1 }}
                       marginBottom={{ base: 8, md: 6, lg: 4 }} />
                     <FormLabel
                       color="#FFFDFD"
@@ -90,6 +116,9 @@ const RequestTerm = (): JSX.Element => {
                       {t("termCategoryLabel")}
                     </FormLabel>
                     <Select
+                      value={formEntries.category}
+                      onChange={handlechange}
+                      name="category"
                       data-testid="term-category-select"
                       boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
                       id="Category"
@@ -114,6 +143,9 @@ const RequestTerm = (): JSX.Element => {
                       {t("termAdditionReasonLabel")}
                     </FormLabel>
                     <Textarea
+                      value={formEntries.reason}
+                      onChange={handlechange}
+                      name="reason"
                       data-testid="term-reason"
                       boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
                       id="Reason"
@@ -126,6 +158,7 @@ const RequestTerm = (): JSX.Element => {
                     />
                     <Container centerContent marginTop="3">
                       <Button
+                        type="submit"
                         data-testid="submit-button"
                         background="#373636"
                         color="#FFFEFE"
