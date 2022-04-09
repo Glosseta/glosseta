@@ -50,5 +50,18 @@ export const termFilter = [
     "cold wallet",
     "amm",
     "peer",
-    "proof of work"
+    "proof of work",
+    "beacon chain",
+    "proof of stake",
+    "public key",
+    "private key",
+    "sidechain",
+    "layer 1",
+    "layer 2",
+    "blockchain trilema",
+    "block",
+    "solana",
+    "proof of history",
+    "centralized",
+    "sharding"
 ];

@@ -1,5 +1,6 @@
 # Glosseta (🔎, 🧠)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -72,6 +73,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://www.narbeh.xyz/"><img src="https://avatars.githubusercontent.com/u/29411347?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Narb</b></sub></a><br /><a href="#infra-narbs91" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Tests">⚠️</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Code">💻</a> <a href="#data-narbs91" title="Data">🔣</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/shakeib98/"><img src="https://avatars.githubusercontent.com/u/28858011?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shakeib Shaida</b></sub></a><br /><a href="#data-shakeib98" title="Data">🔣</a></td>
     <td align="center"><a href="https://naftalimurgor.netlify.app"><img src="https://avatars.githubusercontent.com/u/37052032?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Murgor</b></sub></a><br /><a href="#data-naftalimurgor" title="Data">🔣</a> <a href="https://github.com/narbs91/glosseta/commits?author=naftalimurgor" title="Code">💻</a></td>
+    <td align="center"><a href="https://cosisaxis.co/"><img src="https://avatars.githubusercontent.com/u/72054802?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cosi</b></sub></a><br /><a href="https://github.com/narbs91/glosseta/commits?author=cosisaxis" title="Code">💻</a> <a href="#data-cosisaxis" title="Data">🔣</a></td>
   </tr>
 </table>
 

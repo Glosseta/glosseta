@@ -36,6 +36,16 @@
         "data",
         "code"
       ]
+    },
+    {
+      "login": "cosisaxis",
+      "name": "Cosi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/72054802?v=4",
+      "profile": "https://cosisaxis.co/",
+      "contributions": [
+        "code",
+        "data"
+      ]
     }
   ],
   "contributorsPerLine": 7,
