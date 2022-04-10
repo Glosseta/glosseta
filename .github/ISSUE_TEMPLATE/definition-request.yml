@@ -1,7 +1,7 @@
 name: 'Definition intake request'
 description: 'File a Definition intake request'
 title: '[Definition Request]: '
-labels: ['definition']
+labels: ['definition', 'research needed', 'good first issue']
 body:
   - type: markdown
     attributes:

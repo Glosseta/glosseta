@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { apolloClient } from './apollo-client';
+import { arweaveApolloClient } from '../apollo/apollo-client';
 
 export const fetchTransactionsByTag = async (tag: string, locale: string) => {
     let tags = [
@@ -26,7 +26,7 @@ export const fetchTransactionsByTag = async (tag: string, locale: string) => {
     `;
 
     try {
-        const { data } = await apolloClient.query({
+        const { data } = await arweaveApolloClient.query({
             query: FIND_BY_TAG_QUERY,
             variables: {
                 "tags": tags
