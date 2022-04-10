@@ -1,6 +1,7 @@
 export const ARWEAVE_ENDPOINT = "https://arweave.net/";
 export const ARWEAVE_GRAPHQL = "https://arweave.net/graphql";
 export const VIEWBLOCK_URL = "https://viewblock.io/arweave/tx"
+export const GITHUB_ENDPOINT = "https://api.github.com/graphql"
 
 export const TERM_TAG = "term" as String;
 export const DESCRIPTION_TAG = "description" as String;
