@@ -72,7 +72,7 @@ const createIssue = async (repoId: string, title: string, body: string, issueTem
 
 export const createDefinitionIntakeIssue = async (request: termRequest) => {
     const title = `[Definition Request]: ${request.term}`;
-    const body = `<div><h2>Context</h2><div><p>${request.context}}</p></div><h2>Term</h2><div><p>${request.term}</p></div><h2>Definition</h2><div><p>${request.definition}</p></div><h2>Category</h2><div><p>${request.category}</p></div><div>`;
+    const body = `<h2>Context</h2><div><p>${request.context}}</p></div><h2>Term</h2><div><p>${request.term}</p></div><h2>Definition</h2><div><p>${request.definition}</p></div><h2>Category</h2><div><p>${request.category}</p></div>`;
 
     const repoId = await fetchRepoInfo() as any;
     const { response } = repoId.props
