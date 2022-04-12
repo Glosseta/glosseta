@@ -60,5 +60,7 @@
 
     "footerTwitterA11yText" : "Opens the Glosseta Twitter page in a new window",
     "footerGitHubA11yText" : "Opens the GitHub project repo in a new window",
-    "footerArweaveA11yText" : "Opens Arweave.org in a new window"
+    "footerArweaveA11yText" : "Opens Arweave.org in a new window",
+
+    "wordOfTheDay" : "Word of the day"
 }
