@@ -14,13 +14,14 @@ import SearchBar from "./components/input/search-bar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { termFilter } from "../filter/termConfig";
+import DailyWord from "./components/daily-word/daily-word";
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
 
   return (
     <PageLayout>
-      <Container maxW={{ base: "sm", sm: "xl" }} marginTop="-65px">
+      <Container maxW={{ base: "sm", sm: "xl" }} marginTop="-200px">
         <VStack spacing={5}>
           <Image
             title="glosseta-logo"
@@ -34,9 +35,12 @@ const Home: NextPage = () => {
         <Container
           title="glosseta-landing-page"
           maxW={{ base: "sm", sm: "xl" }}
-          marginTop="-65px"
+          marginTop="-100px"
         >
           <VStack>
+            <HStack marginBottom="60px">
+              <DailyWord words={termFilter}/>
+            </HStack>
             <Heading as="h1" padding={1} color="white" textAlign="center">
               {t("web3GlossaryHeading")}
             </Heading>
