@@ -1,6 +1,6 @@
 import React from 'react';
 import {render, screen} from '@testing-library/react';
-import DailyWord from '../../../src/pages/components/daily-word/daily-word';
+import DailyWord from '../../../src/components/daily-word/daily-word';
 
 jest.mock("react-i18next", () => ({
     useTranslation: () => ({ t: (key) => key }),

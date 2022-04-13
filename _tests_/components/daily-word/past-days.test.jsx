@@ -1,4 +1,4 @@
-import pastDays from '../../../src/pages/components/daily-word/past-days';
+import pastDays from '../../../src/components/daily-word/past-days';
 
 it("it returns past days of 1970", () => {
     const singleDay = 24 * 60 * 60 * 1000;
