@@ -64,5 +64,6 @@ export const termFilter = [
     "proof of history",
     "centralized",
     "sharding",
-    "airdrops"
+    "airdrops",
+    "bearish"
 ];
