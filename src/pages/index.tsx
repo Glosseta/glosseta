@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
   return (
     <PageLayout>
-      <Container maxW={{ base: "sm", sm: "xl" }} marginTop="-200px">
+      <Container maxW={{ base: "sm", sm: "xl" }} marginTop="-65px">
         <VStack spacing={5}>
           <Image
             title="glosseta-logo"
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         <Container
           title="glosseta-landing-page"
           maxW={{ base: "sm", sm: "xl" }}
-          marginTop="-100px"
+          marginTop="-65px"
         >
           <VStack>
             <HStack marginBottom="60px">
