@@ -41,9 +41,6 @@ const Home: NextPage = () => {
             <HStack marginBottom="60px">
               <DailyWord words={termFilter}/>
             </HStack>
-            <Heading as="h1" padding={1} color="white" textAlign="center">
-              {t("web3GlossaryHeading")}
-            </Heading>
             <HStack spacing={3}>
               <SearchBar
                 baseWidth={"80vw"}

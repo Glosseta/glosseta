@@ -15,7 +15,6 @@ describe("Glosseta Landing Page", () => {
     render(<Home />);
 
     const glossetaContainer = screen.getByTitle("glosseta-landing-page");
-    const glossetaHeading = screen.getByText("web3GlossaryHeading");
     const glossetaDescription = screen.getByText("glossetaDescription");
     const logo = screen.getByTitle("glosseta-logo");
 
@@ -23,8 +22,6 @@ describe("Glosseta Landing Page", () => {
 
     expect(logo).toHaveAttribute("src", "/glosseta.png");
     expect(logo).toHaveAttribute("alt", "Glosseta logo");
-
-    expect(glossetaHeading).toBeInTheDocument();
 
     expect(glossetaDescription).toBeInTheDocument();
   });
