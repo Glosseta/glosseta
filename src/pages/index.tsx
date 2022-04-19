@@ -14,6 +14,7 @@ import SearchBar from "./components/input/search-bar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { termFilter } from "../filter/termConfig";
+import DailyWord from "../components/daily-word/daily-word";
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
@@ -37,9 +38,9 @@ const Home: NextPage = () => {
           marginTop="-65px"
         >
           <VStack>
-            <Heading as="h1" padding={1} color="white" textAlign="center">
-              {t("web3GlossaryHeading")}
-            </Heading>
+            <HStack marginBottom="60px">
+              <DailyWord words={termFilter}/>
+            </HStack>
             <HStack spacing={3}>
               <SearchBar
                 baseWidth={"80vw"}
