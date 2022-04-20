@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import ScrollToTopButton from "../../../src/pages/glossary/scroll-to-top-button";
+import ScrollToTopButton from "../../../src/components/glossary/scroll-to-top-button";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),

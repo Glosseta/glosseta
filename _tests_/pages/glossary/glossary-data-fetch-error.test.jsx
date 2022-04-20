@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import GlossaryDataFetchError from "../../../src/pages/glossary/glossary-data-fetch-error";
+import GlossaryDataFetchError from "../../../src/components/glossary/glossary-data-fetch-error";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),
