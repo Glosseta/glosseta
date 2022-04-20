@@ -8,7 +8,7 @@ import {
   VStack,
   Container,
 } from "@chakra-ui/react";
-import { ResultBox } from "../search/result-box";
+import { ResultBox } from "../../components/search/result-box";
 import { NewTermRequest } from "../../components/glossary/new-term-request";
 import { ScrollToTopButton } from "../../components/glossary/scroll-to-top-button";
 import { useTranslation } from "react-i18next";

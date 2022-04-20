@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import ContentSourceBox from "../../../src/pages/search/content-source-box";
+import ContentSourceBox from "../../../src/components/search/content-source-box";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),
