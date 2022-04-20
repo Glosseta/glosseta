@@ -1,4 +1,4 @@
-import PageLayout from "../components/layout/page";
+import PageLayout from "../../components/layout/page";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getTermList from "../../utils/termListUtil";
 import {

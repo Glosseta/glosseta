@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Footer from "../../../src/pages/components/footer/footer";
+import Footer from "../../../src/components/footer/footer";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),

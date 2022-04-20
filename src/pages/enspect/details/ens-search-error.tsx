@@ -9,8 +9,8 @@ import {
   SimpleGrid,
   Tooltip,
 } from "@chakra-ui/react";
-import SearchBar from "../../components/input/enspect-search-bar";
-import PageLayout from "../../components/layout/page";
+import SearchBar from "../../../components/input/enspect-search-bar";
+import PageLayout from "../../../components/layout/page";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { useTranslation } from "next-i18next";
 

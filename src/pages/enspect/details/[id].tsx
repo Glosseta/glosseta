@@ -1,8 +1,8 @@
-import PageLayout from "../../components/layout/page";
+import PageLayout from "../../../components/layout/page";
 import { SimpleGrid, chakra } from "@chakra-ui/react";
 import FallBack from "./fallback";
 import ProfileCard from "./profile-card";
-import SearchBar from "../../components/input/enspect-search-bar";
+import SearchBar from "../../../components/input/enspect-search-bar";
 import EnsSearchError from "./ens-search-error";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps, GetStaticPaths } from "next";

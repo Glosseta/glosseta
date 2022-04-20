@@ -1,6 +1,6 @@
 import { HStack, Link, Image, chakra, VStack } from "@chakra-ui/react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
-import styles from "../../../../styles/Home.module.css";
+import styles from "../../../styles/Home.module.css";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { useTranslation } from "next-i18next";
 

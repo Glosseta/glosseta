@@ -9,8 +9,8 @@ import {
   Box,
   Container,
 } from "@chakra-ui/react";
-import PageLayout from "./components/layout/page";
-import SearchBar from "./components/input/search-bar";
+import PageLayout from "../components/layout/page";
+import SearchBar from "../components/input/search-bar";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { termFilter } from "../filter/termConfig";
