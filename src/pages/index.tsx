@@ -76,6 +76,7 @@ export async function getStaticProps({ locale }: any) {
       ...(await serverSideTranslations(locale, ["common"])),
       // Will be passed to the page component as props
     },
+    revalidate: 1200, // In seconds
   };
 }
 
