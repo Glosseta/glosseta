@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import EnsSearchError from "../../../../src/pages/enspect/details/ens-search-error";
+import EnsSearchError from "../../../../src/components/details/ens-search-error";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),

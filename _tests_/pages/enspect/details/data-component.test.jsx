@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import DataComponent from "../../../../src/pages/enspect/details/data-component";
+import DataComponent from "../../../../src/components/details/data-component";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),
