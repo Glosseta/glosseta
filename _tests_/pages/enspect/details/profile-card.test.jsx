@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import ProfileCard from "../../../../src/pages/enspect/details/profile-card";
+import ProfileCard from "../../../../src/components/details/profile-card";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),

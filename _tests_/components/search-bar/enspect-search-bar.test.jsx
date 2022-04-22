@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, createEvent } from "@testing-library/react";
-import SearchBar from "../../../src/pages/components/input/enspect-search-bar";
+import SearchBar from "../../../src/components/input/enspect-search-bar";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),

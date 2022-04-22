@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NewTermRequest from "../../../src/pages/glossary/new-term-request";
+import NewTermRequest from "../../../src/components/glossary/new-term-request";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),

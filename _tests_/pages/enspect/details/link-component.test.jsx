@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import LinkComponent from "../../../../src/pages/enspect/details/link-component";
+import LinkComponent from "../../../../src/components/details/link-component";
 import { FaTwitter } from "react-icons/fa";
 
 jest.mock("react-i18next", () => ({

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import FallBack from "../../../../src/pages/enspect/details/fallback";
+import FallBack from "../../../../src/components/details/fallback";
 
 Object.defineProperty(window, 'matchMedia', {
     writable: true,

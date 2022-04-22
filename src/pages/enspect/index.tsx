@@ -1,4 +1,4 @@
-import PageLayout from "../components/layout/page";
+import PageLayout from "../../components/layout/page";
 import {
   SimpleGrid,
   chakra,
@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-import SearchBar from "../components/input/enspect-search-bar";
+import SearchBar from "../../components/input/enspect-search-bar";
 
 const ENSpect = (): JSX.Element => {
   const { t } = useTranslation();

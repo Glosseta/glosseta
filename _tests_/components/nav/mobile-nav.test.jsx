@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import MobileNav from "../../../src/pages/components/nav/mobile-nav";
+import MobileNav from "../../../src/components/nav/mobile-nav";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),

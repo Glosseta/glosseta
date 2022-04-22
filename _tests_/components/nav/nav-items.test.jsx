@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NavItems from "../../../src/pages/components/nav/nav-items";
+import NavItems from "../../../src/components/nav/nav-items";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),

@@ -8,11 +8,11 @@ import {
 import { SimpleGrid, chakra } from "@chakra-ui/react";
 import { tag } from "../../types/arweave";
 import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
-import { Result } from "./result";
-import { UnavailableResult } from "./unavailable-result";
-import PageLayout from "../components/layout/page";
-import SearchBar from "../components/input/search-bar";
-import ApiError from "./api-error";
+import { Result } from "../../components/search/result";
+import { UnavailableResult } from "../../components/search/unavailable-result";
+import PageLayout from "../../components/layout/page";
+import SearchBar from "../../components/input/search-bar";
+import ApiError from "../../components/search/api-error";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { termFilter } from "../../filter/termConfig";
 

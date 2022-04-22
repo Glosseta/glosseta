@@ -1,4 +1,4 @@
-import PageLayout from "../components/layout/page";
+import PageLayout from "../../components/layout/page";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import getTermList from "../../utils/termListUtil";
 import {
@@ -8,11 +8,11 @@ import {
   VStack,
   Container,
 } from "@chakra-ui/react";
-import { ResultBox } from "../search/result-box";
-import { NewTermRequest } from "./new-term-request";
-import { ScrollToTopButton } from "./scroll-to-top-button";
+import { ResultBox } from "../../components/search/result-box";
+import { NewTermRequest } from "../../components/glossary/new-term-request";
+import { ScrollToTopButton } from "../../components/glossary/scroll-to-top-button";
 import { useTranslation } from "react-i18next";
-import { GlossaryDataFetchError } from "./glossary-data-fetch-error";
+import { GlossaryDataFetchError } from "../../components/glossary/glossary-data-fetch-error";
 
 const AllTerms = ({ terms }: any): JSX.Element => {
   const { t } = useTranslation();
