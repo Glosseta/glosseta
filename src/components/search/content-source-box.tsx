@@ -1,4 +1,4 @@
-import { Heading, Box, Text, Link, VStack } from "@chakra-ui/react";
+import { Heading, Box, Text, Link, VStack, Image } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { VIEWBLOCK_URL } from "../../utils/glosseta-constants";
 import styles from "../../../styles/Home.module.css";
@@ -40,6 +40,10 @@ export const ContentSourceBox = ({ transactionId }: any): JSX.Element => {
               </span>
             </Link>
           </Text>
+          <Image
+            src="./arweave_seal_mobile_light.svg"
+            alt="Permanent on Arweave"
+          />
         </VStack>
       </Box>
     </>
