@@ -13,6 +13,7 @@ describe("Footer", () => {
     const github = screen.getByTitle("github");
     const githubA11yText = screen.getByTitle("footer-github-a11y-text");
     const githubIcon = screen.getByTitle('footer-github-icon');
+    const copyright = screen.getByTitle('copyright-text');
 
     const arweave = screen.getByTitle("arweave");
     const arweaveA11yText = screen.getByTitle("footer-arweave-a11y-text");
@@ -33,5 +34,8 @@ describe("Footer", () => {
     expect(twitter).toBeInTheDocument();
     expect(twitterA11yText).toHaveTextContent('footerTwitterA11yText');
     expect(twitterIcon).toBeInTheDocument();
+
+    expect(copyright).toBeInTheDocument();
+    expect(copyright).toHaveTextContent('copyright');
   });
 });

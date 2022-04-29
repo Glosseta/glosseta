@@ -1,4 +1,4 @@
-import { HStack, Link, Image, chakra, VStack } from "@chakra-ui/react";
+import { HStack, Link, Image, chakra, VStack, Text } from "@chakra-ui/react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import styles from "../../../styles/Home.module.css";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
@@ -67,6 +67,7 @@ const Footer = (): JSX.Element => {
               <ExternalLinkIcon mx="2px" />
             </Link>
           </HStack>
+          <Text title="copyright-text" fontSize={{ base: "xs", sm: "sm" }}>{t("copyright")}</Text>
         </VStack>
       </chakra.footer>
     </>
