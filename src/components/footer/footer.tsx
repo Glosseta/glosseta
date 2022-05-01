@@ -30,7 +30,7 @@ const Footer = (): JSX.Element => {
             </Link>
             <Link
               padding={2}
-              href={"https://github.com/narbs91/glosseta"}
+              href={"https://github.com/GlossetaFoundation/glosseta"}
               display="flex"
               title="github"
               isExternal
