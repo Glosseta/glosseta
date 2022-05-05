@@ -14,20 +14,20 @@ function SEO() {
       <title>{t("glossetaTitle")}</title>
       <meta
         name="description"
-        content={t("glossetaDescription")}
+        content={t("glossetaSEODescription")}
       />
       <link rel="icon" href="/glosseta_icon.png" />
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.glosseta.com" />
       <meta property="og:title" content={t("glossetaTitle")} />
-      <meta property="og:description" content={t("glossetaDescription")}/>
+      <meta property="og:description" content={t("glossetaSEODescription")}/>
       <meta property="og:image" content="https://www.glosseta.com/glosseta_social_banner.png" />
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://www.glosseta.com" />
       <meta property="twitter:title" content={t("glossetaTitle")} />
-      <meta property="twitter:description" content={t("glossetaDescription")} />
+      <meta property="twitter:description" content={t("glossetaSEODescription")} />
       <meta property="twitter:image" content="https://www.glosseta.com/glosseta_social_banner.png" />
       <script
         defer
