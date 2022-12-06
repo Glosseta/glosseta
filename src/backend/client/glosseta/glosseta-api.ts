@@ -16,14 +16,14 @@ interface GlossaryTerm {
 
 const errorHandlingUtil = new ErrorHandlingUtil();
 
-export const getGlossaryTerm = async (name: string): Promise<GlossaryTerm> => {
+export const getGlossaryTerm = async (term: string): Promise<GlossaryTerm> => {
     let glossaryTerm = {} as GlossaryTerm;
 
     try {
         const { data } = await glossetaClient.query({
             query: GET_GLOSSARY_TERM,
             variables: {
-                "name": name
+                "name": term
             },
         });
 
@@ -33,7 +33,7 @@ export const getGlossaryTerm = async (name: string): Promise<GlossaryTerm> => {
 
     } catch (error) {
         const errorMessage = errorHandlingUtil.getErrorMessage(error);
-        console.log(`[Unable to find term] term=${name}, error=${errorMessage}`)
+        console.log(`[Unable to find term] term=${term}, error=${errorMessage}`)
         throw new Error(errorMessage)
     }
 
