@@ -1,4 +1,4 @@
-import { fetchTransactionsByTag } from "../api/arweave/arweave-client";
+import { fetchTransactionsByTag } from "../../backend/client/arweave/arweave-client";
 import { GetServerSideProps } from "next";
 import {
   TERM_TAG,
