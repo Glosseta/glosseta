@@ -30,7 +30,7 @@ export const getGlossaryTerm = async (term: string, locale: string): Promise<Glo
             },
         });
 
-        if (data && data.definition && data.term && data.providerId && data.category) {
+        if (data.GetGlossaryTerm && data.GetGlossaryTerm.definition && data.GetGlossaryTerm.term && data.GetGlossaryTerm.providerId && data.GetGlossaryTerm.category) {
             glossaryTerm.term = data.GetGlossaryTerm.term;
             glossaryTerm.definition = data.GetGlossaryTerm.definition;
             glossaryTerm.category = data.GetGlossaryTerm.category;
