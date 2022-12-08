@@ -1,13 +1,5 @@
-import { fetchTransactionsByTag } from "../api/arweave/arweave-client";
 import { GetServerSideProps } from "next";
-import {
-  TERM_TAG,
-  DESCRIPTION_TAG,
-  CATEGORY_TAG,
-} from "../../utils/glosseta-constants";
 import { SimpleGrid, chakra } from "@chakra-ui/react";
-import { tag } from "../../types/arweave";
-import { glossetaSearchResult } from "../../types/glosseta-lookup-item";
 import { Result } from "../../components/search/result";
 import { UnavailableResult } from "../../components/search/unavailable-result";
 import PageLayout from "../../components/layout/page";
@@ -15,6 +7,7 @@ import SearchBar from "../../components/input/search-bar";
 import ApiError from "../../components/search/api-error";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { termFilter } from "../../filter/termConfig";
+import { fetchGlossaryTerm } from "../../backend/service/glosseta.service";
 
 const SearchResults = ({
   term,
@@ -87,65 +80,11 @@ const SearchResults = ({
   );
 };
 
-export const createSearchResult = (tags: tag[]) => {
-  let searchResult = {
-    term: "",
-    definition: "",
-    source: "",
-    isAvailable: true,
-    category: "",
-    transactionId: "",
-    isError: false,
-  } as glossetaSearchResult;
-
-  tags.forEach((tag) => {
-    if (TERM_TAG === tag.name.toLocaleLowerCase()) {
-      searchResult.term = tag.value;
-    } else if (DESCRIPTION_TAG === tag.name.toLocaleLowerCase()) {
-      searchResult.definition = tag.value;
-    } else if (CATEGORY_TAG === tag.name.toLocaleLowerCase()) {
-      searchResult.category = tag.value;
-    }
-  });
-
-  return searchResult;
-};
-
 export const getServerSideProps: GetServerSideProps = async ({
   query,
   locale,
 }: any) => {
-  const data = (await fetchTransactionsByTag(
-    query.term.toLowerCase(),
-    locale
-  )) as any;
-
-  const { edges } = data.props;
-
-  let result = {} as glossetaSearchResult;
-
-  if (edges === "error") {
-    result = {
-      term: query.term.toLowerCase(),
-      definition: "",
-      isAvailable: false,
-      category: "unavailable",
-      transactionId: "",
-      isError: true,
-    };
-  } else if (edges.length === 0) {
-    result = {
-      term: query.term.toLowerCase(),
-      definition: "",
-      isAvailable: false,
-      category: "unavailable",
-      transactionId: "",
-      isError: false,
-    };
-  } else {
-    result = createSearchResult(edges[0].node.tags) as glossetaSearchResult;
-    result.transactionId = edges[0].node.id;
-  }
+  const result = await fetchGlossaryTerm(query.term.toLowerCase(), locale);
 
   return {
     props: {

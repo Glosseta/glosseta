@@ -78,7 +78,9 @@ describe("Search Results - Not found", () => {
     expect(apiErrorContainer).not.toBeInTheDocument();
 
     expect(resultUnavailableContainer).toBeInTheDocument();
-    expect(resultUnavailableContainer).toHaveTextContent("unavailableSearchResultDescription")
+    expect(resultUnavailableContainer).toHaveTextContent(
+      "unavailableSearchResultDescription"
+    );
   });
 });
 
@@ -114,131 +116,6 @@ describe("Search Results - Error", () => {
     expect(resultUnavailableContainer).not.toBeInTheDocument();
 
     expect(apiErrorContainer).toBeInTheDocument();
-    expect(apiErrorContainer).toHaveTextContent("apiFetchErrorText")
-  });
-});
-
-describe("GetServerSideProps", () => {
-  beforeEach(() => {
-    fetchMock.mockReset();
-  });
-
-  it("Returns correct response on successful api call", async () => {
-    const term = "term";
-    const definition = "definition";
-    const isAvailable = true;
-    const category = "category";
-    const transactionId = "1";
-    const isError = false;
-
-    fetchMock.mockOnce(
-      JSON.stringify({
-        data: {
-          transactions: {
-            edges: [
-              {
-                node: {
-                  id: "1",
-                  tags: [
-                    {
-                      name: "Content-Type",
-                      value: "application/json",
-                    },
-                    {
-                      name: "term",
-                      value: "term",
-                    },
-                    {
-                      name: "description",
-                      value: "definition",
-                    },
-                    {
-                      name: "locale",
-                      value: "en",
-                    },
-                    {
-                      name: "source",
-                      value: "GLOSSETA-PROD",
-                    },
-                    {
-                      name: "category",
-                      value: "category",
-                    },
-                  ],
-                },
-              },
-            ],
-          },
-        },
-      })
-    );
-
-    const response = await getServerSideProps({
-      query: { term: term },
-      locale: "en",
-    });
-
-    expect(response.props.term).toEqual(term);
-    expect(response.props.definition).toEqual(definition);
-    expect(response.props.category).toEqual(category);
-    expect(response.props.isAvailable).toEqual(isAvailable);
-    expect(response.props.transactionId).toEqual(transactionId);
-    expect(response.props.isError).toEqual(isError);
-  });
-
-  it("Returns correct response when search result not found", async () => {
-    const term = "term2";
-    const definition = "";
-    const isAvailable = false;
-    const category = "unavailable";
-    const transactionId = "";
-    const isError = false;
-
-    fetchMock.mockOnce(
-      JSON.stringify({
-        data: {
-          transactions: {
-            edges: [],
-          },
-        },
-      })
-    );
-
-    const response = await getServerSideProps({
-      query: { term: term },
-      locale: "en",
-    });
-
-    expect(response.props.term).toEqual(term);
-    expect(response.props.definition).toEqual(definition);
-    expect(response.props.category).toEqual(category);
-    expect(response.props.isAvailable).toEqual(isAvailable);
-    expect(response.props.transactionId).toEqual(transactionId);
-    expect(response.props.isError).toEqual(isError);
-  });
-
-  it("Returns correct response on error api call", async () => {
-    const term = "term3";
-    const definition = "";
-    const isAvailable = false;
-    const category = "unavailable";
-    const transactionId = "";
-    const isError = true;
-
-    fetchMock.mockReject(
-      new Error("Error communicating with arweave graphql api")
-    );
-
-    const response = await getServerSideProps({
-      query: { term: term },
-      locale: "en",
-    });
-
-    expect(response.props.term).toEqual(term);
-    expect(response.props.definition).toEqual(definition);
-    expect(response.props.category).toEqual(category);
-    expect(response.props.isAvailable).toEqual(isAvailable);
-    expect(response.props.transactionId).toEqual(transactionId);
-    expect(response.props.isError).toEqual(isError);
+    expect(apiErrorContainer).toHaveTextContent("apiFetchErrorText");
   });
 });

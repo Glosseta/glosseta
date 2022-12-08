@@ -1,4 +1,4 @@
-export type glossetaSearchResult = {
+export type GlossetaSearchResult = {
     term: String,
     definition: String,
     isAvailable: boolean,
