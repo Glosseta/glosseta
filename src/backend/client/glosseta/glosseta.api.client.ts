@@ -22,11 +22,12 @@ export const getGlossaryTerm = async (term: string, locale: string): Promise<Glo
     try {
         let glossaryTerm = {} as GlossaryTerm;
 
+        // TODO: When localized glossary entries are available change the  'locale` var to `locale.toUpperCase()`
         const { data } = await glossetaClient.query({
             query: GET_GLOSSARY_TERM,
             variables: {
                 "term": term,
-                "locale": locale.toUpperCase()
+                "locale": "EN"
             },
         });
 
