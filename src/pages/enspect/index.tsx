@@ -69,7 +69,7 @@ const ENSpect = (): JSX.Element => {
 
                 <Link
                   padding={2}
-                  href={"/search?term=ens"}
+                  href={"/search/term=ens"}
                   display="flex"
                   fontSize={{ base: "md", sm: "xl" }}
                   color={"white"}
