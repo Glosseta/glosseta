@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import FallBack from "../../../../src/components/details/fallback";
+import FallBack from "../../../src/components/loading/fallback";
 
 Object.defineProperty(window, 'matchMedia', {
     writable: true,
@@ -21,7 +21,7 @@ describe("ENS search fallback suite", () => {
 
     render(<FallBack />);
 
-    const container = screen.getByTitle("glosseta-enspect-search-fallback-page");
+    const container = screen.getByTitle("glosseta-search-fallback-page");
 
     expect(container).toBeInTheDocument();
   });

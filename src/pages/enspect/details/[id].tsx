@@ -1,6 +1,6 @@
 import PageLayout from "../../../components/layout/page";
 import { SimpleGrid, chakra } from "@chakra-ui/react";
-import FallBack from "../../../components/details/fallback";
+import FallBack from "../../../components/loading/fallback";
 import ProfileCard from "../../../components/details/profile-card";
 import SearchBar from "../../../components/input/enspect-search-bar";
 import EnsSearchError from "../../../components/details/ens-search-error";
