@@ -82,7 +82,7 @@ describe("Search Bar", () => {
     });
 
     expect(window.location.assign).toHaveBeenCalledWith(
-      `/search?term=${searchTerm}`
+      `/search/term/${searchTerm}`
     );
   });
 
@@ -150,7 +150,7 @@ describe("Search Bar", () => {
     });
 
     expect(window.location.assign).toHaveBeenCalledWith(
-      `/search?term=${autoCompleteFilter[0].textContent}`
+      `/search/term/${autoCompleteFilter[0].textContent}`
     );
   });
 
@@ -198,7 +198,7 @@ describe("Search Bar", () => {
     });
 
     expect(window.location.assign).toHaveBeenCalledWith(
-      `/search?term=${autoCompleteFilter[0].textContent}`
+      `/search/term/${autoCompleteFilter[0].textContent}`
     );
   });
 
@@ -231,7 +231,7 @@ describe("Search Bar", () => {
 
     expect(searchBarInput.value).toBe(filterSelection);
     expect(window.location.assign).toHaveBeenCalledWith(
-      `/search?term=${filterSelection}`
+      `/search/term/${filterSelection}`
     );
   });
 

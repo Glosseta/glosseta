@@ -10,7 +10,7 @@ const DailyWord = ({words}:{words:any[]}): JSX.Element => {
     return (
         <VStack fontSize={{ base: "lg", md: "xl" }}>
             <Heading as="h1" color="white" textAlign="center">{t("wordOfTheDay")}</Heading>
-            <Link color="white" href={`/search?term=${words[indexOfWords]}`}>
+            <Link color="white" href={`/search/term/${words[indexOfWords]}`}>
                 <Text casing="capitalize">{words[indexOfWords]}</Text>
             </Link>
         </VStack>

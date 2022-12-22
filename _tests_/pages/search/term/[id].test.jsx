@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import SearchResults from "../../../src/pages/search/index";
-import { getServerSideProps } from "../../../src/pages/search/index";
+import SearchResults from "../../../../src/pages/search/term/[id]";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key) => key }),
