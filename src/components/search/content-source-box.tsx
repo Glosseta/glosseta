@@ -41,8 +41,8 @@ export const ContentSourceBox = ({ transactionId }: any): JSX.Element => {
             </Link>
           </Text>
           <Image
-            srcSet="./arweave_seal_mobile_light.svg 360w,
-                    ./arweave_seal_light.png 1100w,"
+            srcSet="/arweave_seal_mobile_light.svg 360w,
+                    /arweave_seal_light.png 1100w,"
             sizes="(max-width: 600px) 480px,
                     800px"
             alt="Permanent on Arweave"
