@@ -83,7 +83,7 @@ const SearchBar = ({
   const onKeyDown = (event: any) => {
     if (event.key === "Enter" && searchTerm.trim().length != 0) {
       event.preventDefault();
-      location.assign(`/search?term=${searchTerm.trim().toLowerCase()}`);
+      location.assign(`/search/term/${searchTerm.trim().toLowerCase()}`);
     } else if (shouldMoveUpFilter(event) && filteredSuggestions.length > 0) {
       event.preventDefault();
 
@@ -200,7 +200,7 @@ const SearchBar = ({
                         setShowSuggestions(false);
                         setActiveSuggestion(0);
                         location.assign(
-                          `/search?term=${event.currentTarget.innerText
+                          `/search/term/${event.currentTarget.innerText
                             .trim()
                             .toLowerCase()}`
                         );

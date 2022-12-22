@@ -32,7 +32,7 @@ const FallBack = (): JSX.Element => {
             w="100vw"
           >
             <Container
-              title="glosseta-enspect-search-fallback-page"
+              title="glosseta-search-fallback-page"
             >
               <Box padding="6" boxShadow="lg" bg="white">
                 <SkeletonCircle size="15" />

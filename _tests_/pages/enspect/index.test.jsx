@@ -21,7 +21,7 @@ describe("ENSpect Landing Page", () => {
 
     expect(enspectContainer).toBeInTheDocument();
 
-    expect(whatIsENSLink).toHaveAttribute("href", "/search?term=ens");
+    expect(whatIsENSLink).toHaveAttribute("href", "/search/term/ens");
 
     expect(enspectHeading).toBeInTheDocument();
 
