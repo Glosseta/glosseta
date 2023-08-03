@@ -65,5 +65,6 @@ export const termFilter = [
     "centralized",
     "sharding",
     "airdrops",
-    "zero-knowledge proof"
+    "zero-knowledge proof",
+    "digital identity"
 ];
