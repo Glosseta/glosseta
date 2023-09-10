@@ -66,5 +66,7 @@ export const termFilter = [
     "sharding",
     "airdrops",
     "zero-knowledge proof",
-    "digital identity"
+    "digital identity",
+    "digital marketplace",
+    "polygon"
 ];
