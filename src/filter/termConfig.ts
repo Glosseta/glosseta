@@ -68,5 +68,6 @@ export const termFilter = [
     "zero-knowledge proof",
     "digital identity",
     "digital marketplace",
-    "polygon"
+    "polygon",
+    "evm"
 ];
