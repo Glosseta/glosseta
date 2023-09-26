@@ -69,5 +69,6 @@ export const termFilter = [
     "digital identity",
     "digital marketplace",
     "polygon",
-    "evm"
+    "evm",
+    "ethereum foundation"
 ];
