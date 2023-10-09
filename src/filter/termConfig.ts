@@ -71,5 +71,7 @@ export const termFilter = [
     "polygon",
     "evm",
     "ethereum foundation",
-    "decentralized storage"
+    "decentralized storage",
+    "decentralized social media",
+    "lens protocol"
 ];
