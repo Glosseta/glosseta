@@ -73,5 +73,7 @@ export const termFilter = [
     "ethereum foundation",
     "decentralized storage",
     "decentralized social media",
-    "lens protocol"
+    "lens protocol",
+    "smart contract",
+    "defi"
 ];
