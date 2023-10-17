@@ -1,6 +1,6 @@
 # Glosseta (🔎, 🧠)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![Follow on Twitter](https://img.shields.io/badge/social-Twitter-1DA1F2?logo=twitter)](https://twitter.com/Glossetadotcom)
@@ -71,13 +71,16 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="http://www.narbeh.xyz/"><img src="https://avatars.githubusercontent.com/u/29411347?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Narb</b></sub></a><br /><a href="#infra-narbs91" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Tests">⚠️</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Code">💻</a> <a href="#data-narbs91" title="Data">🔣</a> <a href="https://github.com/narbs91/glosseta/commits?author=narbs91" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://www.linkedin.com/in/shakeib98/"><img src="https://avatars.githubusercontent.com/u/28858011?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Shakeib Shaida</b></sub></a><br /><a href="#data-shakeib98" title="Data">🔣</a></td>
-    <td align="center"><a href="https://naftalimurgor.netlify.app"><img src="https://avatars.githubusercontent.com/u/37052032?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Murgor</b></sub></a><br /><a href="#data-naftalimurgor" title="Data">🔣</a> <a href="https://github.com/narbs91/glosseta/commits?author=naftalimurgor" title="Code">💻</a></td>
-    <td align="center"><a href="https://cosisaxis.co/"><img src="https://avatars.githubusercontent.com/u/72054802?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cosi</b></sub></a><br /><a href="https://github.com/narbs91/glosseta/commits?author=cosisaxis" title="Code">💻</a> <a href="#data-cosisaxis" title="Data">🔣</a></td>
-    <td align="center"><a href="https://github.com/alireza-jahandoost"><img src="https://avatars.githubusercontent.com/u/78685132?v=4?s=100" width="100px;" alt=""/><br /><sub><b>alireza jahandoost</b></sub></a><br /><a href="https://github.com/narbs91/glosseta/commits?author=alireza-jahandoost" title="Code">💻</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.narbeh.xyz/"><img src="https://avatars.githubusercontent.com/u/29411347?v=4?s=100" width="100px;" alt="Narb"/><br /><sub><b>Narb</b></sub></a><br /><a href="#infra-narbs91" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/Glosseta/glosseta/commits?author=narbs91" title="Tests">⚠️</a> <a href="https://github.com/Glosseta/glosseta/commits?author=narbs91" title="Code">💻</a> <a href="#data-narbs91" title="Data">🔣</a> <a href="https://github.com/Glosseta/glosseta/commits?author=narbs91" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.linkedin.com/in/shakeib98/"><img src="https://avatars.githubusercontent.com/u/28858011?v=4?s=100" width="100px;" alt="Shakeib Shaida"/><br /><sub><b>Shakeib Shaida</b></sub></a><br /><a href="#data-shakeib98" title="Data">🔣</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://naftalimurgor.netlify.app"><img src="https://avatars.githubusercontent.com/u/37052032?v=4?s=100" width="100px;" alt="Murgor"/><br /><sub><b>Murgor</b></sub></a><br /><a href="#data-naftalimurgor" title="Data">🔣</a> <a href="https://github.com/Glosseta/glosseta/commits?author=naftalimurgor" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://cosisaxis.co/"><img src="https://avatars.githubusercontent.com/u/72054802?v=4?s=100" width="100px;" alt="Cosi"/><br /><sub><b>Cosi</b></sub></a><br /><a href="https://github.com/Glosseta/glosseta/commits?author=cosisaxis" title="Code">💻</a> <a href="#data-cosisaxis" title="Data">🔣</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/alireza-jahandoost"><img src="https://avatars.githubusercontent.com/u/78685132?v=4?s=100" width="100px;" alt="alireza jahandoost"/><br /><sub><b>alireza jahandoost</b></sub></a><br /><a href="https://github.com/Glosseta/glosseta/commits?author=alireza-jahandoost" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/omahs"><img src="https://avatars.githubusercontent.com/u/73983677?v=4?s=100" width="100px;" alt="omahs"/><br /><sub><b>omahs</b></sub></a><br /><a href="https://github.com/Glosseta/glosseta/commits?author=omahs" title="Code">💻</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->
