@@ -58,7 +58,7 @@ export const termFilter = [
     "sidechain",
     "layer 1",
     "layer 2",
-    "blockchain trilema",
+    "blockchain trilemma",
     "block",
     "solana",
     "proof of history",
