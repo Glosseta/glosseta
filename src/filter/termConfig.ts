@@ -1,7 +1,7 @@
 /**
  * This will not scale well with localization and the size the term bank will grow.
  * This is a temporary solution until a better system can be thought out.
- *  */ 
+ *  */
 export const termFilter = [
     "blockchain",
     "hodl",
@@ -75,5 +75,6 @@ export const termFilter = [
     "decentralized social media",
     "lens protocol",
     "smart contract",
-    "defi"
+    "defi",
+    "metaverse"
 ];
