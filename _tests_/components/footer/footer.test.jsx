@@ -12,30 +12,38 @@ describe("Footer", () => {
 
     const github = screen.getByTitle("github");
     const githubA11yText = screen.getByTitle("footer-github-a11y-text");
-    const githubIcon = screen.getByTitle('footer-github-icon');
-    const copyright = screen.getByTitle('copyright-text');
+    const githubIcon = screen.getByTitle("footer-github-icon");
+    const copyright = screen.getByTitle("copyright-text");
 
-    const arweave = screen.getByTitle("arweave");
-    const arweaveA11yText = screen.getByTitle("footer-arweave-a11y-text");
-    const arweaveIcon = screen.getByTitle('footer-arweave-icon');
+    const tiktok = screen.getByTitle("tiktok");
+    const tiktokA11yText = screen.getByTitle("footer-tiktok-a11y-text");
+    const tiktokIcon = screen.getByTitle("footer-tiktok-icon");
+
+    const instagram = screen.getByTitle("instagram");
+    const instagramA11yText = screen.getByTitle("footer-instagram-a11y-text");
+    const instagramIcon = screen.getByTitle("footer-instagram-icon");
 
     const twitter = screen.getByTitle("twitter");
     const twitterA11yText = screen.getByTitle("footer-twitter-a11y-text");
-    const twitterIcon = screen.getByTitle('footer-twitter-icon');
+    const twitterIcon = screen.getByTitle("footer-twitter-icon");
 
     expect(github).toBeInTheDocument();
-    expect(githubA11yText).toHaveTextContent('footerGitHubA11yText');
+    expect(githubA11yText).toHaveTextContent("footerGitHubA11yText");
     expect(githubIcon).toBeInTheDocument();
 
-    expect(arweave).toBeInTheDocument();
-    expect(arweaveA11yText).toHaveTextContent('footerArweaveA11yText');
-    expect(arweaveIcon).toBeInTheDocument();
+    expect(tiktok).toBeInTheDocument();
+    expect(tiktokA11yText).toHaveTextContent("footerTiktokA11yText");
+    expect(tiktokIcon).toBeInTheDocument();
+
+    expect(instagram).toBeInTheDocument();
+    expect(instagramA11yText).toHaveTextContent("footerInstagramA11yText");
+    expect(instagramIcon).toBeInTheDocument();
 
     expect(twitter).toBeInTheDocument();
-    expect(twitterA11yText).toHaveTextContent('footerTwitterA11yText');
+    expect(twitterA11yText).toHaveTextContent("footerTwitterA11yText");
     expect(twitterIcon).toBeInTheDocument();
 
     expect(copyright).toBeInTheDocument();
-    expect(copyright).toHaveTextContent('copyright');
+    expect(copyright).toHaveTextContent("copyright");
   });
 });
