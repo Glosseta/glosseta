@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
   return (
     <PageLayout>
-      <Container maxW={{ base: "sm", sm: "xl" }} marginTop="-65px">
+      <Container maxW={{ base: "sm", sm: "xl" }}>
         <VStack spacing={5}>
           <Image
             title="glosseta-logo"
