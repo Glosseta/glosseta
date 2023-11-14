@@ -20,7 +20,7 @@ describe("Glosseta Landing Page", () => {
 
     expect(glossetaContainer).toBeInTheDocument();
 
-    expect(logo).toHaveAttribute("src", "/glosseta.png");
+    expect(logo).toHaveAttribute("src", "/glosseta_social_banner.png");
     expect(logo).toHaveAttribute("alt", "Glosseta logo");
 
     expect(glossetaDescription).toBeInTheDocument();
