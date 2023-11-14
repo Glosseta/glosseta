@@ -4,7 +4,6 @@ import {
   VStack,
   Image,
   chakra,
-  Heading,
   Text,
   Box,
   Container,
@@ -25,9 +24,9 @@ const Home: NextPage = () => {
         <VStack spacing={5}>
           <Image
             title="glosseta-logo"
-            src="/glosseta.png"
+            src="/glosseta_social_banner.png"
             alt="Glosseta logo"
-            width={300}
+            width={400}
           />
         </VStack>
       </Container>

@@ -16,7 +16,7 @@ function SEO() {
         name="description"
         content={t("glossetaSEODescription")}
       />
-      <link rel="icon" href="/glosseta_icon.png" />
+      <link rel="icon" href="/icon.jpg" />
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.glosseta.com" />
