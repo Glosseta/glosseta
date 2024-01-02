@@ -31,12 +31,12 @@ describe("Mobile nav - opened", () => {
     // Open the nav menu
     mobileNavOpenButton.click();
 
-    const searchButton = screen.getByTitle("nav-search-button");
+    const learnButton = screen.getByTitle("nav-blog-button");
     const glossaryButton = screen.queryByTitle("nav-glossary-button");
     const closeButton = screen.getByTitle("mobile-nav-close-button");
     const chainLookupButton = screen.queryByTitle("nav-enspect-button");
 
-    expect(searchButton).toBeInTheDocument();
+    expect(learnButton).toBeInTheDocument();
     expect(closeButton).toBeInTheDocument();
     expect(glossaryButton).toBeInTheDocument();
     expect(chainLookupButton).toBeInTheDocument();
