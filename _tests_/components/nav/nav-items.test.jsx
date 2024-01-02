@@ -16,6 +16,7 @@ describe("Right side Nav items", () => {
     );
     const glossaryButton = screen.queryByTitle("nav-glossary-button");
     const chainLookupButton = screen.queryByTitle("nav-enspect-button");
+    const blogButton = screen.queryByTitle("nav-blog-button");
 
     expect(searchButton).toBeInTheDocument();
     expect(searchButton).toHaveTextContent("search");
@@ -24,5 +25,6 @@ describe("Right side Nav items", () => {
     );
     expect(glossaryButton).toBeInTheDocument();
     expect(chainLookupButton).toBeInTheDocument();
+    expect(blogButton).toBeInTheDocument();
   });
 });
