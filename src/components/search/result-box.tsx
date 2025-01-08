@@ -5,23 +5,45 @@ export const ResultBox = ({ definition, category, term }: any): JSX.Element => {
     <>
       <Box
         width="100%"
-        background="#2C3539"
-        borderWidth="1px"
-        borderColor="black"
+        background="white" 
+        borderRadius="xl"
+        boxShadow="lg"
+        overflow="hidden"
+        transition="all 0.2s"
+        _hover={{
+          transform: "translateY(-2px)",
+          boxShadow: "xl"
+        }}
       >
-        <VStack padding={3}>
+        <VStack 
+          spacing={4}
+          align="stretch"
+          padding={6}
+        >
           <Heading
             as="h1"
-            padding={2}
-            color="white"
-            fontSize={{ base: "md", sm: "xl" }}
+            color="gray.800"
+            fontSize={{ base: "lg", sm: "2xl" }}
+            fontWeight="bold"
+            lineHeight="tight"
           >
             {term}
           </Heading>
-          <Tag variant="solid" colorScheme="blackAlpha" size={"sm"}>
-            <TagLabel color="white">{category}</TagLabel>
+          <Tag
+            variant="subtle"
+            colorScheme="blue"
+            size="md"
+            borderRadius="full"
+            paddingX={4}
+            paddingY={1}
+          >
+            <TagLabel fontWeight="medium">{category}</TagLabel>
           </Tag>
-          <Text padding={2} fontSize={{ base: "xs", sm: "md" }} color="white">
+          <Text 
+            fontSize={{ base: "sm", sm: "md" }}
+            color="gray.600"
+            lineHeight="tall"
+          >
             {definition}
           </Text>
         </VStack>

@@ -16,16 +16,16 @@ import Trie from "../../filter/trie";
 import AutocompleteFilter from "../../filter/autocomplete";
 
 const SearchBar = ({
-  baseWidth,
-  smWidth,
-  mdWidth,
-  lgWidth,
+  baseWidth = "280px",
+  smWidth = "320px",
+  mdWidth = "400px",
+  lgWidth = "480px",
   filterItems,
 }: {
-  baseWidth: string;
-  smWidth: string;
-  mdWidth: string;
-  lgWidth: string;
+  baseWidth?: string;
+  smWidth?: string;
+  mdWidth?: string;
+  lgWidth?: string;
   filterItems: any[];
 }): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -146,12 +146,14 @@ const SearchBar = ({
                   rounded="xl"
                   shadow="sm"
                   onChange={handleSearchTermChange}
+                  borderColor="black"
                   width={{
                     base: baseWidth,
                     sm: smWidth,
                     md: mdWidth,
                     lg: lgWidth,
                   }}
+                  maxWidth="100%"
                   type="search"
                   id="search"
                   placeholder="Search for a word i.e. web3"
@@ -194,6 +196,7 @@ const SearchBar = ({
               md: mdWidth,
               lg: lgWidth,
             }}
+            maxWidth="100%"
           >
             {filteredSuggestions.length > 0 &&
               filteredSuggestions.map((suggestion, index) => {
