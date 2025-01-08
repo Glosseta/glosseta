@@ -131,7 +131,7 @@ const SearchBar = ({
                   <SearchIcon
                     aria-label={t("searchIconAriaLabel")}
                     className="SearchIcon"
-                    color="gray.300"
+                    color="gray.500"
                   />
                 </InputLeftElement>
                 <Input
@@ -139,11 +139,12 @@ const SearchBar = ({
                   aria-expanded={showSuggestions}
                   aria-owns="filter-list"
                   autoComplete={"off"}
-                  variant="outline"
+                  variant="filled"
                   aria-label={t("searchInputAriaLabel")}
-                  backgroundColor="white"
-                  color="black"
-                  rounded="lg"
+                  backgroundColor="gray.50"
+                  color="gray.900"
+                  rounded="xl"
+                  shadow="sm"
                   onChange={handleSearchTermChange}
                   width={{
                     base: baseWidth,
@@ -155,8 +156,16 @@ const SearchBar = ({
                   id="search"
                   placeholder="Search for a word i.e. web3"
                   _placeholder={{
-                    color: "gray.500",
+                    color: "gray.400",
                     fontSize: { base: "sm", sm: "md" },
+                  }}
+                  _hover={{
+                    backgroundColor: "gray.100"
+                  }}
+                  _focus={{
+                    backgroundColor: "white",
+                    borderColor: "blue.400",
+                    shadow: "md"
                   }}
                   onClick={(event) => {
                     event.currentTarget.scrollIntoView(false);
@@ -173,11 +182,12 @@ const SearchBar = ({
           <List
             id="filter-list"
             role={"listbox"}
-            spacing={3}
+            spacing={1}
             padding={2}
             background="white"
-            color="black"
-            rounded="lg"
+            color="gray.900"
+            rounded="xl"
+            shadow="lg"
             width={{
               base: baseWidth,
               sm: smWidth,
@@ -191,7 +201,6 @@ const SearchBar = ({
                   <>
                     <ListItem
                       role={"option"}
-                      color={"black"}
                       key={suggestion}
                       aria-selected={index === activeSuggestion ? true : false}
                       onClick={(event) => {
@@ -206,11 +215,19 @@ const SearchBar = ({
                         );
                       }}
                       background={
-                        index === activeSuggestion ? "darkgray" : "white"
+                        index === activeSuggestion ? "blue.50" : "white"
                       }
-                      padding={1}
+                      color={index === activeSuggestion ? "blue.700" : "gray.700"}
+                      padding={3}
+                      rounded="md"
+                      cursor="pointer"
+                      _hover={{
+                        background: "blue.50",
+                        color: "blue.700"
+                      }}
+                      transition="all 0.2s"
                     >
-                      <ListIcon as={SearchIcon} color="gray.300" />
+                      <ListIcon as={SearchIcon} color={index === activeSuggestion ? "blue.500" : "gray.400"} />
                       {suggestion}
                     </ListItem>
                   </>
@@ -219,8 +236,12 @@ const SearchBar = ({
 
             {filteredSuggestions.length === 0 && (
               <>
-                <ListItem key="unknown" color={"black"}>
-                  <ListIcon as={SearchIcon} color="gray.300" />
+                <ListItem 
+                  key="unknown" 
+                  color="gray.500"
+                  padding={3}
+                >
+                  <ListIcon as={SearchIcon} color="gray.400" />
                   {t("searchTermNotFoundInFilter")}
                 </ListItem>
               </>
