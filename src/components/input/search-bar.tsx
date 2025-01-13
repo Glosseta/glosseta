@@ -16,16 +16,16 @@ import Trie from "../../filter/trie";
 import AutocompleteFilter from "../../filter/autocomplete";
 
 const SearchBar = ({
-  baseWidth,
-  smWidth,
-  mdWidth,
-  lgWidth,
+  baseWidth = "280px",
+  smWidth = "320px",
+  mdWidth = "400px",
+  lgWidth = "480px",
   filterItems,
 }: {
-  baseWidth: string;
-  smWidth: string;
-  mdWidth: string;
-  lgWidth: string;
+  baseWidth?: string;
+  smWidth?: string;
+  mdWidth?: string;
+  lgWidth?: string;
   filterItems: any[];
 }): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -131,7 +131,7 @@ const SearchBar = ({
                   <SearchIcon
                     aria-label={t("searchIconAriaLabel")}
                     className="SearchIcon"
-                    color="gray.300"
+                    color="gray.500"
                   />
                 </InputLeftElement>
                 <Input
@@ -139,24 +139,35 @@ const SearchBar = ({
                   aria-expanded={showSuggestions}
                   aria-owns="filter-list"
                   autoComplete={"off"}
-                  variant="outline"
+                  variant="filled"
                   aria-label={t("searchInputAriaLabel")}
-                  backgroundColor="white"
-                  color="black"
-                  rounded="lg"
+                  backgroundColor="gray.50"
+                  color="gray.900"
+                  rounded="xl"
+                  shadow="sm"
                   onChange={handleSearchTermChange}
+                  borderColor="black"
                   width={{
                     base: baseWidth,
                     sm: smWidth,
                     md: mdWidth,
                     lg: lgWidth,
                   }}
+                  maxWidth="100%"
                   type="search"
                   id="search"
                   placeholder="Search for a word i.e. web3"
                   _placeholder={{
-                    color: "gray.500",
+                    color: "gray.400",
                     fontSize: { base: "sm", sm: "md" },
+                  }}
+                  _hover={{
+                    backgroundColor: "gray.100"
+                  }}
+                  _focus={{
+                    backgroundColor: "white",
+                    borderColor: "blue.400",
+                    shadow: "md"
                   }}
                   onClick={(event) => {
                     event.currentTarget.scrollIntoView(false);
@@ -173,54 +184,63 @@ const SearchBar = ({
           <List
             id="filter-list"
             role={"listbox"}
-            spacing={3}
+            spacing={1}
             padding={2}
             background="white"
-            color="black"
-            rounded="lg"
+            color="gray.900"
+            rounded="xl"
+            shadow="lg"
             width={{
               base: baseWidth,
               sm: smWidth,
               md: mdWidth,
               lg: lgWidth,
             }}
+            maxWidth="100%"
           >
             {filteredSuggestions.length > 0 &&
-              filteredSuggestions.map((suggestion, index) => {
-                return (
-                  <>
-                    <ListItem
-                      role={"option"}
-                      color={"black"}
-                      key={suggestion}
-                      aria-selected={index === activeSuggestion ? true : false}
-                      onClick={(event) => {
-                        setSearchTerm(event.currentTarget.innerText);
-                        setFilteredSuggestions([]);
-                        setShowSuggestions(false);
-                        setActiveSuggestion(0);
-                        location.assign(
-                          `/search/term/${event.currentTarget.innerText
-                            .trim()
-                            .toLowerCase()}`
-                        );
-                      }}
-                      background={
-                        index === activeSuggestion ? "darkgray" : "white"
-                      }
-                      padding={1}
-                    >
-                      <ListIcon as={SearchIcon} color="gray.300" />
-                      {suggestion}
-                    </ListItem>
-                  </>
-                );
-              })}
+              filteredSuggestions.map((suggestion, index) => (
+                <ListItem
+                  key={`suggestion-${index}`}
+                  role={"option"}
+                  aria-selected={index === activeSuggestion ? true : false}
+                  onClick={(event) => {
+                    setSearchTerm(event.currentTarget.innerText);
+                    setFilteredSuggestions([]);
+                    setShowSuggestions(false);
+                    setActiveSuggestion(0);
+                    location.assign(
+                      `/search/term/${event.currentTarget.innerText
+                        .trim()
+                        .toLowerCase()}`
+                    );
+                  }}
+                  background={
+                    index === activeSuggestion ? "blue.50" : "white"
+                  }
+                  color={index === activeSuggestion ? "blue.700" : "gray.700"}
+                  padding={3}
+                  rounded="md"
+                  cursor="pointer"
+                  _hover={{
+                    background: "blue.50",
+                    color: "blue.700"
+                  }}
+                  transition="all 0.2s"
+                >
+                  <ListIcon as={SearchIcon} color={index === activeSuggestion ? "blue.500" : "gray.400"} />
+                  {suggestion}
+                </ListItem>
+              ))}
 
             {filteredSuggestions.length === 0 && (
               <>
-                <ListItem key="unknown" color={"black"}>
-                  <ListIcon as={SearchIcon} color="gray.300" />
+                <ListItem 
+                  key="unknown" 
+                  color="gray.500"
+                  padding={3}
+                >
+                  <ListIcon as={SearchIcon} color="gray.400" />
                   {t("searchTermNotFoundInFilter")}
                 </ListItem>
               </>

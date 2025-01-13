@@ -26,16 +26,25 @@ export const ScrollToTopButton = ({
         title="glossary-scroll-to-top-button"
         onClick={scrollToTheTop}
         position="fixed"
-        bottom="20px"
-        right="30px"
+        bottom="6"
+        right="6"
         zIndex="99"
-        backgroundColor="#A3A3A3"
-        fontSize="18px"
-        textColor="black"
-        cursor="pointer"
-        _hover={{ backgroundColor: "#BABABA" }}
+        colorScheme="blackAlpha"
+        size="lg"
+        rounded="full"
+        shadow="lg"
+        aria-label={t("scrollToTheTopButton")}
+        _hover={{
+          transform: "translateY(-2px)",
+          shadow: "xl"
+        }}
+        _active={{
+          transform: "translateY(0)",
+          shadow: "md"
+        }}
+        transition="all 0.2s"
       >
-        <ArrowUpIcon />
+        <ArrowUpIcon boxSize={6} />
         <span className={styles.visuallyhidden}>
           {t("scrollToTheTopButton")}
         </span>

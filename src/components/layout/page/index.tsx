@@ -8,13 +8,13 @@ const PageLayout = ({ children }: { children?: object }): JSX.Element => {
     <>
       <Nav />
       <Stack
-        spacing={10}
-        padding={1}
-        display="flex"
-        justifyContent="center"
-        flexDirection="column"
+        spacing={8}
+        px={{ base: 4, md: 8 }}
+        py={{ base: 6, md: 10 }}
+        flex="1"
+        width="100%"
         alignItems="center"
-        minHeight="100vh"
+        minH="100vh"
       >
         {children}
       </Stack>
