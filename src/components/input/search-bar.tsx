@@ -199,43 +199,39 @@ const SearchBar = ({
             maxWidth="100%"
           >
             {filteredSuggestions.length > 0 &&
-              filteredSuggestions.map((suggestion, index) => {
-                return (
-                  <>
-                    <ListItem
-                      role={"option"}
-                      key={suggestion}
-                      aria-selected={index === activeSuggestion ? true : false}
-                      onClick={(event) => {
-                        setSearchTerm(event.currentTarget.innerText);
-                        setFilteredSuggestions([]);
-                        setShowSuggestions(false);
-                        setActiveSuggestion(0);
-                        location.assign(
-                          `/search/term/${event.currentTarget.innerText
-                            .trim()
-                            .toLowerCase()}`
-                        );
-                      }}
-                      background={
-                        index === activeSuggestion ? "blue.50" : "white"
-                      }
-                      color={index === activeSuggestion ? "blue.700" : "gray.700"}
-                      padding={3}
-                      rounded="md"
-                      cursor="pointer"
-                      _hover={{
-                        background: "blue.50",
-                        color: "blue.700"
-                      }}
-                      transition="all 0.2s"
-                    >
-                      <ListIcon as={SearchIcon} color={index === activeSuggestion ? "blue.500" : "gray.400"} />
-                      {suggestion}
-                    </ListItem>
-                  </>
-                );
-              })}
+              filteredSuggestions.map((suggestion, index) => (
+                <ListItem
+                  key={`suggestion-${index}`}
+                  role={"option"}
+                  aria-selected={index === activeSuggestion ? true : false}
+                  onClick={(event) => {
+                    setSearchTerm(event.currentTarget.innerText);
+                    setFilteredSuggestions([]);
+                    setShowSuggestions(false);
+                    setActiveSuggestion(0);
+                    location.assign(
+                      `/search/term/${event.currentTarget.innerText
+                        .trim()
+                        .toLowerCase()}`
+                    );
+                  }}
+                  background={
+                    index === activeSuggestion ? "blue.50" : "white"
+                  }
+                  color={index === activeSuggestion ? "blue.700" : "gray.700"}
+                  padding={3}
+                  rounded="md"
+                  cursor="pointer"
+                  _hover={{
+                    background: "blue.50",
+                    color: "blue.700"
+                  }}
+                  transition="all 0.2s"
+                >
+                  <ListIcon as={SearchIcon} color={index === activeSuggestion ? "blue.500" : "gray.400"} />
+                  {suggestion}
+                </ListItem>
+              ))}
 
             {filteredSuggestions.length === 0 && (
               <>

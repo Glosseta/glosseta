@@ -9,14 +9,12 @@ export const Result = ({
   term,
 }: any): JSX.Element => {
   return (
-    <>
-      <Container title="search-result-content" maxW={{ base: "sm", sm: "xl" }}>
-        <VStack spacing={5}>
-          <ResultBox definition={definition} category={category} term={term} />
-          <ContentSourceBox transactionId={transactionId} />
-        </VStack>
-      </Container>
-    </>
+    <Container title="search-result-content" maxW={{ base: "sm", sm: "xl" }}>
+      <VStack spacing={5}>
+        <ResultBox definition={definition} category={category} term={term} />
+        <ContentSourceBox transactionId={transactionId} />
+      </VStack>
+    </Container>
   );
 };
 
