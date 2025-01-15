@@ -8,6 +8,7 @@ const DailyWord = ({words}:{words:any[]}): JSX.Element => {
 
     const indexOfWords = pastDays(new Date()) % words.length;
     return (
+        
         <VStack fontSize={{ base: "lg", md: "xl" }}>
             <Heading as="h1" color="white" textAlign="center">{t("wordOfTheDay")}</Heading>
             <Link color="white" href={`/search/term/${words[indexOfWords]}`}>
