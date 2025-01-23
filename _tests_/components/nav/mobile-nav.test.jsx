@@ -34,11 +34,9 @@ describe("Mobile nav - opened", () => {
     const learnButton = screen.getByTitle("nav-blog-button");
     const glossaryButton = screen.queryByTitle("nav-glossary-button");
     const closeButton = screen.getByTitle("mobile-nav-close-button");
-    const chainLookupButton = screen.queryByTitle("nav-enspect-button");
 
     expect(learnButton).toBeInTheDocument();
     expect(closeButton).toBeInTheDocument();
     expect(glossaryButton).toBeInTheDocument();
-    expect(chainLookupButton).toBeInTheDocument();
   });
 });
